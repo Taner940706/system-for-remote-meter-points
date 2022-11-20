@@ -1,0 +1,172 @@
+<div class="modal fade" id="editTIModel" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+    	<form class="form-horizontal" id="editTIForm" action="" method="POST">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title"><i class="fa fa-edit"></i> Редактиране на точки на измерване</h4>
+	      </div>
+	      <div class="modal-body">
+
+	      	<div id="edit-brand-messages"></div>
+
+
+
+
+	      	<div class="modal-loading div-hide" style="width:50px; margin:auto;padding-top:50px; padding-bottom:50px;">
+						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+						<span class="sr-only">Зареждане...</span>
+					</div>
+
+		      <div class="edit-brand-result">
+
+			<div class="form-group">
+		        	<label for="TI_id" class="col-sm-3 control-label">ИД: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+		 <input type="text" class="form-control" id="TI_id" placeholder="ИД" name="TI_id" autocomplete="off" readonly="readonly">
+					    </div>
+
+		      	<div class="form-group">
+		        	<label for="editTIName" class="col-sm-3 control-label">Име на ТИ: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editTIName" placeholder="Име на ТИ" name="editTIName" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+
+		        </div> <!-- /form-group-->
+
+		        <div class="form-group">
+		        	<label for="editTIMeter" class="col-sm-3 control-label">Номер на електромер: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editTIMeter" placeholder="Номер на електромер" name="editTIMeter" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+
+ <div class="form-group">
+		        	<label for="editvoltage" class="col-sm-3 control-label">Ниво напрежение: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editvoltage" placeholder="Ниво напрежение" name="editvoltage" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+		 <div class="form-group">
+		        	<label for="editConstant" class="col-sm-3 control-label">Константа: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editConstant" placeholder="Константа" name="editConstant" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+		        <div class="form-group">
+		        	<label for="editrc" class="col-sm-3 control-label">Рег.център: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editrc" placeholder="Рег.център" name="editrc" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+			 <div class="form-group">
+		        	<label for="editModem" class="col-sm-3 control-label">Номер модем: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editModem" placeholder="Номер модем" name="editModem" autocomplete="off">
+					    </div>
+		        </div> <!-- /form-group-->
+
+		        <div class="form-group">
+		        	<label for="editIP" class="col-sm-3 control-label">IP адрес: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editIP" placeholder="IP адрес" name="editIP" autocomplete="off" readonly="readonly">
+					    </div>
+		        </div> <!-- /form-group-->
+
+
+ <div class="form-group">
+		        	<label for="editSIM" class="col-sm-3 control-label">Сим номер: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="editSIM" placeholder="Сим номер" name="editSIM" autocomplete="off" readonly="readonly">
+					    </div>
+		        </div> <!-- /form-group-->
+
+
+
+		        <div class="form-group">
+		        	<label for="editStatus" class="col-sm-3 control-label">Резултат: </label>
+		        	<label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <select class="form-control" id="editStatus" name="editStatus">
+					      	<option value="">~~Избери~~</option>
+					      	<option value="Има комуникация">Има комуникация</option>
+					      	<option value="Няма комуникация">Няма комуникация</option>
+					      	<option value="В процес на изпълнение...">В процес на изпълнение...</option>
+					      </select>
+					    </div>
+		        </div> <!-- /form-group-->
+
+		        <div class="form-group">
+	        	<label for="operation" class="col-sm-3 control-label">Операция: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <select class="form-control" id="operation" name="operation">
+				      	<option value="">~~Избери~~</option>
+				      	<option value="Възстановяване на комуникация">Възстановяване на комуникация</option>
+				      	<option value="Добавяне на нова точка">Добавяне на нова точка</option>
+				      	<option value="Сменен по метрология">Сменен по метрология</option>
+				      	<option value="Изтриване на точка">Изтриване на точка</option>
+				      	<option value="Смяна на константа">Смяна на константа</option>
+				      	<option value="Друго">Друго(в Коментарите)</option>
+				      </select>
+				    </div>
+	        </div> <!-- /form-group-->
+
+	         <div class="form-group">
+					    <label for="completed" class="col-sm-3 control-label">Изпълнена от: </label>
+					    <label class="col-sm-1 control-label">: </label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" id="completed" name="completed" placeholder="Потребителско име" value="" readonly="readonly"/>
+					    </div>
+					  </div>
+</div>
+
+
+
+<div class="form-group">
+	        	<label for="editcomment" class="col-sm-3 control-label">Коментар: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="editcomment" placeholder="Коментар" name="editcomment" autocomplete="off">
+				    </div>
+	        </div>
+<!-- /form-group-->
+
+
+
+
+		        <!-- /form-group-->
+		</div>
+		      <!-- /edit brand result -->
+        </form>
+	      </div> <!-- /modal-body -->
+
+</div>
+</div>
+
+
+
+	      <div class="modal-footer editTIFooter">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Затвори</button>
+
+
+	        <button type="submit" class="btn btn-success" id="editTIBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените</button>
+	      </div>
+
+
