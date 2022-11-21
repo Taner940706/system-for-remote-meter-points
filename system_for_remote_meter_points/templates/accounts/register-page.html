@@ -1,19 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Система за дистанционни точки на отчитане</title>
-</head>
-<body>
+{% extends 'base/base_no_auth.html' %}
+{% load static %}
+{% block page_content %}
 <form class="form-horizontal" action="" method="post" id="registerForm">
 							<fieldset>
-
-
-				<section id="register">
-  	<img src="assests\images\stock\ерп-север-лого.jpg" class="centerImage" alt="лого">
+  <section id="register">
+  	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
     <div class="container">
         <div class="row">
     	    <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
@@ -58,24 +49,6 @@
     	</div> <!-- /.row -->
     </div> <!-- /.container -->
 </section>
-
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <p>Дирекция <strong>УЕДиСТИ</strong></p>
-                <p>Отдел <strong>ДОСО</strong></p>
-                <p>Създаден от <strong><a href="https://www.facebook.com/taner.mutalib" target="_blank">Танер Исмаил</a></strong></p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-
-
-
-							</fieldset>
-						</form>
-</body>
-</html>
+</fieldset>
+</form>
+{% endblock %}

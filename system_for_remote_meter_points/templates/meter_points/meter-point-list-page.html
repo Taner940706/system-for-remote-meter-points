@@ -1,11 +1,7 @@
-<div class="row">
-	<div class="col-md-12">
-
-		<ol class="breadcrumb">
-		  <li><a href="">Начална страница</a></li>
-		  <li class="active">Информация за точки на измерване</li>
-		</ol>
-
+{% extends 'base/base_auth.html' %}
+{% block page_content %}
+{#<div class="row">#}
+{<div class="col py-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Списък точки на измерване</div>
@@ -34,9 +30,7 @@
 				</table>
 				<!-- /table -->
 
-			<button> Създаване на точки на измерване </button>
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
 	</div> <!-- /col-md-12 -->
-</div> <!-- /row -->
-
+{% endblock %}

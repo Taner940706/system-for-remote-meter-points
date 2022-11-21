@@ -1,17 +1,13 @@
-<div class="row">
-	<div class="col-md-12">
-
-		<ol class="breadcrumb">
-		  <li><a href="">Начална страница</a></li>
-		  <li class="active">Информация за електромери</li>
-		</ol>
-
+{% extends 'base/base_auth.html' %}
+{% block page_content %}
+{#    <div class="container-fluid">#}
+{#<div class="row">#}
+	<div class="col py-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i>Списък с електромери</div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
-
 				<div class="remove-messages"></div>
 
 				<div class="div-action pull pull-right" style="padding-bottom:20px;">
@@ -35,8 +31,8 @@
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
 	</div> <!-- /col-md-12 -->
-</div> <!-- /row -->
 
+{% endblock %}
 
 
 
