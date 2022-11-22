@@ -1,0 +1,98 @@
+{% extends 'base/base_auth.html' %}
+{% block page_content %}
+<!-- <div class="row"> -->
+
+	<div class="col py-3">
+		<div class="panel panel-success">
+			<div class="panel-heading" style="text-decoration:none;color:black;">
+
+					Успешни задачи
+					<span class="badge pull pull-right"></span>
+
+			</div> <!--/panel-hdeaing-->
+		</div> <!--/panel-->
+	</div> <!--/col-md-4-->
+
+		<div class="col-md-4">
+			<div class="panel panel-warning">
+			<div class="panel-heading" style="text-decoration:none;color:black;">
+					Задачи в процес на изпълнение
+					<span class="badge pull pull-right"></span>
+
+			</div> <!--/panel-hdeaing-->
+		</div> <!--/panel-->
+		</div> <!--/col-md-4-->
+
+	<div class="col-md-4">
+		<div class="panel panel-danger">
+			<div class="panel-heading" style="text-decoration:none;color:black;">
+
+					Неуспешни задачи
+					<span class="badge pull pull-right"></span>
+
+			</div> <!--/panel-hdeaing-->
+		</div> <!--/panel-->
+	</div> <!--/col-md-4-->
+
+	<div class="col-md-4">
+		<div class="card">
+		  <div class="cardHeader">
+		    <h1></h1>
+		  </div>
+		  <div class="cardContainer">
+		    <p></p>
+
+		  </div>
+		</div>
+		<br/>
+
+		<div class="card">
+		  <div class="cardHeader" style="background-color:#245580;">
+		    <h1></h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-tasks"></i> Брой задачи за деня</p>
+		  </div>
+		</div>
+
+<br/>
+
+<div class="card">
+		  <div class="cardHeader" style="background-color:#245544;">
+		    <h1></h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-user"></i> Брой на всички задачи</p>
+		  </div>
+		</div>
+
+<br/>
+
+<div class="card">
+		  <div class="cardHeader" style="background-color:#00FFFF;">
+		    <h1></h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-list-alt"></i>Общ брой ТИ</p>
+		  </div>
+		</div>
+
+
+
+	</div>
+
+<div class="card">
+		  <div class="cardHeader" style="background-color:#00FFFF;">
+		    <h1></h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-list-alt"></i>Общ брой модеми</p>
+		  </div>
+		</div>
+	</div>
+
+{% endblock %}
