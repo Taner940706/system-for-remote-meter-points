@@ -27,7 +27,7 @@ class Modem(models.Model):
         unique=True,
         blank=False,
         null=False,)
-    meter_point = models.ForeignKey(
+    meter_point = models.OneToOneField(
         MeterPoint,
         on_delete=models.PROTECT,
     )

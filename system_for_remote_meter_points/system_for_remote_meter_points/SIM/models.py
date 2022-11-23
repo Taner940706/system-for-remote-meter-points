@@ -56,7 +56,7 @@ class SIM(models.Model):
         blank=False,
     )
     
-    modem = models.ForeignKey(
+    modem = models.OneToOneField(
         Modem,
         on_delete=models.PROTECT,
     )
