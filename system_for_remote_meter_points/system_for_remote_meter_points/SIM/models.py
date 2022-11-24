@@ -2,8 +2,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 
-from system_for_remote_meter_points.modems.models import Modem
-
 
 # Create your models here.
 
@@ -55,8 +53,11 @@ class SIM(models.Model):
         null=False,
         blank=False,
     )
-    
     modem = models.OneToOneField(
-        Modem,
-        on_delete=models.PROTECT,
+        'modems.Modem',
+        related_name='modem_key',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
     )
+

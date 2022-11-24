@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 from django.db import models
 
-from system_for_remote_meter_points.meter_points.models import MeterPoint
 
 
 # Create your models here.
@@ -46,8 +45,10 @@ class MeterDevice(models.Model):
         null=False,
         blank=False,
     )
-    
     meter_point = models.OneToOneField(
-        MeterPoint,
-        on_delete=models.PROTECT,
+        'meter_points.MeterPoint',
+        related_name='meter_point_meter_device_key',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
     )

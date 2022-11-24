@@ -37,9 +37,7 @@ class UserEditView(views.UpdateView):
     fields = ('first_name', 'last_name', 'email', 'department', 'picture')
 
     def get_success_url(self):
-        return reverse_lazy('details user', kwargs={
-            'pk': self.request.user.pk,
-        })
+        return reverse_lazy('list meter points')
 
 
 class UserDeleteView(views.DeleteView):

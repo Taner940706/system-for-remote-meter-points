@@ -16,97 +16,104 @@
 
 
 
-				<form action="" method="post" class="form-horizontal" id="changeUsernameForm">
+				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm">
 					<fieldset>
 						<legend>Промени потребителски данни</legend>
 
-						<div class="changeUsenrameMessages"></div>
+						<div class="changeUsernameMessages"></div>
 
-						<div class="form-group">
-					    <label for="username" class="col-sm-2 control-label">КИД</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="username" name="username" placeholder="КИД" value=""/>
-					    </div>
-					  </div>
+{#						<div class="form-group">#}
+{#					    <label for="username" class="col-sm-2 control-label">КИД</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="text" class="form-control" id="username" name="username" placeholder="КИД" value=""/>#}
+{#					    </div>#}
+{#					  </div>#}
+{##}
+{#					  <div class="form-group">#}
+{#					    <label for="first_name" class="col-sm-2 control-label">Име на служител</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Име на служител" value=""/>#}
+{#					    </div>#}
+{#					  </div>#}
+{#					<div class="form-group">#}
+{#					    <label for="last_name" class="col-sm-2 control-label">Фамилия на служител</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия на служител" value=""/>#}
+{#					    </div>#}
+{#					  </div>#}
+{#					<div class="form-group">#}
+{#					    <label for="email" class="col-sm-2 control-label">Email</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="text" class="form-control" id="email" name="email" placeholder="Email" value=""/>#}
+{#					    </div>#}
+{#					  </div>#}
+{#					<div class="form-group">#}
+{#					    <label for="department" class="col-sm-2 control-label">Отдел</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="text" class="form-control" id="department" name="email" placeholder="Отдел" value=""/>#}
+{#					    </div>#}
+{#					  </div>#}
+{#					<div class="form-group">#}
+{#					    <label for="picture" class="col-sm-2 control-label">Снимка</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="url" class="form-control" id="picture" name="email" placeholder="Снимка" value=""/>#}
+{#					    </div>#}
+{#					  </div>#}
 
-					  <div class="form-group">
-					    <label for="first_name" class="col-sm-2 control-label">Име на служител</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Име на служител" value=""/>
-					    </div>
-					  </div>
-					<div class="form-group">
-					    <label for="last_name" class="col-sm-2 control-label">Фамилия на служител</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия на служител" value=""/>
-					    </div>
-					  </div>
-					<div class="form-group">
-					    <label for="email" class="col-sm-2 control-label">Email</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="email" name="email" placeholder="Email" value=""/>
-					    </div>
-					  </div>
-					<div class="form-group">
-					    <label for="department" class="col-sm-2 control-label">Отдел</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="department" name="email" placeholder="Отдел" value=""/>
-					    </div>
-					  </div>
-					<div class="form-group">
-					    <label for="picture" class="col-sm-2 control-label">Снимка</label>
-					    <div class="col-sm-10">
-					      <input type="url" class="form-control" id="picture" name="email" placeholder="Снимка" value=""/>
-					    </div>
-					  </div>
+                        {{ form.first_name }}
+                        {{ form.last_name }}
+                        {{ form.email }}
+                        {{ form.department }}
+                        {{ form.picture }}
 
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					    	<input type="hidden" name="user_id" id="user_id" value="" />
+{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
 					      <button type="submit" class="btn btn-success" data-loading-text="Loading..." id="changeUsernameBtn"> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените </button>
+                            {% csrf_token %}
 					    </div>
 					  </div>
 					</fieldset>
 				</form>
 
-				<form action="" method="post" class="form-horizontal" id="changePasswordForm">
-					<fieldset>
-						<legend>Промени паролата</legend>
-
-						<div class="changePasswordMessages"></div>
-
-						<div class="form-group">
-					    <label for="password" class="col-sm-2 control-label">Текуща парола</label>
-					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="password" name="password" placeholder="Текуща парола">
-					    </div>
-					  </div>
-
-					  <div class="form-group">
-					    <label for="npassword" class="col-sm-2 control-label">Нова парола</label>
-					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="Нова парола">
-					    </div>
-					  </div>
-
-					  <div class="form-group">
-					    <label for="cpassword" class="col-sm-2 control-label">Повтори новата парола</label>
-					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Повтори новата парола">
-					    </div>
-					  </div>
-
-					  <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					    	<input type="hidden" name="user_id" id="user_id" value="" />
-					      <button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените </button>
-
-					    </div>
-					  </div>
-
-
-					</fieldset>
-				</form>
+{#				<form action="" method="post" class="form-horizontal" id="changePasswordForm">#}
+{#					<fieldset>#}
+{#						<legend>Промени паролата</legend>#}
+{##}
+{#						<div class="changePasswordMessages"></div>#}
+{##}
+{#						<div class="form-group">#}
+{#					    <label for="password" class="col-sm-2 control-label">Текуща парола</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="password" class="form-control" id="password" name="password" placeholder="Текуща парола">#}
+{#					    </div>#}
+{#					  </div>#}
+{##}
+{#					  <div class="form-group">#}
+{#					    <label for="npassword" class="col-sm-2 control-label">Нова парола</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="Нова парола">#}
+{#					    </div>#}
+{#					  </div>#}
+{##}
+{#					  <div class="form-group">#}
+{#					    <label for="cpassword" class="col-sm-2 control-label">Повтори новата парола</label>#}
+{#					    <div class="col-sm-10">#}
+{#					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Повтори новата парола">#}
+{#					    </div>#}
+{#					  </div>#}
+{##}
+{#					  <div class="form-group">#}
+{#					    <div class="col-sm-offset-2 col-sm-10">#}
+{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
+{#					      <button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените </button>#}
+{##}
+{#					    </div>#}
+{#					  </div>#}
+{##}
+{##}
+{#					</fieldset>#}
+{#				</form>#}
 
 			</div> <!-- /panel-body -->
 

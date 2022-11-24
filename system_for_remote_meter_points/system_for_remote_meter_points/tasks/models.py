@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MaxValueValidator
 from django.db import models
 
-from system_for_remote_meter_points.meter_points.models import MeterPoint
 
 # Create your models here.
 UserModel = get_user_model()

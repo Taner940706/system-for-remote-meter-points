@@ -1,7 +1,7 @@
 {% extends 'base/base_no_auth.html' %}
 {% load static %}
 {% block page_content %}
-<form class="form-horizontal" action="" method="post" id="registerForm">
+<form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm">
 							<fieldset>
   <section id="register">
   	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
@@ -13,42 +13,48 @@
 
                 <h2>Регистрация</h2>
 
-                    <div class="form-group">
-                        <label for="username" class="sr-only">КИД</label>
-                        <input type="text" id="username" name="username" class="form-control" placeholder="КИД">
-                    </div>
-		<div class="form-group">
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="text" id="email" name="email" class="form-control" placeholder="Email">
-                    </div>
-		<div class="form-group">
-                        <label for="first_name" class="sr-only">Име</label>
-                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Име">
-                    </div>
-		<div class="form-group">
-                        <label for="last_name" class="sr-only">Фамилия</label>
-                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Фамилия">
-                    </div>
-		<div class="form-group">
-                        <label for="department" class="sr-only">Отдел</label>
-                        <input type="text" id="department" name="department" class="form-control" placeholder="Отдел">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="sr-only">Парола</label>
-                        <input type="password"  id="password" name="password" class="form-control" placeholder="Парола">
-                    </div>
+{#                    <div class="form-group">#}
+{#                        <label for="username" class="sr-only">КИД</label>#}
+{#                        <input type="text" id="username" name="username" class="form-control" placeholder="КИД">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="email" class="sr-only">Email</label>#}
+{#                        <input type="text" id="email" name="email" class="form-control" placeholder="Email">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="first_name" class="sr-only">Име</label>#}
+{#                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Име">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="last_name" class="sr-only">Фамилия</label>#}
+{#                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Фамилия">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="department" class="sr-only">Отдел</label>#}
+{#                        <input type="text" id="department" name="department" class="form-control" placeholder="Отдел">#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                        <label for="password" class="sr-only">Парола</label>#}
+{#                        <input type="password"  id="password" name="password" class="form-control" placeholder="Парола">#}
+{#                    </div>#}
 {#		<div class="form-group">#}
 {#                        <label for="repassword" class="sr-only">Повтори парола</label>#}
 {#                        <input type="password"  id="repassword" name="repassword" class="form-control" placeholder="Парола">#}
 {#                    </div>#}
-        <div class="form-group">
-                        <label for="picture" class="sr-only">Снимка</label>
-                        <input type="url" id="picture" name="picture" class="form-control" placeholder="Снимка">
-                    </div>
+{#        <div class="form-group">#}
+{#                        <label for="picture" class="sr-only">Снимка</label>#}
+{#                        <input type="url" id="picture" name="picture" class="form-control" placeholder="Снимка">#}
+{#                    </div>#}
+
+                {{ form.username }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
 
                     <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Влез">
+                {% csrf_token %}
                 <div class="ben">
-                <a href="">Вече имаш създаден акаунт?</a>
+                <a href="{% url 'login user' %}">Вече имаш създаден акаунт?</a>
             </div>
                 <hr/>
     		</div> <!-- /.col-xs-12 -->
