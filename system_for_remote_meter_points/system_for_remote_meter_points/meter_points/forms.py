@@ -7,6 +7,66 @@ class MeterPointBaseForm(forms.ModelForm):
     class Meta:
         model = MeterPoint
         fields = ('mp_name', 'constant', 'voltage', 'regional_center', 'operation', 'result_operation', 'comment', 'user', 'meter_device', 'modem')
+        labels = {
+            'mp_name': 'Meter point name:',
+            'meter_device': 'Meter device number:',
+            'voltage': 'Voltage:',
+            'constant': 'Constant:',
+            'regional_center': 'Regional center:',
+            'modem': 'Modem number:',
+            'operation': 'Operation:',
+            'result_operation': 'Result:',
+        }
+        widgets = {
+            'mp_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Meter point name',
+
+                }
+
+            ),
+            'meter_device': forms.TextInput(
+                attrs={
+                    'placeholder': 'Meter device number',
+                }
+
+            ),
+            'voltage': forms.TextInput(
+                attrs={
+                    'placeholder': 'Voltage',
+                }
+            ),
+            'constant': forms.TextInput(
+                attrs={
+                    'placeholder': 'Constant',
+                }
+
+            ),
+            'regional_center': forms.TextInput(
+                attrs={
+                    'placeholder': 'Regional center',
+                }
+
+            ),
+            'modem': forms.TextInput(
+                attrs={
+                    'placeholder': 'Modem number',
+                }
+
+            ),
+            'operation': forms.TextInput(
+                attrs={
+                    'placeholder': 'Operation',
+                }
+
+            ),
+            'result_operation': forms.TextInput(
+                attrs={
+                    'placeholder': 'Result',
+                }
+
+            ),
+        }
 
 
 class CreateMeterPointForm(MeterPointBaseForm):

@@ -7,6 +7,31 @@ class ModemBaseForm(forms.ModelForm):
     class Meta:
         model = Modem
         fields = ('modem_number', 'meter_point', 'sim')
+        labels = {
+            'modem_number': 'Modem number:',
+            'meter_point': 'Meter point name:',
+            'sim': 'SIM number:',
+        }
+        widgets = {
+            'modem_number': forms.TextInput(
+                attrs={
+                    'placeholder': 'Modem number',
+
+                }
+
+            ),
+            'meter_point': forms.TextInput(
+                attrs={
+                    'placeholder': 'Meter point number',
+                }
+
+            ),
+            'sim': forms.TextInput(
+                attrs={
+                    'placeholder': 'SIM number',
+                }
+            ),
+        }
 
 
 class CreateModemForm(ModemBaseForm):

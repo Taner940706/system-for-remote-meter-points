@@ -129,4 +129,10 @@ class Task(models.Model):
     result_operation = models.TextField(
         choices=RESULT_OPERATION)
     comment = models.TextField()
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
+    )
 

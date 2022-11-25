@@ -1,5 +1,7 @@
 {% extends 'base/base_auth.html' %}
+
 {% block page_content %}
+
 {#<div class="row">#}
 	<div class="col py-3">
 
@@ -11,10 +13,6 @@
 			<div class="panel-body">
 
 				<div class="remove-messages"></div>
-
-
-
-
 <table class="table" id="manageSIMTable">
 					<thead>
 						<tr>
@@ -27,6 +25,7 @@
 
 						</tr>
 					</thead>
+                    <tbody>
                     {% for sim in sim_list %}
                 <tr>
                 <td>{{ sim.id }}</td>
@@ -43,14 +42,23 @@
                 </tr>
 
             {% endfor %}
+                    </tbody>
 				</table>
 				<!-- /table -->
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
-{#		<button type="button" class="btn btn-primary">Създаване на СИМ</button>#}
-    <a href="{% url 'add SIM' %}" class="add-button">Създаване на СИМ</a>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewSIMModal">
+  Launch demo modal
+</button>
+
+
 	</div> <!-- /col-md-12 -->
+
+
+{% include 'SIM/SIM-add-page.html' %}
+
 {% endblock %}
 
 

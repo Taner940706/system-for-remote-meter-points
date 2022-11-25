@@ -7,6 +7,45 @@ class SIMBaseForm(forms.ModelForm):
     class Meta:
         model = SIM
         fields = ('sim_number', 'gsm_number', 'ip_address', 'operator', 'modem')
+        labels = {
+            'sim_number': 'SIM number:',
+            'gsm_number': 'GSM number:',
+            'ip_address': 'IP address:',
+            'operator': 'Operator:',
+            'modem': 'Modem number:',
+
+        }
+        widgets = {
+            'sim_number': forms.TextInput(
+                attrs={
+                    'placeholder': 'SIM Number',
+
+                }
+
+            ),
+            'gsm_number': forms.TextInput(
+                attrs={
+                    'placeholder': 'GSM Number',
+                }
+
+            ),
+            'ip_address': forms.TextInput(
+
+
+            ),
+            'operator': forms.TextInput(
+                attrs={
+                    'placeholder': 'Operator',
+                }
+
+            ),
+            'modem': forms.TextInput(
+                attrs={
+                    'placeholder': 'Modem Number',
+                }
+
+            ),
+        }
 
 
 class CreateSIMForm(SIMBaseForm):

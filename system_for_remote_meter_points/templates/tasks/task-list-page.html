@@ -21,7 +21,9 @@
 							<th>Номер на електромер</th>
 							<th>Операция</th>
 							<th>Резултат</th>
+                            <th>Дата</th>
 							<th style="margin: 0 auto;">Опции</th>
+
 						</tr>
 					</thead>
                 {% for task in task_list %}
@@ -31,6 +33,7 @@
                 <td>{{ task.meter_device_number }}</td>
                 <td>{{ task.operation}}</td>
                 <td>{{ task.result_operation }}</td>
+                    <td>{{ task.created_date }}</td>
                 {% endfor %}
 				</table>
 				<!-- /table -->

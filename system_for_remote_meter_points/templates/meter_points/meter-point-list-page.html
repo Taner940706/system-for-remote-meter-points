@@ -18,6 +18,7 @@
 							<th>Номер електромер</th>
 							<th>Рег.център</th>
                             <th>Потребител</th>
+                            <th>Дата</th>
 
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
@@ -30,6 +31,7 @@
                 <td>{{ meter_point.voltage }}</td>
                 <td>{{ meter_point.regional_center}}</td>
                 <td>{{ meter_point.user }}</td>
+                            <td>{{ meter_point.created_date }}</td>
             {% endfor %}
 				</table>
 				<!-- /table -->

@@ -1,87 +1,21 @@
-{% extends 'base/base_auth.html' %}
-{% block page_content %}
-<div class="modal fade" id="createNewSIMModal" tabindex="-1" role="dialog">
+{#{% block page_content %}#}
+
+<div class="modal fade" id="createNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+      </div>
 
-    	<form class="form-horizontal" id="createNewSIMForm" action="{% url 'add SIM' %}" method="POST">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-edit"></i> Създаване на СИМ</h4>
-	      </div>
-	      <div class="modal-body">
+        <div class="modal-body">
+            <form class="form-horizontal" id="createNewSIMForm" action="{% url 'add SIM' %}" method="POST">
 
-	      	<div id="edit-brand-messages"></div>
-
-
-
-
-	      	<div class="modal-loading div-hide" style="width:50px; margin:auto;padding-top:50px; padding-bottom:50px;">
-						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-						<span class="sr-only">Зареждане...</span>
-					</div>
-
-		      <div class="edit-brand-result">
-
-
-{#<div class="form-group">#}
-{#		        	<label for="createNewSIM" class="col-sm-3 control-label">СИМ номер: </label>#}
-{#		        	<label class="col-sm-1 control-label">: </label>#}
-{#					    <div class="col-sm-8">#}
-{#					      <input type="text" class="form-control" id="createNewSIM" placeholder="СИМ номер" name="createNewSIM" autocomplete="off">#}
-{#					    </div>#}
-{#		        </div> <!-- /form-group-->#}
-{##}
-{#<div class="form-group">#}
-{#		        	<label for="createNewGSM" class="col-sm-3 control-label">GSM номер: </label>#}
-{#		        	<label class="col-sm-1 control-label">: </label>#}
-{#					    <div class="col-sm-8">#}
-{#					      <input type="text" class="form-control" id="createNewGSM" placeholder="GSM номер" name="createNewGSM" autocomplete="off">#}
-{#					    </div>#}
-{#		        </div> <!-- /form-group-->#}
-{##}
-{#			<div class="form-group">#}
-{#		        	<label for="createNewOperator" class="col-sm-3 control-label">Оператор: </label>#}
-{#		        	<label class="col-sm-1 control-label">: </label>#}
-{#					    <div class="col-sm-8">#}
-{#					      <input type="text" class="form-control" id="createNewOperator" placeholder="Оператор" name="createNewOperator" autocomplete="off">#}
-{#					    </div>#}
-{#		        </div> <!-- /form-group-->#}
-{##}
-{#		        <div class="form-group">#}
-{#		        	<label for="createNewIP" class="col-sm-3 control-label">IP: </label>#}
-{#		        	<label class="col-sm-1 control-label">: </label>#}
-{#					    <div class="col-sm-8">#}
-{#					      <input type="text" class="form-control" id="createNewIP" placeholder="IP" name="createNewIP" autocomplete="off">#}
-{#					    </div>#}
-{#		        </div> <!-- /form-group-->#}
-{##}
-{##}
-{##}
-{#<!-- /form-group-->#}
-{##}
-
-{{ form }}
-
-		        <!-- /form-group-->
-		</div>
-		      <!-- /edit brand result -->
-
-	      </div> <!-- /modal-body -->
-        </form>
+            {{ form }}
+                {% csrf_token %}
+                </form>
+        </div>
+</div>
 </div>
 </div>
 
-
-
-	      <div class="modal-footer createNewSIMFooter">
-	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Затвори</button>
-
-
-	        <button type="submit" class="btn btn-success" id="createNewSIMbtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените</button>
-              {% csrf_token %}
-	      </div>
-
-
-</div>
-{% endblock %}
+{# {% endblock %}#}

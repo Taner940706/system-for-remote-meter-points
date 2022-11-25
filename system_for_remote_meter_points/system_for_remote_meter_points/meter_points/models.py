@@ -1,3 +1,4 @@
+
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator, MaxValueValidator
 from django.db import models
@@ -107,6 +108,12 @@ class MeterPoint(models.Model):
     comment = models.TextField(
         blank=True,
         null=True,
+    )
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
     )
     modem = models.OneToOneField(
         'modems.Modem',

@@ -1,13 +1,22 @@
 from django.shortcuts import render, redirect
 
-from system_for_remote_meter_points.SIM.forms import  CreateSIMForm, EditSIMForm, DeleteSIMForm
+from system_for_remote_meter_points.SIM.forms import CreateSIMForm, EditSIMForm, DeleteSIMForm
 from system_for_remote_meter_points.SIM.models import SIM
 
 
 def list_SIM(request):
 	sim_list = SIM.objects.all()
+	if request.method == 'GET':
+		form = CreateSIMForm()
+	else:
+		form = CreateSIMForm(request.POST)
+		if form.is_valid():
+			sim = form.save(commit=False)
+			sim.save()
+			return redirect('list SIM')
 	context = {
 		'sim_list': sim_list,
+		'form': form,
 	}
 	return render(request, 'SIM/SIM-list-page.html', context)
 
@@ -25,7 +34,7 @@ def add_SIM(request):
 	context = {
 		'form': form,
 	}
-	return render(request, 'SIM/SIM-add-page.html', context)
+	return render(request, "SIM/SIM-add-page.html", context)
 
 
 def edit_SIM(request):
