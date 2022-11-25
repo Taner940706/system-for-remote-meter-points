@@ -16,15 +16,34 @@
 <table class="table" id="manageModemTable">
 					<thead>
 						<tr>
-						    <th>ID</th>
-							<th>Модем</th>
+							<th>Модем номер</th>
 							<th>Сим номер</th>
 							<th>GSM номер</th>
 							<th>IP</th>
 							<th>Оператор</th>
-							<th>Дата</th>
+                            <th>Точка на измерване</th>
 						</tr>
 					</thead>
+                    {% for modem in modem_list %}
+                <tr>
+                <td>{{ modem.modem_number }}</td>
+                    {% if modem.sim.sim_key %}
+                <td>{{ modem.sim.sim_number}}</td>
+                <td>{{ modem.sim.gsm_number }}</td>
+                <td>{{ modem.sim.ip_address }}</td>
+                <td>{{ modem.sim.operator }}</td>
+                {% else %}
+                    <td>Няма данни</td>
+                <td>Няма данни</td>
+                <td>Няма данни</td>
+                <td>Няма данни</td>
+                        {% endif %}
+               {% if modem.meter_point.meter_point_modem_key %}
+                        <td>{{ modem.meter_point.mp_name }}</td>
+                        {% else %}
+                        <td>Няма данни</td>
+               {% endif %}
+    {% endfor %}
 				</table>
 				<!-- /table -->
 

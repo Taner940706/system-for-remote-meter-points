@@ -20,10 +20,20 @@
 							<th>Тип</th>
 							<th>Номер на електромер</th>
 							<th>Точка на измерване</th>
-							<th>Дата</th>
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
 					</thead>
+                         {% for meter_device in meter_device_list %}
+                <tr>
+                <td>{{ meter_device.id }}</td>
+                <td>{{ meter_device.meter_device_type }}</td>
+                <td>{{ meter_device.meter_device_number}}</td>
+                    {% if meter_device.meter_device_meter_point_key %}
+                <td>{{ meter_device.meter_point.mp_name }}</td>
+                {% else %}
+                <td>Няма данни</td>
+                {% endif %}
+{% endfor %}
 				</table>
 				<!-- /table -->
 

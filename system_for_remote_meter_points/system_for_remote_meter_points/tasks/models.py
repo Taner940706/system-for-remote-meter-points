@@ -93,6 +93,12 @@ class Task(models.Model):
         unique=True,
         blank=False,
         null=False,)
+    meter_device_number = models.TextField(
+        validators=(validate_length,
+                    only_int,),
+        unique=True,
+        blank=False,
+        null=False, )
     constant = models.PositiveIntegerField(
         validators=(MaxValueValidator(MAX_CONSTANT_VALUE),),
         blank=False,

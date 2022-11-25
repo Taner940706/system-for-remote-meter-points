@@ -17,15 +17,21 @@
 					<thead>
 						<tr>
 						    <th>№ задача </th>
-							<th>ID</th>
 							<th>Име</th>
 							<th>Номер на електромер</th>
 							<th>Операция</th>
 							<th>Резултат</th>
-							<th>Дата</th>
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
 					</thead>
+                {% for task in task_list %}
+                <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.mp_name }}</td>
+                <td>{{ task.meter_device_number }}</td>
+                <td>{{ task.operation}}</td>
+                <td>{{ task.result_operation }}</td>
+                {% endfor %}
 				</table>
 				<!-- /table -->
 

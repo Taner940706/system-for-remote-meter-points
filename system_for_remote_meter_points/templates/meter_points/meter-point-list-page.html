@@ -10,23 +10,27 @@
 
 				<div class="remove-messages"></div>
 
-
-
 <table class="table" id="manageTITable">
 					<thead>
 						<tr>
 						    <th>ID </th>
 							<th>Име</th>
 							<th>Номер електромер</th>
-							<th>Тип</th>
 							<th>Рег.център</th>
-							<th>IP</th>
-							<th>Порт</th>
-							<th>SIM</th>
-							<th>Константа</th>
+                            <th>Потребител</th>
+
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
 					</thead>
+                        {% for meter_point in meter_point_list %}
+                <tr>
+                <td>{{ meter_point.id }}</td>
+                <td>{{ meter_point.mp_name }}</td>
+                <td>{{ meter_point.meter_device.meter_device_number }}</td>
+                <td>{{ meter_point.voltage }}</td>
+                <td>{{ meter_point.regional_center}}</td>
+                <td>{{ meter_point.user }}</td>
+            {% endfor %}
 				</table>
 				<!-- /table -->
 

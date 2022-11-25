@@ -1,5 +1,4 @@
 from django import forms
-
 from system_for_remote_meter_points.tasks.models import Task
 
 
@@ -7,10 +6,6 @@ class TaskBaseForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ('mp_name', 'constant', 'voltage', 'regional_center', 'modem_number', 'ip_address', 'operation', 'result_operation', 'comment')
-
-
-class CreateTaskForm(TaskBaseForm):
-    pass
 
 
 class EditTaskForm(TaskBaseForm):

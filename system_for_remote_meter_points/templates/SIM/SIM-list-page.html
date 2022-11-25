@@ -23,16 +23,33 @@
 							<th>GSM номер</th>
 							<th>IP</th>
 							<th>Оператор</th>
-							<th>Дата</th>
+                            <th>Модем номер</th>
+
 						</tr>
 					</thead>
+                    {% for sim in sim_list %}
+                <tr>
+                <td>{{ sim.id }}</td>
+                <td>{{ sim.sim_number }}</td>
+                <td>{{ sim.gsm_number }}</td>
+                <td>{{ sim.ip_address }}</td>
+                <td>{{ sim.operator }}</td>
+                    {% if sim.modem.modem_number %}
+                <td>{{ sim.modem.modem_number }}</td>
+                {% else %}
+                <td>Няма данни</td>
+                {% endif %}
+
+                </tr>
+
+            {% endfor %}
 				</table>
 				<!-- /table -->
 
-
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
-		<button type="button" class="btn btn-primary">Създаване на СИМ</button>
+{#		<button type="button" class="btn btn-primary">Създаване на СИМ</button>#}
+    <a href="{% url 'add SIM' %}" class="add-button">Създаване на СИМ</a>
 	</div> <!-- /col-md-12 -->
 {% endblock %}
 

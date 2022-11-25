@@ -9,7 +9,7 @@ class ModemBaseForm(forms.ModelForm):
         fields = ('modem_number', 'meter_point', 'sim')
 
 
-class CreateModemForm(forms.ModelForm):
+class CreateModemForm(ModemBaseForm):
     pass
 
 
