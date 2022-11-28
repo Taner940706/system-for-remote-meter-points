@@ -21,7 +21,6 @@
 							<th>GSM номер</th>
 							<th>IP</th>
 							<th>Оператор</th>
-                            <th>Модем номер</th>
                             <th>Опции</th>
 
 						</tr>
@@ -34,11 +33,6 @@
                 <td>{{ sim.gsm_number }}</td>
                 <td>{{ sim.ip_address }}</td>
                 <td>{{ sim.operator }}</td>
-                    {% if sim.modem.pk %}
-                <td>{{ sim.modem.modem_number }}</td>
-                {% else %}
-                <td>Няма данни</td>
-                {% endif %}
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editNewSIMModal"><a href = {% url 'edit SIM' pk=sim.id %}>test</a></button>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteNewSIMModal"><a href = {% url 'delete SIM' pk=sim.id %}>test</a></button>

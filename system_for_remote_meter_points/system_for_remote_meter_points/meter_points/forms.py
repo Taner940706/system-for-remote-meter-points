@@ -6,6 +6,7 @@ from system_for_remote_meter_points.meter_points.models import MeterPoint
 class MeterPointBaseForm(forms.ModelForm):
     class Meta:
         model = MeterPoint
+
         fields = ('mp_name', 'constant', 'voltage', 'regional_center', 'operation', 'result_operation', 'comment', 'user', 'meter_device', 'modem')
         labels = {
             'mp_name': 'Meter point name:',
@@ -36,10 +37,7 @@ class MeterPointBaseForm(forms.ModelForm):
                     'placeholder': 'Voltage',
                 }
             ),
-            'constant': forms.TextInput(
-                attrs={
-                    'placeholder': 'Constant',
-                }
+            'constant': forms.NumberInput(
 
             ),
             'regional_center': forms.TextInput(
@@ -66,6 +64,7 @@ class MeterPointBaseForm(forms.ModelForm):
                 }
 
             ),
+
         }
 
 

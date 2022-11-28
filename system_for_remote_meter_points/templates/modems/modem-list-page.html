@@ -21,14 +21,13 @@
 							<th>GSM номер</th>
 							<th>IP</th>
 							<th>Оператор</th>
-                            <th>Точка на измерване</th>
                             <th>Опции</th>
 						</tr>
 					</thead>
                     {% for modem in modem_list %}
                 <tr>
                 <td>{{ modem.modem_number }}</td>
-                    {% if modem.sim.sim_number %}
+                    {% if modem.sim.id %}
                 <td>{{ modem.sim.sim_number}}</td>
                 <td>{{ modem.sim.gsm_number }}</td>
                 <td>{{ modem.sim.ip_address }}</td>
@@ -39,12 +38,7 @@
                 <td>Няма данни</td>
                 <td>Няма данни</td>
                         {% endif %}
-               {% if modem.meter_point.pk %}
-                        <td>{{ modem.meter_point.mp_name }}</td>
-                        {% else %}
-                        <td>Няма данни</td>
-               {% endif %}
-                        <td>
+              <td>
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit modem' pk=modem.id %}>test</a></button>
                     <button type="button" class="btn btn-warning"><a href = {% url 'delete modem' pk=modem.id %}>test</a></button>
                 </td>

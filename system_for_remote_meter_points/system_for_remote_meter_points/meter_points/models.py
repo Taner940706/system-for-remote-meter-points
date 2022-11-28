@@ -109,20 +109,19 @@ class MeterPoint(models.Model):
         blank=True,
         null=True,
     )
-    created_date = models.DateField(
-        # Automatically sets current date on `save` (update or create)
-        auto_now=True,
-        null=False,
-        blank=True,
-    )
+
+
+
     modem = models.OneToOneField(
         'modems.Modem',
         related_name='modem_meter_point_key',
+        to_field='modem_number',
         on_delete=models.PROTECT,
     )
     meter_device = models.OneToOneField(
         'meter_devices.MeterDevice',
         related_name='meter_device_meter_point_key',
+        to_field='meter_device_number',
         on_delete=models.PROTECT,
         blank=False,
         null=False,

@@ -6,10 +6,9 @@ from system_for_remote_meter_points.modems.models import Modem
 class ModemBaseForm(forms.ModelForm):
     class Meta:
         model = Modem
-        fields = ('modem_number', 'meter_point', 'sim')
+        fields = ('modem_number', 'sim')
         labels = {
             'modem_number': 'Modem number:',
-            'meter_point': 'Meter point name:',
             'sim': 'SIM number:',
         }
         widgets = {

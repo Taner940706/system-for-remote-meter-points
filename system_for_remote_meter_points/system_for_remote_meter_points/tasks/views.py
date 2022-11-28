@@ -40,7 +40,7 @@ def delete_task(request, pk):
 		form = DeleteTaskForm(request.POST, instance=task)
 		if form.is_valid():
 			form.save()
-			return redirect('catalogue')
+			return redirect('list task')
 
 	context = {
 		'form': form,

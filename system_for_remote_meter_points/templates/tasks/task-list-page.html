@@ -21,7 +21,6 @@
 							<th>Номер на електромер</th>
 							<th>Операция</th>
 							<th>Резултат</th>
-                            <th>Дата</th>
 							<th style="margin: 0 auto;">Опции</th>
 
 						</tr>
@@ -30,10 +29,14 @@
                 <tr>
                 <td>{{ task.id }}</td>
                 <td>{{ task.mp_name }}</td>
-                <td>{{ task.meter_device_number }}</td>
+                <td>{{ task.meter_device }}</td>
                 <td>{{ task.operation}}</td>
                 <td>{{ task.result_operation }}</td>
-                    <td>{{ task.created_date }}</td>
+                    <td>
+                    <button type="button" class="btn btn-primary"><a href = {% url 'edit task' pk=task.id %}>test</a></button>
+                    <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>test</a></button>
+                    </td>
+                </tr>
                 {% endfor %}
 				</table>
 				<!-- /table -->
@@ -41,6 +44,7 @@
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
+
 	</div> <!-- /col-md-12 -->
 {% endblock %}
 

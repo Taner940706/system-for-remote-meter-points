@@ -8,19 +8,15 @@ from django.db import models
 UserModel = get_user_model()
 
 
-def validate_length(value, FIXED_MODEM_NUMBER_LENGTH):
-    if len(str(value)) != FIXED_MODEM_NUMBER_LENGTH:
-        raise ValidationError(u'%s is not the correct length' % value)
-
-
 def only_int(value):
     if not value.isdigit():
         raise ValidationError('Contains characters')
 
 
 class Task(models.Model):
-
-    FIXED_MODEM_NUMBER_LENGTH = 6
+    MAX_MP_LENGTH = 255
+    MIN_MP_LENGTH = 5
+    MAX_CONSTANT_VALUE = 80000
 
     RESTORE_COMM = 'Възсатновяване на комуникация'
     ADD_NEW_METER_POINT = 'Добавяне на нова точка'
@@ -42,17 +38,13 @@ class Task(models.Model):
         (DELETE_METER_POINT, DELETE_METER_POINT),
         (REPLACE_NEW_CONSTANT, REPLACE_NEW_CONSTANT),
         (OTHER, OTHER),
-        )
+    )
 
     RESULT_OPERATION = (
         (NO_COMM, NO_COMM),
         (YES_COMM, YES_COMM),
         (WAIT_COMM, WAIT_COMM),
-        )
-
-    MAX_MP_LENGTH = 50
-    MIN_MP_LENGTH = 5
-    MAX_CONSTANT_VALUE = 80000
+    )
 
     LOW = 'Ниско'
     MEDIUM = 'Средно'
@@ -90,19 +82,12 @@ class Task(models.Model):
         max_length=MAX_MP_LENGTH,
         validators=(
             MinLengthValidator(MIN_MP_LENGTH),),
-        unique=True,
-        blank=False,
-        null=False,)
-    meter_device_number = models.TextField(
-        validators=(validate_length,
-                    only_int,),
-        unique=True,
         blank=False,
         null=False, )
     constant = models.PositiveIntegerField(
         validators=(MaxValueValidator(MAX_CONSTANT_VALUE),),
         blank=False,
-        null=False,)
+        null=False, )
     voltage = models.TextField(
         choices=VOLTAGE,
         null=False,
@@ -113,26 +98,30 @@ class Task(models.Model):
         null=False,
         blank=False,
     )
-    modem_number = models.TextField(
-        validators=(
-            validate_length, only_int),
-        unique=True,
-        blank=False,
-        null=False,)
-    ip_address = models.GenericIPAddressField(
+    operation = models.TextField(
+        choices=OPERATION,
         null=False,
         blank=False,
+    )
+    result_operation = models.TextField(
+        choices=RESULT_OPERATION,
+        null=False,
+        blank=False,
+    )
+    comment = models.TextField(
+        blank=True,
+        null=True,
     )
 
-    operation = models.TextField(
-        choices=OPERATION)
-    result_operation = models.TextField(
-        choices=RESULT_OPERATION)
-    comment = models.TextField()
-    created_date = models.DateField(
-        # Automatically sets current date on `save` (update or create)
-        auto_now=True,
+    modem = models.CharField(
+        max_length=255,
+        blank=False,
         null=False,
-        blank=True,
     )
+    meter_device = models.CharField(
+        max_length=255,
+        blank=False,
+        null=False,
+    )
+
 

@@ -47,11 +47,7 @@ class SIM(models.Model):
         null=False,
         blank=False,
     )
-    modem = models.OneToOneField(
-        'modems.Modem',
-        related_name='modem_key',
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
+
+
+
 

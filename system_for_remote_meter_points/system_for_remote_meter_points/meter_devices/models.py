@@ -29,6 +29,7 @@ class MeterDevice(models.Model):
         (MICROSTAR, MICROSTAR),
     )
 
+
     meter_device_number = models.CharField(
         max_length=FIXED_METER_DEVICE_NUMBER_LENGTH,
         validators=(MinLengthValidator(FIXED_METER_DEVICE_NUMBER_LENGTH),
@@ -41,10 +42,6 @@ class MeterDevice(models.Model):
         null=False,
         blank=False,
     )
-    meter_point = models.OneToOneField(
-        'meter_points.MeterPoint',
-        related_name='meter_point_meter_device_key',
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
+
+
+

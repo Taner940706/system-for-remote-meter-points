@@ -21,21 +21,6 @@ def list_modem(request):
 	return render(request, 'modems/modem-list-page.html', context)
 
 
-def add_modem(request):
-	if request.method == 'GET':
-		form = CreateModemForm()
-	else:
-		form = CreateModemForm(request.POST)
-		if form.is_valid():
-			modem = form.save(commit=False)
-			modem.save()
-			return redirect('list modem')
-
-	context = {
-		'form': form,
-	}
-	return render(request, 'modems/modem-add-page.html', context)
-
 
 def edit_modem(request, pk):
 	modem_edit = Modem.objects.filter(pk=pk).get()

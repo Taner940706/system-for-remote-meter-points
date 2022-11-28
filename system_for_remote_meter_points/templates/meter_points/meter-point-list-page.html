@@ -1,7 +1,7 @@
 {% extends 'base/base_auth.html' %}
 {% block page_content %}
 {#<div class="row">#}
-{<div class="col py-3">
+<div class="col py-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Списък точки на измерване</div>
@@ -16,10 +16,10 @@
 						    <th>ID </th>
 							<th>Име</th>
 							<th>Номер електромер</th>
+                            <th>Константа</th>
+                            <th> Напрежение</th>
+                            <th>Номер модем</th>
 							<th>Рег.център</th>
-                            <th>Потребител</th>
-                            <th>Дата</th>
-
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
 					</thead>
@@ -27,17 +27,26 @@
                 <tr>
                 <td>{{ meter_point.id }}</td>
                 <td>{{ meter_point.mp_name }}</td>
-                <td>{{ meter_point.meter_device.meter_device_number }}</td>
+                    <td>{{ meter_point.meter_device.meter_device_number }}</td>
+                    <td>{{ meter_point.constant }}</td>
                 <td>{{ meter_point.voltage }}</td>
+                    <td>{{ meter_point.modem.modem_number }}</td>
                 <td>{{ meter_point.regional_center}}</td>
-                <td>{{ meter_point.user }}</td>
-                            <td>{{ meter_point.created_date }}</td>
+                            <td>
+                    <button type="button" class="btn btn-primary"><a href = {% url 'edit meter points' pk=meter_point.id %}>test</a></button>
+                    <button type="button" class="btn btn-warning"><a href = {% url 'delete meter points' pk=meter_point.id %}>test</a></button>
+                </td>
+                </tr>
             {% endfor %}
+
 				</table>
 				<!-- /table -->
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
-		<button type="button" class="btn btn-primary">Създаване на точки на измерване</button>
+						   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewMeterPointModal">
+  Launch demo modal
+</button>
 	</div> <!-- /col-md-12 -->
+    {% include 'meter_points/meter-point-add-page.html' %}
 {% endblock %}

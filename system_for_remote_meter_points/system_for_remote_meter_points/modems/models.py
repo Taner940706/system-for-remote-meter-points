@@ -23,15 +23,12 @@ class Modem(models.Model):
     sim = models.OneToOneField(
         'SIM.SIM',
         related_name='sim_key',
+        to_field='sim_number',
         on_delete=models.PROTECT,
         blank=False,
         null=False,
     )
-    meter_point = models.OneToOneField(
-        'meter_points.MeterPoint',
-        related_name='meter_point_modem_key',
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
+
+
+
 

@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-
 from system_for_remote_meter_points.meter_devices.forms import CreateMeterDeviceForm, \
 	EditMeterDeviceForm, DeleteMeterDeviceForm
 from system_for_remote_meter_points.meter_devices.models import MeterDevice
 
 
+
 def list_meter_device(request):
 	meter_device_list = MeterDevice.objects.all()
+
 	if request.method == 'GET':
 		form = CreateMeterDeviceForm()
 	else:
@@ -18,6 +19,7 @@ def list_meter_device(request):
 	context = {
 		'meter_device_list': meter_device_list,
 		'form': form,
+
 	}
 	return render(request, 'meter_devices/meter-device-list-page.html', context)
 
