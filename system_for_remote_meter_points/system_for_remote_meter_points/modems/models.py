@@ -1,14 +1,9 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
 # Create your models here.
-
-
-def validate_length(value, FIXED_MODEM_NUMBER_LENGTH):
-    if len(str(value)) != FIXED_MODEM_NUMBER_LENGTH:
-        raise ValidationError(u'%s is not the correct length' % value)
-
 
 def only_int(value):
     if not value.isdigit():
@@ -19,9 +14,9 @@ class Modem(models.Model):
 
     FIXED_MODEM_NUMBER_LENGTH = 6
 
-    modem_number = models.TextField(
-        validators=(
-            validate_length, only_int),
+    modem_number = models.CharField(
+        max_length=FIXED_MODEM_NUMBER_LENGTH,
+        validators=(only_int, MinLengthValidator(FIXED_MODEM_NUMBER_LENGTH),),
         unique=True,
         blank=False,
         null=False,)
@@ -39,6 +34,4 @@ class Modem(models.Model):
         blank=True,
         null=True,
     )
-
-
 

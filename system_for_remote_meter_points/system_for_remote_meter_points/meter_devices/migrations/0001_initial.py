@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='MeterDevice',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('meter_device_number', models.TextField(unique=True, validators=[system_for_remote_meter_points.meter_devices.models.validate_length, system_for_remote_meter_points.meter_devices.models.only_int])),
+                ('meter_device_number', models.TextField(unique=True, validators=[system_for_remote_meter_points.meter_devices.models.only_int])),
                 ('meter_device_type', models.TextField(choices=[('ISKRA', 'ISKRA'), ('GAMA', 'GAMA'), ('AMT', 'AMT'), ('Microstar', 'Microstar')])),
                 ('meter_point', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='meter_points.meterpoint')),
             ],

@@ -22,12 +22,13 @@
 							<th>IP</th>
 							<th>Оператор</th>
                             <th>Точка на измерване</th>
+                            <th>Опции</th>
 						</tr>
 					</thead>
                     {% for modem in modem_list %}
                 <tr>
                 <td>{{ modem.modem_number }}</td>
-                    {% if modem.sim.sim_key %}
+                    {% if modem.sim.sim_number %}
                 <td>{{ modem.sim.sim_number}}</td>
                 <td>{{ modem.sim.gsm_number }}</td>
                 <td>{{ modem.sim.ip_address }}</td>
@@ -38,11 +39,16 @@
                 <td>Няма данни</td>
                 <td>Няма данни</td>
                         {% endif %}
-               {% if modem.meter_point.meter_point_modem_key %}
+               {% if modem.meter_point.pk %}
                         <td>{{ modem.meter_point.mp_name }}</td>
                         {% else %}
                         <td>Няма данни</td>
                {% endif %}
+                        <td>
+                    <button type="button" class="btn btn-primary"><a href = {% url 'edit modem' pk=modem.id %}>test</a></button>
+                    <button type="button" class="btn btn-warning"><a href = {% url 'delete modem' pk=modem.id %}>test</a></button>
+                </td>
+                </tr>
     {% endfor %}
 				</table>
 				<!-- /table -->
@@ -50,8 +56,11 @@
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
-		<button type="button" class="btn btn-primary">Създаване на модем</button>
+		   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewModemModal">
+  Launch demo modal
+</button>
 	</div> <!-- /col-md-12 -->
+{% include 'modems/modem-add-page.html' %}
 {% endblock %}
 
 

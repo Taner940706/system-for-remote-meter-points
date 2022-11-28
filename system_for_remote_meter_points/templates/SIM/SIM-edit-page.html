@@ -1,85 +1,38 @@
 {% extends 'base/base_auth.html' %}
+
 {% block page_content %}
-<div class="modal fade" id="editSIMModel" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
+{#<div class="modal fade in" id="editNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">#}
+{#  <div class="modal-dialog">#}
+{#    <div class="modal-content">#}
+{#        <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit SIM' sim_list_1.pk %}" method="POST">#}
+{#    <div class="modal-header">#}
+{#        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit SIM card</h1>#}
+{#      </div>#}
+{##}
+{#        <div class="modal-body">#}
+{##}
+{##}
+{#            {{ form_1 }}#}
+{##}
+{##}
+{#        </div>#}
+{#        <div class="modal-footer">#}
+{##}
+{#        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
+{#         <button type="submit" class="btn btn-success" data-loading-text="Loading..."> Запамети промените</button>#}
+{#            {% csrf_token %}#}
+{#      </div>#}
+{##}
+{#            </form>#}
+{#        </div>#}
+{##}
+{##}
+{#</div>#}
+{#</div>#}
 
-    	<form class="form-horizontal" id="editSIMForm" action="" method="POST">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-edit"></i> Редактиране на SIM</h4>
-	      </div>
-	      <div class="modal-body">
-
-	      	<div id="edit-brand-messages"></div>
-
-
-
-
-	      	<div class="modal-loading div-hide" style="width:50px; margin:auto;padding-top:50px; padding-bottom:50px;">
-						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-						<span class="sr-only">Зареждане...</span>
-					</div>
-
-		      <div class="edit-brand-result">
-
-			<div class="form-group">
-		        	<label for="SIM_id" class="col-sm-3 control-label">ИД: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-		 <input type="text" class="form-control" id="SIM_id" placeholder="ИД" name="TI_id" autocomplete="off" readonly="readonly">
-					    </div>
-
-		      	<div class="form-group">
-		        	<label for="editSIM" class="col-sm-3 control-label">СИМ номер: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="editSIM" placeholder="СИМ номер" name="editSIM" autocomplete="off">
-					    </div>
-		        </div> <!-- /form-group-->
-
-		        <div class="form-group">
-		        	<label for="editGSM" class="col-sm-3 control-label">GSM номер: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="editGSM" placeholder="GSM номер" name="editGSM" autocomplete="off">
-					    </div>
-		        </div> <!-- /form-group-->
-		        <div class="form-group">
-		        	<label for="editOperator" class="col-sm-3 control-label">Оператор: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="editOperator" placeholder="Оператор" name="editOperator" autocomplete="off">
-					    </div>
-		        </div> <!-- /form-group-->
-		        <div class="form-group">
-		        	<label for="editIP" class="col-sm-3 control-label">IP: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="editIP" placeholder="IP" name="editIP" autocomplete="off">
-					    </div>
-		        </div> <!-- /form-group-->
-
-
-
-		</div>
-		      <!-- /edit brand result -->
-
-	      </div> <!-- /modal-body -->
-
-</div>
-        </form>
-</div>
-
-
-	      <div class="modal-footer editSIMFooter">
-	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Затвори</button>
-
-
-	        <button type="submit" class="btn btn-success" id="editSIMBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените</button>
-	      </div>
-
-
-</div>
-</div>
+    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit SIM' pk=sim_list_1.pk %}" method="POST">
+     {{ form_1 }}
+             <button type="submit" name="submit" value="delete" class="delete btn btn-success">edit</button>
+            {% csrf_token %}
+     </form>
 {% endblock %}

@@ -16,23 +16,26 @@
 <table class="table" id="manageMeterDeviceTable">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>Тип</th>
 							<th>Номер на електромер</th>
+							<th>Тип</th>
 							<th>Точка на измерване</th>
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
 					</thead>
                          {% for meter_device in meter_device_list %}
                 <tr>
-                <td>{{ meter_device.id }}</td>
-                <td>{{ meter_device.meter_device_type }}</td>
                 <td>{{ meter_device.meter_device_number}}</td>
-                    {% if meter_device.meter_device_meter_point_key %}
-                <td>{{ meter_device.meter_point.mp_name }}</td>
+                <td>{{ meter_device.meter_device_type }}</td>
+                    {% if meter_device.meter_point.pk %}
+                <td>{{ meter_device.meter_point.pk }}</td>
                 {% else %}
                 <td>Няма данни</td>
                 {% endif %}
+                             <td>
+                    <button type="button" class="btn btn-primary"><a href = {% url 'edit meter device' pk=meter_device.id %}>test</a></button>
+                    <button type="button" class="btn btn-warning"><a href = {% url 'delete meter device' pk=meter_device.id %}>test</a></button>
+                </td>
+                </tr>
 {% endfor %}
 				</table>
 				<!-- /table -->
@@ -40,9 +43,11 @@
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
-		<button type="button" class="btn btn-primary">Създаване на електромер</button>
+				   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewMeterDeviceModal">
+  Launch demo modal
+</button>
 	</div> <!-- /col-md-12 -->
-
+{% include 'meter_devices/meter-device-add-page.html' %}
 {% endblock %}
 
 

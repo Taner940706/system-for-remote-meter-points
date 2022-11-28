@@ -1,88 +1,10 @@
 {% extends 'base/base_auth.html' %}
+
 {% block page_content %}
-<div class="modal fade" id="deleteMeterDeviceModel" tabindex="-1" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-    	<form class="form-horizontal" id="deleteMeterDeviceForm" action="" method="POST">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-edit"></i> Изтриване на електромер</h4>
-	      </div>
-	      <div class="modal-body">
-
-	      	<div id="edit-brand-messages"></div>
-
-
-
-
-	      	<div class="modal-loading div-hide" style="width:50px; margin:auto;padding-top:50px; padding-bottom:50px;">
-						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-						<span class="sr-only">Зареждане...</span>
-					</div>
-
-		      <div class="edit-brand-result">
-
-			<div class="form-group">
-		        	<label for="MeterDevice_id" class="col-sm-3 control-label">ИД: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-		 <input type="text" class="form-control" id="MeterDevice_id" placeholder="ИД" name="MeterDevice_id" autocomplete="off" readonly="readonly">
-					    </div>
-
-		<div class="form-group">
-		        	<label for="deleteMeterDeviceType" class="col-sm-3 control-label">Тип на електромер: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-		 <input type="text" class="form-control" id="deleteMeterDeviceType" placeholder="Тип на електромер" name="deleteMeterDeviceType" autocomplete="off" readonly="readonly">
-					    </div>
-
-		      	<div class="form-group">
-		        	<label for="deleteMeterDevice" class="col-sm-3 control-label">Номер Електромер: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="deleteMeterDevice" placeholder="Номер Електромер" name="deleteMeterDevice" autocomplete="off" readonly="readonly">
-					    </div>
-		        </div> <!-- /form-group-->
-
-
-		        </div> <!-- /form-group-->
-
-		        <div class="form-group">
-		        	<label for="deleteTI" class="col-sm-3 control-label">Точка на измерване: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="deleteTI" placeholder="Точка на измерване" name="deleteTI" autocomplete="off" readonly="readonly">
-					    </div>
-		        </div> <!-- /form-group-->
-
-
-
-
-		        <!-- /form-group-->
-		</div>
-		      <!-- /edit brand result -->
-
-	      </div> <!-- /modal-body -->
-
-</div>
-        </form>
-</div>
-
-
-
-	      <div class="modal-footer deleteMeterDeviceFooter">
-	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Затвори</button>
-
-
-	        <button type="submit" class="btn btn-success" id="deleteMeterDeviceBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените</button>
-	      </div>
-
-
-	      <!-- /modal-footer -->
-	     <!-- /.form -->
-    </div>
-    <!-- /modal-content -->
-  </div>
-  <!-- /modal-dailog -->
+     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete meter device' pk=meter_device_delete.pk %}" method="POST">
+     {{ form }}
+             <button type="submit" name="submit" value="delete" class="delete btn btn-default">delete</button>
+            {% csrf_token %}
+     </form>
 {% endblock %}

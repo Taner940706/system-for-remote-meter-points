@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Modem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('modem_number', models.TextField(unique=True, validators=[system_for_remote_meter_points.modems.models.validate_length, system_for_remote_meter_points.modems.models.only_int])),
+                ('modem_number', models.TextField(unique=True, validators=[system_for_remote_meter_points.modems.models.only_int])),
                 ('meter_point', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='meter_points.meterpoint')),
             ],
         ),

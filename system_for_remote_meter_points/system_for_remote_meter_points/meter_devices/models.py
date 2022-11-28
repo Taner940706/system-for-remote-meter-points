@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
 from django.db import models
@@ -6,12 +7,6 @@ from django.db import models
 
 
 # Create your models here.
-
-
-def validate_length(value, FIXED_METER_DEVICE_NUMBER_LENGTH):
-    if len(str(value))!=FIXED_METER_DEVICE_NUMBER_LENGTH:
-        raise ValidationError(u'%s is not the correct length' % value)
-
 
 def only_int(value):
     if not value.isdigit():
@@ -34,8 +29,9 @@ class MeterDevice(models.Model):
         (MICROSTAR, MICROSTAR),
     )
 
-    meter_device_number = models.TextField(
-        validators=(validate_length,
+    meter_device_number = models.CharField(
+        max_length=FIXED_METER_DEVICE_NUMBER_LENGTH,
+        validators=(MinLengthValidator(FIXED_METER_DEVICE_NUMBER_LENGTH),
                     only_int,),
         unique=True,
         blank=False,

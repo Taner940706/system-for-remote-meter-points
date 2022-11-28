@@ -7,13 +7,6 @@ from system_for_remote_meter_points.meter_devices.models import MeterDevice
 
 def list_meter_device(request):
 	meter_device_list = MeterDevice.objects.all()
-	context = {
-		'meter_device_list': meter_device_list,
-	}
-	return render(request, 'meter_devices/meter-device-list-page.html', context)
-
-
-def add_meter_device(request):
 	if request.method == 'GET':
 		form = CreateMeterDeviceForm()
 	else:
@@ -22,18 +15,19 @@ def add_meter_device(request):
 			modem = form.save(commit=False)
 			modem.save()
 			return redirect('list meter device')
-
 	context = {
+		'meter_device_list': meter_device_list,
 		'form': form,
 	}
-	return render(request, 'meter_devices/meter-device-add-page.html', context)
+	return render(request, 'meter_devices/meter-device-list-page.html', context)
 
 
-def edit_meter_device(request):
+def edit_meter_device(request, pk):
+	meter_device_edit = MeterDevice.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form = EditMeterDeviceForm()
+		form = EditMeterDeviceForm(instance=meter_device_edit)
 	else:
-		form = EditMeterDeviceForm(request.POST)
+		form = EditMeterDeviceForm(request.POST, instance=meter_device_edit)
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
@@ -41,21 +35,23 @@ def edit_meter_device(request):
 
 	context = {
 		'form': form,
+		'meter_device_edit': meter_device_edit,
 	}
 	return render(request, 'meter_devices/meter-device-edit-page.html', context)
 
 
-def delete_meter_device(request):
+def delete_meter_device(request, pk):
+	meter_device_delete = MeterDevice.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form = DeleteMeterDeviceForm()
+		form = DeleteMeterDeviceForm(instance=meter_device_delete)
 	else:
-		form = DeleteMeterDeviceForm(request.POST)
+		form = DeleteMeterDeviceForm(request.POST, instance=meter_device_delete)
 		if form.is_valid():
-			modem = form.save(commit=False)
-			modem.save()
+			form.save()
 			return redirect('list meter device')
 
 	context = {
 		'form': form,
+		'meter_device_delete': meter_device_delete,
 	}
 	return render(request, 'meter_devices/meter-device-delete-page.html', context)

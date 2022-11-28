@@ -5,12 +5,6 @@ from django.db import models
 
 # Create your models here.
 
-
-def validate_length(value, FIXED_GSM_NUMBER_LENGTH):
-    if len(str(value)) != FIXED_GSM_NUMBER_LENGTH:
-        raise ValidationError(u'%s is not the correct length' % value)
-
-
 def only_int(value):
     if not value.isdigit():
         raise ValidationError('Contains characters')
@@ -38,8 +32,9 @@ class SIM(models.Model):
         unique=True,
         blank=False,
         null=False,)
-    gsm_number = models.TextField(
-        validators=(validate_length,
+    gsm_number = models.CharField(
+        max_length=FIXED_GSM_NUMBER_LENGTH,
+        validators=(MinLengthValidator(FIXED_GSM_NUMBER_LENGTH),
                     only_int,),
         blank=False,
         null=False,)
@@ -49,7 +44,6 @@ class SIM(models.Model):
     )
     operator = models.TextField(
         choices=OPERATOR,
-        unique=True,
         null=False,
         blank=False,
     )

@@ -33,12 +33,6 @@ class SIMBaseForm(forms.ModelForm):
 
 
             ),
-            'operator': forms.TextInput(
-                attrs={
-                    'placeholder': 'Operator',
-                }
-
-            ),
             'modem': forms.TextInput(
                 attrs={
                     'placeholder': 'Modem Number',

@@ -1,21 +1,30 @@
 {#{% block page_content %}#}
-
 <div class="modal fade" id="createNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
+        <form class="form-horizontal" id="createNewSIMForm" action="{% url 'list SIM' %}" method="POST">
     <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add SIM card</h1>
       </div>
 
         <div class="modal-body">
-            <form class="form-horizontal" id="createNewSIMForm" action="{% url 'add SIM' %}" method="POST">
+
 
             {{ form }}
-                {% csrf_token %}
-                </form>
+
+
         </div>
+        <div class="modal-footer">
+
+         <button type="submit" class="btn btn-success" data-loading-text="Loading..."> Запамети промените</button>
+            {% csrf_token %}
+      </div>
+
+            </form>
+        </div>
+
 </div>
 </div>
-</div>
+
 
 {# {% endblock %}#}

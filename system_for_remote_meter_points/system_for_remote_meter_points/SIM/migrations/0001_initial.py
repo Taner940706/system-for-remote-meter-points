@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sim_number', models.CharField(max_length=16, unique=True, validators=[django.core.validators.MinLengthValidator(14), system_for_remote_meter_points.SIM.models.only_int])),
-                ('gsm_number', models.TextField(validators=[system_for_remote_meter_points.SIM.models.validate_length, system_for_remote_meter_points.SIM.models.only_int])),
+                ('gsm_number', models.TextField(validators=[system_for_remote_meter_points.SIM.models.only_int])),
                 ('ip_address', models.GenericIPAddressField()),
                 ('operator', models.TextField(choices=[('А1', 'А1'), ('Yettel', 'Yettel'), ('Vivacom', 'Vivacom')], unique=True)),
                 ('modem', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='modems.modem')),

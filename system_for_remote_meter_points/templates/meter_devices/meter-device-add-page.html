@@ -1,69 +1,26 @@
-{% extends 'base/base_auth.html' %}
-{% block page_content %}
-<div class="modal fade" id="createNewMeterDeviceModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="createNewMeterDeviceModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
+        <form class="form-horizontal" id="createNewModemForm" action="{% url 'list meter device' %}" method="POST">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Modem</h1>
+      </div>
 
-    	<form class="form-horizontal" id="createNewMeterDeviceForm" action="" method="POST">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"><i class="fa fa-edit"></i> Създаване на електромер</h4>
-	      </div>
-	      <div class="modal-body">
-
-	      	<div id="edit-brand-messages"></div>
-
-	      	<div class="modal-loading div-hide" style="width:50px; margin:auto;padding-top:50px; padding-bottom:50px;">
-						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-						<span class="sr-only">Зареждане...</span>
-					</div>
-
-		      <div class="edit-brand-result">
+        <div class="modal-body">
 
 
-<div class="form-group">
-		        	<label for="createNewType" class="col-sm-3 control-label">Тип на електромер: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="createNewType" placeholder="Тип на електромер" name="createNewType" autocomplete="off">
-					    </div>
-		        </div> <!-- /form-group-->
-
-<div class="form-group">
-		        	<label for="createNewMeterDevice" class="col-sm-3 control-label">Електромер: </label>
-		        	<label class="col-sm-1 control-label">: </label>
-					    <div class="col-sm-8">
-					      <input type="text" class="form-control" id="createNewMeterDevice" placeholder="Електромер" name="createNewMeterDevice" autocomplete="off">
-					    </div>
-		        </div> <!-- /form-group-->
+            {{ form }}
 
 
+        </div>
+        <div class="modal-footer">
 
+         <button type="submit" class="btn btn-success" data-loading-text="Loading..."> Запамети промените</button>
+            {% csrf_token %}
+      </div>
 
-
-		        <!-- /form-group-->
-		</div>
-		      <!-- /edit brand result -->
-
-	      </div> <!-- /modal-body -->
-        </form>
+            </form>
+        </div>
 
 </div>
 </div>
-
-
-
-	      <div class="modal-footer createNewMeterFooter">
-	        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Затвори</button>
-
-
-	        <button type="submit" class="btn btn-success" id="createNewMeterDevicebtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените</button>
-	      </div>
-
-
-	      <!-- /modal-footer -->
-	     <!-- /.form -->
-    </div>
-    <!-- /modal-content -->
-
-{% endblock %}
