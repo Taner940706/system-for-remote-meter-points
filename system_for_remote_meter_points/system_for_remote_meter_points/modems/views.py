@@ -5,11 +5,14 @@ from system_for_remote_meter_points.modems.models import Modem
 
 
 def list_modem(request):
+	initial_logged_user = {
+		'user': request.user.username
+	}
 	modem_list = Modem.objects.all()
 	if request.method == 'GET':
-		form = CreateModemForm()
+		form = CreateModemForm(initial=initial_logged_user)
 	else:
-		form = CreateModemForm(request.POST)
+		form = CreateModemForm(request.POST, initial=initial_logged_user)
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
@@ -23,11 +26,14 @@ def list_modem(request):
 
 
 def edit_modem(request, pk):
+	initial_logged_user = {
+		'user': request.user.username
+	}
 	modem_edit = Modem.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form = EditModemForm(instance=modem_edit)
+		form = EditModemForm(instance=modem_edit, initial=initial_logged_user)
 	else:
-		form = EditModemForm(request.POST, instance=modem_edit)
+		form = EditModemForm(request.POST, instance=modem_edit, initial=initial_logged_user)
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
@@ -41,11 +47,14 @@ def edit_modem(request, pk):
 
 
 def delete_modem(request, pk):
+	initial_logged_user = {
+		'user': request.user.username
+	}
 	modem_delete = Modem.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form = DeleteModemForm(instance=modem_delete)
+		form = DeleteModemForm(instance=modem_delete, initial=initial_logged_user)
 	else:
-		form = DeleteModemForm(request.POST, instance=modem_delete)
+		form = DeleteModemForm(request.POST, instance=modem_delete, initial=initial_logged_user)
 		if form.is_valid():
 			form.save()
 			return redirect('list modem')

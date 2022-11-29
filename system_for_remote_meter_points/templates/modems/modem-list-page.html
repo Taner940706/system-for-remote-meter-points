@@ -16,6 +16,7 @@
 <table class="table" id="manageModemTable">
 					<thead>
 						<tr>
+                            <th>ID</th>
 							<th>Модем номер</th>
 							<th>Сим номер</th>
 							<th>GSM номер</th>
@@ -28,19 +29,15 @@
 					</thead>
                     {% for modem in modem_list %}
                 <tr>
+                <td>{{ modem.id }}</td>
                 <td>{{ modem.modem_number }}</td>
-                    {% if modem.sim.id %}
                 <td>{{ modem.sim.sim_number}}</td>
                 <td>{{ modem.sim.gsm_number }}</td>
                 <td>{{ modem.sim.ip_address }}</td>
                 <td>{{ modem.sim.operator }}</td>
-                        <td>Updated: {{ modem.created_date }}</td>
-                {% else %}
-                    <td>Няма данни</td>
-                <td>Няма данни</td>
-                <td>Няма данни</td>
-                <td>Няма данни</td>
-                        {% endif %}
+                    <td>Updated by: {{ modem.user_id }}, Date: {{ modem.created_date }}</td>
+
+
               <td>
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit modem' pk=modem.id %}>test</a></button>
                     <button type="button" class="btn btn-warning"><a href = {% url 'delete modem' pk=modem.id %}>test</a></button>

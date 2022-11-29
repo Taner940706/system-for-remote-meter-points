@@ -16,9 +16,9 @@
 						    <th>ID </th>
 							<th>Име</th>
 							<th>Номер електромер</th>
-                            <th>Константа</th>
                             <th> Напрежение</th>
                             <th>Номер модем</th>
+                            <th>IP address</th>
 							<th>Рег.център</th>
                             <th>Updated</th>
 							<th style="margin: 0 auto;">Опции</th>
@@ -29,14 +29,15 @@
                 <td>{{ meter_point.id }}</td>
                 <td>{{ meter_point.mp_name }}</td>
                     <td>{{ meter_point.meter_device.meter_device_number }}</td>
-                    <td>{{ meter_point.constant }}</td>
                 <td>{{ meter_point.voltage }}</td>
                     <td>{{ meter_point.modem.modem_number }}</td>
+                <td>{{ meter_point.modem.sim.ip_address }}</td>
                 <td>{{ meter_point.regional_center}}</td>
                     <td>Updated by: {{ meter_point.user_id }}, Date: {{ meter_point.created_date }}</td>
                             <td>
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit meter points' pk=meter_point.id %}>test</a></button>
                     <button type="button" class="btn btn-warning"><a href = {% url 'delete meter points' pk=meter_point.id %}>test</a></button>
+                                <button type="button" class="btn btn-success"><a href = {% url 'details meter points' pk=meter_point.id %}>test</a></button>
                 </td>
                 </tr>
             {% endfor %}

@@ -6,11 +6,14 @@ from system_for_remote_meter_points.SIM.models import SIM
 
 
 def list_SIM(request):
+	initial_logged_user = {
+		'user': request.user.username
+	}
 	sim_list = SIM.objects.all()
 	if request.method == 'GET':
-		form = CreateSIMForm()
+		form = CreateSIMForm(initial=initial_logged_user)
 	else:
-		form = CreateSIMForm(request.POST)
+		form = CreateSIMForm(request.POST, initial=initial_logged_user)
 		if form.is_valid():
 			sim = form.save(commit=False)
 			sim.save()
@@ -24,11 +27,14 @@ def list_SIM(request):
 
 
 def edit_SIM(request, pk):
+	initial_logged_user = {
+		'user': request.user.username
+	}
 	sim_list_1 = SIM.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form_1 = EditSIMForm(instance=sim_list_1)
+		form_1 = EditSIMForm(instance=sim_list_1, initial=initial_logged_user)
 	else:
-		form_1 = EditSIMForm(request.POST, instance=sim_list_1)
+		form_1 = EditSIMForm(request.POST, instance=sim_list_1, initial=initial_logged_user)
 		if form_1.is_valid():
 			sim_1 = form_1.save(commit=False)
 			sim_1.save()
@@ -42,11 +48,14 @@ def edit_SIM(request, pk):
 
 
 def delete_SIM(request, pk):
+	initial_logged_user = {
+		'user': request.user.username
+	}
 	sim_list_2 = SIM.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form = DeleteSIMForm(instance=sim_list_2)
+		form = DeleteSIMForm(instance=sim_list_2, initial=initial_logged_user)
 	else:
-		form = DeleteSIMForm(request.POST, instance=sim_list_2)
+		form = DeleteSIMForm(request.POST, instance=sim_list_2, initial=initial_logged_user)
 		if form.is_valid():
 			form.save()
 			return redirect('list SIM')

@@ -1,9 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 
 
 # Create your models here.
+UserModel = get_user_model()
+
 
 def only_int(value):
     if not value.isdigit():
@@ -52,6 +55,11 @@ class SIM(models.Model):
         auto_now=True,
         null=False,
         blank=True,
+    )
+    user = models.ForeignKey(
+        UserModel,
+        to_field='username',
+        on_delete=models.PROTECT,
     )
 
 

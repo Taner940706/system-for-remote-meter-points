@@ -37,6 +37,7 @@
                     <td>
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit task' pk=task.id %}>test</a></button>
                     <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>test</a></button>
+                        <button type="button" class="btn btn-success"><a href = {% url 'details task' pk=task.id %}>test</a></button>
                     </td>
                 </tr>
                 {% endfor %}

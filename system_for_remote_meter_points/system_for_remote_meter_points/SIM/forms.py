@@ -6,7 +6,7 @@ from system_for_remote_meter_points.SIM.models import SIM
 class SIMBaseForm(forms.ModelForm):
     class Meta:
         model = SIM
-        fields = ('sim_number', 'gsm_number', 'ip_address', 'operator')
+        fields = ('sim_number', 'gsm_number', 'ip_address', 'operator', 'user')
         labels = {
             'sim_number': 'SIM number:',
             'gsm_number': 'GSM number:',
@@ -30,6 +30,12 @@ class SIMBaseForm(forms.ModelForm):
             ),
             'ip_address': forms.TextInput(
 
+
+            ),
+            'user': forms.TextInput(
+                attrs={
+                    'placeholder': 'User name',
+                }
 
             ),
         }

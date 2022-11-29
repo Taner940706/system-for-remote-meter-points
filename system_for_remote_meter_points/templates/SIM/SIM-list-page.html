@@ -34,7 +34,7 @@
                 <td>{{ sim.gsm_number }}</td>
                 <td>{{ sim.ip_address }}</td>
                 <td>{{ sim.operator }}</td>
-                    <td>Created: {{ sim.created_date }}</td>
+                    <td>Updated by: {{ sim.user_id }}, Date: {{ sim.created_date }}</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editNewSIMModal"><a href = {% url 'edit SIM' pk=sim.id %}>test</a></button>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteNewSIMModal"><a href = {% url 'delete SIM' pk=sim.id %}>test</a></button>

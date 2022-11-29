@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.core.validators import MinLengthValidator, MaxValueValidator
+from django.core.validators import MinLengthValidator, MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -15,6 +15,9 @@ class Task(models.Model):
     MAX_MP_LENGTH = 255
     MIN_MP_LENGTH = 5
     MAX_CONSTANT_VALUE = 80000
+    MIN_CONSTANT_VALUE = 1
+    FIXED_METER_DEVICE_NUMBER_LENGTH = 16
+    FIXED_MODEM_NUMBER_LENGTH = 6
 
     RESTORE_COMM = 'Възсатновяване на комуникация'
     ADD_NEW_METER_POINT = 'Добавяне на нова точка'
@@ -83,7 +86,7 @@ class Task(models.Model):
         blank=False,
         null=False, )
     constant = models.PositiveIntegerField(
-        validators=(MaxValueValidator(MAX_CONSTANT_VALUE),),
+        validators=(MaxValueValidator(MAX_CONSTANT_VALUE), MinValueValidator(MIN_CONSTANT_VALUE)),
         blank=False,
         null=False, )
     voltage = models.TextField(
@@ -112,15 +115,17 @@ class Task(models.Model):
     )
 
     modem = models.CharField(
-        max_length=255,
+        max_length=FIXED_MODEM_NUMBER_LENGTH,
+        validators=(only_int, MinLengthValidator(FIXED_MODEM_NUMBER_LENGTH),),
         blank=False,
-        null=False,
-    )
+        null=False,)
+
     meter_device = models.CharField(
-        max_length=255,
+        max_length=FIXED_METER_DEVICE_NUMBER_LENGTH,
+        validators=(MinLengthValidator(FIXED_METER_DEVICE_NUMBER_LENGTH),
+                    only_int,),
         blank=False,
-        null=False,
-    )
+        null=False,)
 
     created_date = models.DateField(
         # Automatically sets current date on `save` (update or create)

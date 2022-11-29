@@ -1,0 +1,23 @@
+{% extends 'base/base_auth.html' %}
+
+{% block page_content %}
+<div>
+     <p>ID: {{ meter_point_details.id }}</p>
+    <p>Meter number: {{ meter_point_details.meter_device.meter_device_number }}</p>
+    <p>Meter point name: {{ meter_point_details.mp_name }}</p>
+    <p>Constant: {{ meter_point_details.constant }}</p>
+    <p>Voltage: {{ meter_point_details.voltage }}</p>
+    <p>Regional center: {{ meter_point_details.regional_center }}</p>
+    <p>Username: {{ meter_point_details.user_id }}</p>
+    {% if meter_point_details.comment %}
+    <p>Comment: {{ meter_point_details.comment }}</p>
+    {% else %}
+    <p>Comment: No data</p>
+    {% endif %}
+    <p>Operation: {{ meter_point_details.operation }}</p>
+    <p>Result operation: {{ meter_point_details.result_operation }}</p>
+    <p>Modem number: {{ meter_point_details.modem.modem_number }}</p>
+    <p>Sim number: {{ meter_point_details.modem.sim.sim_number }}</p>
+    <p>IP address: {{ meter_point_details.modem.sim.ip_address }}</p>
+</div>
+{% endblock %}

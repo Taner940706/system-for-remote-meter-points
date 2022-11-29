@@ -6,7 +6,7 @@ from system_for_remote_meter_points.modems.models import Modem
 class ModemBaseForm(forms.ModelForm):
     class Meta:
         model = Modem
-        fields = ('modem_number', 'sim')
+        fields = ('modem_number', 'sim', 'user')
         labels = {
             'modem_number': 'Modem number:',
             'sim': 'SIM number:',
@@ -29,6 +29,12 @@ class ModemBaseForm(forms.ModelForm):
                 attrs={
                     'placeholder': 'SIM number',
                 }
+            ),
+            'user': forms.TextInput(
+                attrs={
+                    'placeholder': 'User name',
+                }
+
             ),
         }
 

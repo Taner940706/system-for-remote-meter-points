@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 
@@ -7,6 +8,8 @@ from django.db import models
 
 
 # Create your models here.
+UserModel = get_user_model()
+
 
 def only_int(value):
     if not value.isdigit():
@@ -22,11 +25,23 @@ class MeterDevice(models.Model):
     AMT = 'AMT'
     MICROSTAR = 'Microstar'
 
+    READ_PER_15_MIN = 'Read per 15 minute'
+    READ_PER_1_HOUR = 'Read per 1 hour'
+    READ_PER_8_HOURS = 'Read per 8 hours'
+    READ_PER_24_HOURS = 'Read per 24 hours'
+
     METER_DEVICE_TYPE = (
         (ISKRA, ISKRA),
         (GAMA, GAMA),
         (AMT, AMT),
         (MICROSTAR, MICROSTAR),
+    )
+
+    READ_CYCLE = (
+        (READ_PER_15_MIN, READ_PER_15_MIN),
+        (READ_PER_1_HOUR, READ_PER_1_HOUR),
+        (READ_PER_8_HOURS, READ_PER_8_HOURS),
+        (READ_PER_24_HOURS, READ_PER_24_HOURS),
     )
 
     meter_device_number = models.CharField(
@@ -41,12 +56,22 @@ class MeterDevice(models.Model):
         null=False,
         blank=False,
     )
+    meter_device_read_cycle = models.TextField(
+        choices=READ_CYCLE,
+        null=False,
+        blank=False,
+    )
     created_date = models.DateField(
-        # Automatically sets current date on `save` (update or create)
         auto_now=True,
         null=False,
         blank=True,
     )
+    user = models.ForeignKey(
+        UserModel,
+        to_field='username',
+        on_delete=models.PROTECT,
+    )
+
 
 
 
