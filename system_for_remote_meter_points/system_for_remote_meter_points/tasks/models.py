@@ -1,11 +1,9 @@
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MaxValueValidator
 from django.db import models
 
 
 # Create your models here.
-UserModel = get_user_model()
 
 
 def only_int(value):
@@ -120,6 +118,17 @@ class Task(models.Model):
     )
     meter_device = models.CharField(
         max_length=255,
+        blank=False,
+        null=False,
+    )
+
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
+    )
+    username = models.TextField(
         blank=False,
         null=False,
     )

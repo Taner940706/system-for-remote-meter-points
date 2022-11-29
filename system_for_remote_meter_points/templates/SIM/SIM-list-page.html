@@ -21,6 +21,7 @@
 							<th>GSM номер</th>
 							<th>IP</th>
 							<th>Оператор</th>
+                            <th>Created date:</th>
                             <th>Опции</th>
 
 						</tr>
@@ -33,6 +34,7 @@
                 <td>{{ sim.gsm_number }}</td>
                 <td>{{ sim.ip_address }}</td>
                 <td>{{ sim.operator }}</td>
+                    <td>Created: {{ sim.created_date }}</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editNewSIMModal"><a href = {% url 'edit SIM' pk=sim.id %}>test</a></button>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteNewSIMModal"><a href = {% url 'delete SIM' pk=sim.id %}>test</a></button>

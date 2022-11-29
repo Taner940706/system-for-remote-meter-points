@@ -4,6 +4,7 @@ from system_for_remote_meter_points.SIM.models import SIM
 
 
 
+
 def list_SIM(request):
 	sim_list = SIM.objects.all()
 	if request.method == 'GET':

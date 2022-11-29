@@ -110,7 +110,12 @@ class MeterPoint(models.Model):
         null=True,
     )
 
-
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
+    )
 
     modem = models.OneToOneField(
         'modems.Modem',
@@ -128,5 +133,6 @@ class MeterPoint(models.Model):
     )
     user = models.ForeignKey(
         UserModel,
+        to_field='username',
         on_delete=models.PROTECT,
     )

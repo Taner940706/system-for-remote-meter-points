@@ -15,7 +15,7 @@ def list_meter_point(request):
 		create_task = Task.objects.create(mp_name=form['mp_name'].value(), constant=form['constant'].value(),
 										   voltage=form['voltage'].value(),
 										  regional_center=form['regional_center'].value(), operation=form['operation'].value(), result_operation=form['result_operation'].value(), comment=form['comment'].value(),
-										  modem=form['modem'].value(), meter_device=form['meter_device'].value())
+										  modem=form['modem'].value(), meter_device=form['meter_device'].value(), username=form['user'].value())
 		if form.is_valid():
 			meter_point = form.save(commit=False)
 			meter_point.save()
@@ -42,7 +42,7 @@ def edit_meter_point(request, pk):
 										  operation=form['operation'].value(),
 										  result_operation=form['result_operation'].value(),
 										  comment=form['comment'].value(),
-										  modem=form['modem'].value(), meter_device=form['meter_device'].value())
+										  modem=form['modem'].value(), meter_device=form['meter_device'].value(), username=form['user'].value())
 		if form.is_valid():
 			meter_point = form.save(commit=False)
 			meter_point.save()
@@ -68,7 +68,7 @@ def delete_meter_point(request, pk):
 										  operation=form['operation'].value(),
 										  result_operation=form['result_operation'].value(),
 										  comment=form['comment'].value(),
-										  modem=form['modem'].value(), meter_device=form['meter_device'].value())
+										  modem=form['modem'].value(), meter_device=form['meter_device'].value(), username=form['user'].value())
 		if form.is_valid():
 			form.save()
 			create_task.save()

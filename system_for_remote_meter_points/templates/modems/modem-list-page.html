@@ -21,7 +21,9 @@
 							<th>GSM номер</th>
 							<th>IP</th>
 							<th>Оператор</th>
+                            <th>Updated</th>
                             <th>Опции</th>
+
 						</tr>
 					</thead>
                     {% for modem in modem_list %}
@@ -32,6 +34,7 @@
                 <td>{{ modem.sim.gsm_number }}</td>
                 <td>{{ modem.sim.ip_address }}</td>
                 <td>{{ modem.sim.operator }}</td>
+                        <td>Updated: {{ modem.created_date }}</td>
                 {% else %}
                     <td>Няма данни</td>
                 <td>Няма данни</td>

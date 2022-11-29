@@ -21,6 +21,7 @@
 							<th>Номер на електромер</th>
 							<th>Операция</th>
 							<th>Резултат</th>
+                            <th>Updated</th>
 							<th style="margin: 0 auto;">Опции</th>
 
 						</tr>
@@ -32,6 +33,7 @@
                 <td>{{ task.meter_device }}</td>
                 <td>{{ task.operation}}</td>
                 <td>{{ task.result_operation }}</td>
+                    <td>Updated by: {{ task.username }}, Date: {{ task.created_date }}</td>
                     <td>
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit task' pk=task.id %}>test</a></button>
                     <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>test</a></button>

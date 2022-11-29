@@ -28,6 +28,12 @@ class Modem(models.Model):
         blank=False,
         null=False,
     )
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
+    )
 
 
 

@@ -29,7 +29,6 @@ class MeterDevice(models.Model):
         (MICROSTAR, MICROSTAR),
     )
 
-
     meter_device_number = models.CharField(
         max_length=FIXED_METER_DEVICE_NUMBER_LENGTH,
         validators=(MinLengthValidator(FIXED_METER_DEVICE_NUMBER_LENGTH),
@@ -42,6 +41,13 @@ class MeterDevice(models.Model):
         null=False,
         blank=False,
     )
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
+    )
+
 
 
 

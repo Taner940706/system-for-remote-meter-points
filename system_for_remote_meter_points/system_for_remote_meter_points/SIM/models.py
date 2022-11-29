@@ -47,7 +47,12 @@ class SIM(models.Model):
         null=False,
         blank=False,
     )
-
+    created_date = models.DateField(
+        # Automatically sets current date on `save` (update or create)
+        auto_now=True,
+        null=False,
+        blank=True,
+    )
 
 
 

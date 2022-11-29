@@ -18,6 +18,7 @@
 						<tr>
 							<th>Номер на електромер</th>
 							<th>Тип</th>
+                            <th>Updated</th>
 							<th style="margin: 0 auto;">Опции</th>
 						</tr>
 					</thead>
@@ -25,6 +26,7 @@
                 <tr>
                 <td>{{ meter_device.meter_device_number}}</td>
                 <td>{{ meter_device.meter_device_type }}</td>
+                    <td>Updated: {{ meter_device.created_date }}</td>
 
                              <td>
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit meter device' pk=meter_device.id %}>test</a></button>
