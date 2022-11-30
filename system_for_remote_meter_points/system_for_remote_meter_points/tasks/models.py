@@ -12,24 +12,24 @@ def only_int(value):
 
 
 class Task(models.Model):
-    MAX_MP_LENGTH = 255
+    MAX_MP_LENGTH = 50
     MIN_MP_LENGTH = 5
     MAX_CONSTANT_VALUE = 80000
     MIN_CONSTANT_VALUE = 1
     FIXED_METER_DEVICE_NUMBER_LENGTH = 16
     FIXED_MODEM_NUMBER_LENGTH = 6
 
-    RESTORE_COMM = 'Възсатновяване на комуникация'
-    ADD_NEW_METER_POINT = 'Добавяне на нова точка'
-    REPLACE_MEW_METER_DEVICE = 'Подмяна на електромер'
-    REPLACE_NEW_MODEM_OR_SIM = 'Подмяна на модем и/или СИМ карта'
-    DELETE_METER_POINT = 'Изтриване на точка'
-    REPLACE_NEW_CONSTANT = 'Смяна на константа'
-    OTHER = 'Друго (в ,,Коментарите"")'
+    RESTORE_COMM = 'Restore communication'
+    ADD_NEW_METER_POINT = 'Add new meter points'
+    REPLACE_MEW_METER_DEVICE = 'Replace meter device'
+    REPLACE_NEW_MODEM_OR_SIM = 'Replace modem and/or SIM card'
+    DELETE_METER_POINT = 'Delete meter points'
+    REPLACE_NEW_CONSTANT = 'Add new constant'
+    OTHER = 'Other (in ,,Comment")'
 
-    NO_COMM = 'Няма комуникация'
-    YES_COMM = 'Има комуникация'
-    WAIT_COMM = 'В процес на изпълнение...'
+    NO_COMM = 'No communication'
+    YES_COMM = 'Successful communication'
+    WAIT_COMM = 'In progress...'
 
     OPERATION = (
         (RESTORE_COMM, RESTORE_COMM),
@@ -47,19 +47,19 @@ class Task(models.Model):
         (WAIT_COMM, WAIT_COMM),
     )
 
-    LOW = 'Ниско'
-    MEDIUM = 'Средно'
-    HIGH = 'Високо'
+    LOW = 'Low'
+    MEDIUM = 'Medium'
+    HIGH = 'High'
 
-    VARNA = 'Варна'
-    DOBRICH = 'Добрич'
-    SHUMEN = 'Шумен'
-    TARGOVISHTE = 'Търговище'
-    TARNOVO = 'Велико Търново'
-    RUSE = 'Русе'
-    RAZGRAD = 'Разград'
-    SILISTRA = 'Силистра'
-    GABROVO = 'Габрово'
+    VARNA = 'Varna'
+    DOBRICH = 'Dobrich'
+    SHUMEN = 'Shumen'
+    TARGOVISHTE = 'Targovishte'
+    TARNOVO = 'Veliko Tarnovo'
+    RUSE = 'Ruse'
+    RAZGRAD = 'Razgrad'
+    SILISTRA = 'Silistra'
+    GABROVO = 'Gabrovo'
 
     VOLTAGE = (
         (LOW, LOW),

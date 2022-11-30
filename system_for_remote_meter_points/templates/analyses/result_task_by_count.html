@@ -1,0 +1,37 @@
+{% extends 'base/base_auth.html' %}
+{% block page_content %}
+
+    <canvas id="myChart" style="width:50%;max-width:1000px"></canvas>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: [{% for i in label %} '{{ i }}', {% endfor %}],
+      datasets: [{
+        label: 'Count of result tasks',
+        data: {{ data }},
+          backgroundColor : [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+],
+
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+{% endblock %}
