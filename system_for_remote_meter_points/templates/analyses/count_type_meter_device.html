@@ -12,7 +12,7 @@ const ctx = document.getElementById('myChart');
       labels: [{% for i in label %} '{{ i }}', {% endfor %}],
       datasets: [{
         label: 'Count meter device types',
-        data: {{ data }},
+        data: [{% for i in data %} '{{ i }}', {% endfor %}],
         borderWidth: 1
       }]
     },
