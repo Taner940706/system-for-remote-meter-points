@@ -1,22 +1,12 @@
 from django.shortcuts import render
 
 from system_for_remote_meter_points.meter_devices.models import MeterDevice
+from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.tasks.models import Task
 
 
 # Create your views here.
 def type_task_by_count(request):
-
-    # restore_task_type = Task.objects.filter(operation="Restore communication").count()
-    # add_new_meter_point_task_type = Task.objects.filter(operation="Add new meter points").count()
-    # replace_meter_device_task_type = Task.objects.filter(operation="Replace meter device").count()
-    # replace_modem_sim_task_type = Task.objects.filter(operation="Replace modem and/or SIM card").count()
-    # delete_meter_point_task_type = Task.objects.filter(operation="Delete meter points").count()
-    # add_new_constant_task_type = Task.objects.filter(operation="Add new constant").count()
-    # in_comment_task_type = Task.objects.filter(operation="Other").count()
-
-    # label = ['Restore communication', 'Add new meter points', 'Replace meter device', 'Replace modem and/or SIM card', 'Delete meter points', 'Add new constant', 'Other']
-    # data = [restore_task_type, add_new_meter_point_task_type, replace_meter_device_task_type, replace_modem_sim_task_type, delete_meter_point_task_type, add_new_constant_task_type, in_comment_task_type]
 
     label = []
     data = []
@@ -77,6 +67,68 @@ def count_type_meter_device(request):
 
     return render(request, 'analyses/count_type_meter_device.html', context)
 
+
+def count_tasks_by_username(request):
+
+    label = []
+    data = []
+
+    tasks = Task.objects.all()
+    for task in tasks:
+        if task.username not in label:
+            label.append(task.username)
+
+    for lab in label:
+        data.append(Task.objects.filter(username=lab).count())
+
+    context = {
+        'label': label,
+        'data': data,
+    }
+
+    return render(request, 'analyses/count_tasks_by_username.html', context)
+
+
+def count_meter_point_by_time(request):
+
+    label = []
+    data = []
+
+    tasks = Task.objects.all().order_by('created_date')
+    for task in tasks:
+        if task.created_date not in label:
+            label.append(task.created_date)
+
+    for lab in label:
+        data.append(Task.objects.filter(created_date=lab).count())
+
+    context = {
+        'label': label,
+        'data': data,
+    }
+
+    return render(request, 'analyses/count_meter_point_by_time.html', context)
+
+
+def count_meter_points_by_regional_center(request):
+
+    label = []
+    data = []
+
+    meter_points = MeterPoint.objects.all()
+    for meter_point in meter_points:
+        if meter_point.regional_center not in label:
+            label.append(meter_point.regional_center)
+
+    for lab in label:
+        data.append(MeterPoint.objects.filter(regional_center=lab).count())
+
+    context = {
+        'label': label,
+        'data': data,
+    }
+
+    return render(request, 'analyses/count_meter_points_by_regional_center.html', context)
 
 
 
