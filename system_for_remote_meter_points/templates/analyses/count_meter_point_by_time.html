@@ -11,7 +11,7 @@ const ctx = document.getElementById('myChart');
     data: {
     labels: [{% for i in label %} '{{ i }}', {% endfor %}], //x-axes data
     datasets: [{
-        label:"Line Chart",
+        label:"Count meter points by created date",
     data: {{ data }}, //y-axes data
     borderColor: 'black',
     fill: false,

@@ -11,7 +11,7 @@ const ctx = document.getElementById('myChart');
     data: {
       labels: [{% for i in label %} '{{ i }}', {% endfor %}],
       datasets: [{
-        label: 'Count tasks by username',
+        label: 'Count tasks by result operation',
         data: {{ data }},
           backgroundColor : [
   "#b91d47",
@@ -32,7 +32,6 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
-
 </script>
 
 {% endblock %}

@@ -6,7 +6,7 @@ from system_for_remote_meter_points.tasks.models import Task
 
 
 # Create your views here.
-def type_task_by_count(request):
+def count_task_operations(request):
 
     label = []
     data = []
@@ -23,10 +23,10 @@ def type_task_by_count(request):
         'label': label,
         'data': data,
     }
-    return render(request, 'analyses/type_task_by_count.html', context)
+    return render(request, 'analyses/count_type_operation.html', context)
 
 
-def result_task_by_count(request):
+def count_result_tasks(request):
 
     label = []
     data = []
@@ -44,10 +44,10 @@ def result_task_by_count(request):
         'data': data,
     }
 
-    return render(request, 'analyses/result_task_by_count.html', context)
+    return render(request, 'analyses/count_result_tasks.html', context)
 
 
-def count_type_meter_device(request):
+def count_meter_device_types(request):
 
     label = []
     data = []
@@ -65,7 +65,7 @@ def count_type_meter_device(request):
         'data': data,
     }
 
-    return render(request, 'analyses/count_type_meter_device.html', context)
+    return render(request, 'analyses/count_meter_device_types.html', context)
 
 
 def count_tasks_by_username(request):

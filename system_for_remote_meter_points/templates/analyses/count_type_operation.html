@@ -7,20 +7,12 @@
 const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
-    type: 'pie',
+    type: 'bar',
     data: {
       labels: [{% for i in label %} '{{ i }}', {% endfor %}],
       datasets: [{
-        label: 'Count tasks by username',
+        label: 'Count tasks by operation',
         data: {{ data }},
-          backgroundColor : [
-  "#b91d47",
-  "#00aba9",
-  "#2b5797",
-  "#e8c3b9",
-  "#1e7145"
-],
-
         borderWidth: 1
       }]
     },
@@ -32,7 +24,6 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
-
 </script>
 
 {% endblock %}
