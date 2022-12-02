@@ -1,8 +1,9 @@
+from datetime import datetime
 from django.shortcuts import render
-
 from system_for_remote_meter_points.meter_devices.models import MeterDevice
 from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.tasks.models import Task
+
 
 
 # Create your views here.
@@ -129,6 +130,31 @@ def count_meter_points_by_regional_center(request):
     }
 
     return render(request, 'analyses/count_meter_points_by_regional_center.html', context)
+
+
+def dashboard(request):
+
+    count_success_tasks = Task.objects.filter(result_operation="Successful communication").filter(username=request.user.username).count()
+    count_failed_tasks = Task.objects.filter(result_operation="No communication").filter(username=request.user.username).count()
+    count_in_progress_tasks = Task.objects.filter(result_operation="In progress...").filter(username=request.user.username).count()
+    count_all_meter_points = MeterPoint.objects.all().count()
+    count_all_tasks = Task.objects.all().count()
+    count_all_tasks_today = Task.objects.filter(created_date=datetime.now().date()).filter(username=request.user.username).count()
+
+    context = {
+        'count_success_tasks': count_success_tasks,
+        'count_failed_tasks': count_failed_tasks,
+        'count_in_progress_tasks': count_in_progress_tasks,
+        'count_all_meter_points': count_all_meter_points,
+        'count_all_tasks': count_all_tasks,
+        'count_all_tasks_today': count_all_tasks_today,
+        'username': request.user.username,
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+    }
+
+    return render(request, 'analyses/dashboard.html', context)
+
 
 
 
