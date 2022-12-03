@@ -32,9 +32,9 @@ INSTALLED_APPS = [
     'system_for_remote_meter_points.meter_devices',
     'system_for_remote_meter_points.accounts',
     'system_for_remote_meter_points.modems',
-    'system_for_remote_meter_points.SIM',
     'system_for_remote_meter_points.analyses',
     'system_for_remote_meter_points.tasks',
+    'system_for_remote_meter_points.SIM',
 
 ]
 

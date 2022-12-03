@@ -33,8 +33,10 @@
                     <td>Updated by: {{ meter_device.user_id }}, Date: {{ meter_device.created_date }}</td>
 
                              <td>
+                                 {% if meter_device.user_id == is_owner or is_superuser %}
                     <button type="button" class="btn btn-primary"><a href = {% url 'edit meter device' pk=meter_device.id %}>test</a></button>
                     <button type="button" class="btn btn-warning"><a href = {% url 'delete meter device' pk=meter_device.id %}>test</a></button>
+                                 {% endif %}
                 </td>
                 </tr>
 {% endfor %}
@@ -44,9 +46,11 @@
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
+    {% if is_perm %}
 				   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewMeterDeviceModal">
   Launch demo modal
 </button>
+    {% endif %}
 	</div> <!-- /col-md-12 -->
 {% include 'meter_devices/meter-device-add-page.html' %}
 {% endblock %}

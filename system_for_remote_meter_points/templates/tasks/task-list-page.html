@@ -35,9 +35,13 @@
                 <td>{{ task.result_operation }}</td>
                     <td>Updated by: {{ task.username }}, Date: {{ task.created_date }}</td>
                     <td>
-                    <button type="button" class="btn btn-primary"><a href = {% url 'edit task' pk=task.id %}>test</a></button>
-                    <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>test</a></button>
+                        {% if task.username == is_owner or is_superuser and %}
+                        <button type="button" class="btn btn-primary"><a href = {% url 'edit task' pk=task.id %}>test</a></button>
+                            <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>test</a></button>
                         <button type="button" class="btn btn-success"><a href = {% url 'details task' pk=task.id %}>test</a></button>
+                        {% else %}
+                        <button type="button" class="btn btn-success"><a href = {% url 'details task' pk=task.id %}>test</a></button>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 
 from system_for_remote_meter_points.meter_points.forms import CreateMeterPointForm, \
@@ -6,10 +7,13 @@ from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.tasks.models import Task
 
 
+@login_required
 def list_meter_point(request):
 	initial_logged_user = {
 		'user': request.user.username
 	}
+	is_perm = request.user.has_perm('meter_points.add_meterpoint')
+	is_superuser = request.user.is_superuser
 	meter_point_list = MeterPoint.objects.all()
 	if request.method == 'GET':
 		form = CreateMeterPointForm(initial=initial_logged_user)
@@ -33,12 +37,15 @@ def list_meter_point(request):
 	context = {
 		'meter_point_list': meter_point_list,
 		'form': form,
+		'is_owner': request.user.username,
+		'is_perm': is_perm,
+		'is_superuser': is_superuser,
 
 	}
 	return render(request, 'meter_points/meter-point-list-page.html', context)
 
 
-
+@permission_required('meter_points.change_meterpoint')
 def edit_meter_point(request, pk):
 	initial_logged_user = {
 		'user': request.user.username
@@ -68,6 +75,7 @@ def edit_meter_point(request, pk):
 	return render(request, 'meter_points/meter-point-edit-page.html', context)
 
 
+@permission_required('meter_points.delete_meterpoint')
 def delete_meter_point(request, pk):
 	initial_logged_user = {
 		'user': request.user.username
@@ -107,15 +115,3 @@ def details_meter_point(request, pk):
 	}
 
 	return render(request, 'meter_points/meter-point-details-page.html', context)
-
-
-def details_task(request, pk):
-	task_details = Task.objects \
-		.filter(pk=pk) \
-		.get()
-
-	context = {
-		'task_details': task_details,
-	}
-
-	return render(request, 'tasks/task-details-page.html', context)

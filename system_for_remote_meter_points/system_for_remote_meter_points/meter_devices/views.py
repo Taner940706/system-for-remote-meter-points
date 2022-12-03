@@ -1,14 +1,18 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from system_for_remote_meter_points.meter_devices.forms import CreateMeterDeviceForm, \
 	EditMeterDeviceForm, DeleteMeterDeviceForm
 from system_for_remote_meter_points.meter_devices.models import MeterDevice
 
 
-
+@login_required
 def list_meter_device(request):
 	initial_logged_user = {
 		'user': request.user.username
 	}
+	# tst = (request.user.get_all_permissions())
+	is_superuser = request.user.is_superuser
+	is_perm = request.user.has_perm('meter_devices.add_meterdevice')
 	meter_device_list = MeterDevice.objects.all()
 
 	if request.method == 'GET':
@@ -22,11 +26,15 @@ def list_meter_device(request):
 	context = {
 		'meter_device_list': meter_device_list,
 		'form': form,
+		'is_owner': request.user.username,
+		'is_perm': is_perm,
+		'is_superuser': is_superuser,
 
 	}
 	return render(request, 'meter_devices/meter-device-list-page.html', context)
 
 
+@permission_required('meter_devices.change_meterdevice')
 def edit_meter_device(request, pk):
 	initial_logged_user = {
 		'user': request.user.username
@@ -48,6 +56,7 @@ def edit_meter_device(request, pk):
 	return render(request, 'meter_devices/meter-device-edit-page.html', context)
 
 
+@permission_required('meter_devices.delete_meterdevice')
 def delete_meter_device(request, pk):
 	initial_logged_user = {
 		'user': request.user.username

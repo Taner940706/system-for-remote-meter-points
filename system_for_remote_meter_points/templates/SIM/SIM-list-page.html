@@ -36,8 +36,10 @@
                 <td>{{ sim.operator }}</td>
                     <td>Updated by: {{ sim.user_id }}, Date: {{ sim.created_date }}</td>
                 <td>
+                    {% if sim.user_id == is_owner or is_superuser%}
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editNewSIMModal"><a href = {% url 'edit SIM' pk=sim.id %}>test</a></button>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteNewSIMModal"><a href = {% url 'delete SIM' pk=sim.id %}>test</a></button>
+                    {% endif %}
                 </td>
                 </tr>
 
@@ -48,11 +50,11 @@
 
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
-
+{% if is_perm %}
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewSIMModal">
   Launch demo modal
 </button>
-
+{% endif %}
 
 	</div> <!-- /col-md-12 -->
 

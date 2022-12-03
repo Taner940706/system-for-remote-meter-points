@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from system_for_remote_meter_points.meter_devices.models import MeterDevice
 from system_for_remote_meter_points.meter_points.models import MeterPoint
@@ -7,6 +9,7 @@ from system_for_remote_meter_points.tasks.models import Task
 
 
 # Create your views here.
+@login_required
 def count_task_operations(request):
 
     label = []
@@ -27,6 +30,7 @@ def count_task_operations(request):
     return render(request, 'analyses/count_type_operation.html', context)
 
 
+@login_required
 def count_result_tasks(request):
 
     label = []
@@ -48,6 +52,7 @@ def count_result_tasks(request):
     return render(request, 'analyses/count_result_tasks.html', context)
 
 
+@login_required
 def count_meter_device_types(request):
 
     label = []
@@ -69,6 +74,7 @@ def count_meter_device_types(request):
     return render(request, 'analyses/count_meter_device_types.html', context)
 
 
+@login_required
 def count_tasks_by_username(request):
 
     label = []
@@ -90,6 +96,7 @@ def count_tasks_by_username(request):
     return render(request, 'analyses/count_tasks_by_username.html', context)
 
 
+@login_required
 def count_meter_point_by_time(request):
 
     label = []
@@ -111,6 +118,7 @@ def count_meter_point_by_time(request):
     return render(request, 'analyses/count_meter_point_by_time.html', context)
 
 
+@login_required
 def count_meter_points_by_regional_center(request):
 
     label = []
@@ -132,6 +140,7 @@ def count_meter_points_by_regional_center(request):
     return render(request, 'analyses/count_meter_points_by_regional_center.html', context)
 
 
+@login_required
 def dashboard(request):
 
     count_success_tasks = Task.objects.filter(result_operation="Successful communication").filter(username=request.user.username).count()
@@ -151,6 +160,7 @@ def dashboard(request):
         'username': request.user.username,
         'first_name': request.user.first_name,
         'last_name': request.user.last_name,
+        # 'is_owner': request.user,
     }
 
     return render(request, 'analyses/dashboard.html', context)

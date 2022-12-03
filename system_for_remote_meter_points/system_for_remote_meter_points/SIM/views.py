@@ -1,15 +1,17 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from system_for_remote_meter_points.SIM.forms import CreateSIMForm, EditSIMForm, DeleteSIMForm
 from system_for_remote_meter_points.SIM.models import SIM
 
 
-
-
+@login_required
 def list_SIM(request):
 	initial_logged_user = {
 		'user': request.user.username
 	}
+	is_perm = request.user.has_perm('SIM.add_sim')
 	sim_list = SIM.objects.all()
+	is_superuser = request.user.is_superuser
 	if request.method == 'GET':
 		form = CreateSIMForm(initial=initial_logged_user)
 	else:
@@ -21,11 +23,15 @@ def list_SIM(request):
 	context = {
 		'sim_list': sim_list,
 		'form': form,
+		'is_perm': is_perm,
+		'is_owner': request.user.username,
+		'is_superuser': is_superuser,
 
 	}
 	return render(request, 'SIM/SIM-list-page.html', context)
 
 
+@permission_required('SIM.change_sim')
 def edit_SIM(request, pk):
 	initial_logged_user = {
 		'user': request.user.username
@@ -47,6 +53,7 @@ def edit_SIM(request, pk):
 	return render(request, 'SIM/SIM-edit-page.html', context)
 
 
+@permission_required('SIM.delete_sim')
 def delete_SIM(request, pk):
 	initial_logged_user = {
 		'user': request.user.username
