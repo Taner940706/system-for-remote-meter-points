@@ -12,3 +12,5 @@ urlpatterns = [
     path('SIM/', include('system_for_remote_meter_points.SIM.urls')),
     path('tasks/', include('system_for_remote_meter_points.tasks.urls')),
 ]
+
+handler404 = 'system_for_remote_meter_points.accounts.views.handler_404'

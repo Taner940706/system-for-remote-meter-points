@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
@@ -49,6 +50,9 @@ class UserDeleteView(views.DeleteView):
 class SignOutView(auth_views.LogoutView):
     next_page = reverse_lazy('login user')
 
+
+def handler_404(request, exception):
+    return render(request, '404.html')
 
 # superuser
 # username: taner_mutalip
