@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 
 from system_for_remote_meter_points.modems.forms import CreateModemForm, EditModemForm, DeleteModemForm
 from system_for_remote_meter_points.modems.models import Modem
+from django.contrib import messages
 
 
 @login_required
@@ -20,7 +21,11 @@ def list_modem(request):
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
-			return redirect('list modem')
+			messages.success(request, "Modem successfully created!")
+		else:
+			messages.error(request, "SIM doesn't created!")
+		return redirect('list modem')
+
 	context = {
 		'modem_list': modem_list,
 		'form': form,
@@ -44,7 +49,10 @@ def edit_modem(request, pk):
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
-			return redirect('list modem')
+			messages.success(request, "Modem successfully updated!")
+		else:
+			messages.error(request, "Modem doesn't updated!")
+		return redirect('list modem')
 
 	context = {
 		'form': form,
@@ -65,7 +73,10 @@ def delete_modem(request, pk):
 		form = DeleteModemForm(request.POST, instance=modem_delete, initial=initial_logged_user)
 		if form.is_valid():
 			form.save()
-			return redirect('list modem')
+			messages.success(request, "Modem successfully deleted!")
+		else:
+			messages.error(request, "SIM doesn't deleted!")
+		return redirect('list modem')
 
 	context = {
 		'form': form,

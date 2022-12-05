@@ -1,8 +1,11 @@
 {#{% block page_content %}#}
 <div class="modal fade" id="createNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
+      {% if form.errors %}
+
+{% endif %}
     <div class="modal-content">
-        <form class="form-horizontal" id="createNewSIMForm" action="{% url 'list SIM' %}" method="POST">
+        <form class="form-horizontal" id="createNewSIMForm" action="{% url 'list SIM' %}" method="POST" enctype="multipart/form-data">
     <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Add SIM card</h1>
       </div>

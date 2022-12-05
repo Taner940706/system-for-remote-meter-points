@@ -2,7 +2,7 @@
 
 {% block page_content %}
 
-     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_list_2.pk %}" method="POST">
+     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_list_2.pk %}" method="POST" enctype="multipart/form-data">
      {{ form }}
              <button type="submit" name="submit" value="delete" class="delete btn btn-default">delete</button>
             {% csrf_token %}

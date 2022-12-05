@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from system_for_remote_meter_points.meter_devices.forms import CreateMeterDeviceForm, \
 	EditMeterDeviceForm, DeleteMeterDeviceForm
 from system_for_remote_meter_points.meter_devices.models import MeterDevice
+from django.contrib import messages
 
 
 @login_required
@@ -22,7 +23,11 @@ def list_meter_device(request):
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
-			return redirect('list meter device')
+			messages.success(request, "Meter device successfully created!")
+		else:
+			messages.error(request, "Meter device doesn't created!")
+		return redirect('list meter device')
+
 	context = {
 		'meter_device_list': meter_device_list,
 		'form': form,
@@ -47,7 +52,10 @@ def edit_meter_device(request, pk):
 		if form.is_valid():
 			modem = form.save(commit=False)
 			modem.save()
-			return redirect('list meter device')
+			messages.success(request, "Meter device successfully updated!")
+		else:
+			messages.error(request, "Meter device doesn't updated!")
+		return redirect('list meter device')
 
 	context = {
 		'form': form,
@@ -68,7 +76,10 @@ def delete_meter_device(request, pk):
 		form = DeleteMeterDeviceForm(request.POST, instance=meter_device_delete, initial=initial_logged_user)
 		if form.is_valid():
 			form.save()
-			return redirect('list meter device')
+			messages.success(request, "Meter device successfully deleted!")
+		else:
+			messages.error(request, "Meter device doesn't deleted!")
+		return redirect('list meter device')
 
 	context = {
 		'form': form,

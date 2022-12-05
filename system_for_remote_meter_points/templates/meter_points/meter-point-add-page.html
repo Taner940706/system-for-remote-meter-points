@@ -1,7 +1,7 @@
 <div class="modal fade" id="createNewMeterPointModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
-        <form class="form-horizontal" id="createNewModemForm" action="{% url 'list meter points' %}" method="POST">
+        <form class="form-horizontal" id="createNewModemForm" action="{% url 'list meter points' %}" method="POST" enctype="multipart/form-data">
     <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Add Meter point</h1>
       </div>

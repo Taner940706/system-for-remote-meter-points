@@ -1,7 +1,7 @@
 {% extends 'base/base_no_auth.html' %}
 {% load static %}
 {% block page_content %}
-<form class="form-horizontal" action=""{% url 'delete user' pk=object.pk %} method="post" id="deleteUserForm">
+<form class="form-horizontal" action=""{% url 'delete user' pk=object.pk %} method="post" id="deleteUserForm" enctype="multipart/form-data">
 							<fieldset>
 
 

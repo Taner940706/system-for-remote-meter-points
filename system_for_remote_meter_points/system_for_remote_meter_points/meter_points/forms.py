@@ -1,5 +1,6 @@
 from django import forms
 
+from system_for_remote_meter_points.core.form_mixins import DisabledFormMixin
 from system_for_remote_meter_points.meter_points.models import MeterPoint
 
 
@@ -62,17 +63,14 @@ class EditMeterPointForm(MeterPointBaseForm):
     pass
 
 
-class DeleteMeterPointForm(MeterPointBaseForm):
+class DeleteMeterPointForm(MeterPointBaseForm, DisabledFormMixin):
+    disabled_fields = '__all__'
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.__set_disabled_fields()
 
     def save(self, commit=True):
         if commit:
             self.instance.delete()
 
         return self.instance
-
-    def __set_disabled_fields(self):
-        for _, field in self.fields.items():
-            field.widget.attrs['readonly'] = 'readonly'

@@ -24,7 +24,7 @@ class SignUpView(views.CreateView):
 
 
 class UserDetailsView(views.DetailView):
-    template_name = 'accounts/profile-details-page.html'
+    template_name = 'accounts/dashboard.html'
     model = UserModel
 
     def get_context_data(self, **kwargs):

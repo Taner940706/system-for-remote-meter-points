@@ -1,6 +1,7 @@
 from django import forms
 
 from system_for_remote_meter_points.SIM.models import SIM
+from system_for_remote_meter_points.core.form_mixins import DisabledFormMixin
 
 
 class SIMBaseForm(forms.ModelForm):
@@ -49,17 +50,14 @@ class EditSIMForm(SIMBaseForm):
     pass
 
 
-class DeleteSIMForm(SIMBaseForm):
+class DeleteSIMForm(SIMBaseForm, DisabledFormMixin):
+    disabled_fields = '__all__'
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.__set_disabled_fields()
 
     def save(self, commit=True):
         if commit:
             self.instance.delete()
 
         return self.instance
-
-    def __set_disabled_fields(self):
-        for _, field in self.fields.items():
-            field.widget.attrs['readonly'] = 'readonly'

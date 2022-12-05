@@ -14,4 +14,4 @@ class AppUser(auth_model.AbstractUser):
     department = models.CharField(
         max_length=30
     )
-    picture = models.URLField()
+    picture = models.ImageField(upload_to='user_photos/')

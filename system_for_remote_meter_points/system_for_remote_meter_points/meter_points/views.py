@@ -5,6 +5,7 @@ from system_for_remote_meter_points.meter_points.forms import CreateMeterPointFo
 	EditMeterPointForm, DeleteMeterPointForm
 from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.tasks.models import Task
+from django.contrib import messages
 
 
 @login_required
@@ -30,10 +31,12 @@ def list_meter_point(request):
 										  username=form['user'].value())
 		if form.is_valid():
 			meter_point = form.save(commit=False)
-
 			meter_point.save()
 			create_task.save()
-			return redirect('list meter points')
+			messages.success(request, "Meter point successfully created!")
+		else:
+			messages.error(request, "Meter point doesn't created!")
+		return redirect('list meter points')
 	context = {
 		'meter_point_list': meter_point_list,
 		'form': form,
@@ -66,7 +69,10 @@ def edit_meter_point(request, pk):
 			meter_point = form.save(commit=False)
 			meter_point.save()
 			create_task.save()
-			return redirect('list meter points')
+			messages.success(request, "Meter point successfully updated!")
+		else:
+			messages.error(request, "Meter point doesn't updated!")
+		return redirect('list meter points')
 
 	context = {
 		'form': form,
@@ -96,7 +102,10 @@ def delete_meter_point(request, pk):
 		if form.is_valid():
 			form.save()
 			create_task.save()
-			return redirect('list meter points')
+			messages.success(request, "Meter point successfully deleted!")
+		else:
+			messages.error(request, "Meter point doesn't deleted!")
+		return redirect('list meter points')
 
 	context = {
 		'form': form,

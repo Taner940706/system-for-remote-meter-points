@@ -3,7 +3,7 @@
 {% block page_content %}
 
 
-    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit modem' pk=modem_edit.pk %}" method="POST">
+    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit modem' pk=modem_edit.pk %}" method="POST" enctype="multipart/form-data">
      {{ form }}
              <button type="submit" name="submit" value="delete" class="delete btn btn-success">edit</button>
             {% csrf_token %}

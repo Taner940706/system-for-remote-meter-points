@@ -16,7 +16,7 @@
 
 
 
-				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm">
+				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm" enctype="multipart/form-data">
 					<fieldset>
 						<legend>Промени потребителски данни</legend>
 

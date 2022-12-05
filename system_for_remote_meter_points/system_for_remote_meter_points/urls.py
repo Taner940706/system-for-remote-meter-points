@@ -1,4 +1,5 @@
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
@@ -12,5 +13,7 @@ urlpatterns = [
     path('SIM/', include('system_for_remote_meter_points.SIM.urls')),
     path('tasks/', include('system_for_remote_meter_points.tasks.urls')),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'system_for_remote_meter_points.accounts.views.handler_404'

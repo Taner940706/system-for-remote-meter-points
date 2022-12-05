@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from system_for_remote_meter_points.SIM.forms import CreateSIMForm, EditSIMForm, DeleteSIMForm
 from system_for_remote_meter_points.SIM.models import SIM
+from django.contrib import messages
 
 
 @login_required
@@ -19,7 +20,11 @@ def list_SIM(request):
 		if form.is_valid():
 			sim = form.save(commit=False)
 			sim.save()
-			return redirect('list SIM')
+			messages.success(request, "SIM successfully created!")
+		else:
+			messages.error(request, "SIM doesn't created!")
+		return redirect('list SIM')
+
 	context = {
 		'sim_list': sim_list,
 		'form': form,
@@ -44,7 +49,11 @@ def edit_SIM(request, pk):
 		if form_1.is_valid():
 			sim_1 = form_1.save(commit=False)
 			sim_1.save()
-			return redirect('list SIM')
+			messages.success(request, "SIM successfully updated!")
+		else:
+			messages.error(request, "SIM doesn't updated!")
+		return redirect('list SIM')
+
 
 	context = {
 		'form_1': form_1,
@@ -65,7 +74,10 @@ def delete_SIM(request, pk):
 		form = DeleteSIMForm(request.POST, instance=sim_list_2, initial=initial_logged_user)
 		if form.is_valid():
 			form.save()
-			return redirect('list SIM')
+			messages.success(request, "SIM successfully deleted!")
+		else:
+			messages.error(request, "SIM doesn't deleted!")
+		return redirect('list SIM')
 
 	context = {
 		'form': form,

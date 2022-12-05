@@ -1,0 +1,88 @@
+{% extends 'base/base_auth.html' %}
+{% block page_content %}
+<div class="row">
+
+	<div class="col-md-4">
+		<div class="alert alert-success" role="alert">
+			<div class="panel-heading" style="text-decoration:none;color:black;">
+
+					Успешни задачи
+					<span class="badge pull pull-right" style="text-decoration:none;color:black;">{{ count_success_tasks }}</span>
+
+			</div> <!--/panel-hdeaing-->
+		</div> <!--/panel-->
+	</div> <!--/col-md-4-->
+
+		<div class="col-md-4">
+			<div class="alert alert-warning" role="alert">
+			<div class="panel-heading" style="text-decoration:none;color:black;">
+					Задачи в процес на изпълнение
+					<span class="badge pull pull-right" style="text-decoration:none;color:black;">{{ count_in_progress_tasks }}</span>
+
+			</div> <!--/panel-hdeaing-->
+		</div> <!--/panel-->
+		</div> <!--/col-md-4-->
+
+	<div class="col-md-4">
+		<div class="alert alert-danger" role="alert">
+			<div class="panel-heading" style="text-decoration:none;color:black;">
+
+					Неуспешни задачи
+					<span class="badge pull pull-right" style="text-decoration:none;color:black;">{{ count_failed_tasks }}</span>
+
+			</div> <!--/panel-hdeaing-->
+		</div> <!--/panel-->
+	</div> <!--/col-md-4-->
+	<div class="col-md-4">
+		<div class="card">
+		  <div class="cardHeader">
+		    <h1>{{ username }}</h1>
+		  </div>
+		  <div class="cardContainer">
+		    <p>{{ first_name }} {{ last_name }}</p>
+		  </div>
+		</div>
+		<br/>
+
+		<div class="card">
+		  <div class="cardHeader" style="background-color:#245580;">
+		    <h1>{{ count_all_meter_points }}</h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-tasks"></i> Count of all meter points</p>
+		  </div>
+		</div>
+
+<br/>
+
+<div class="card">
+		  <div class="cardHeader" style="background-color:#245544;">
+		    <h1>{{ count_all_tasks }}</h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-user"></i> Count of all tasks</p>
+		  </div>
+		</div>
+
+<br/>
+
+<div class="card">
+		  <div class="cardHeader" style="background-color:#00FFFF;">
+		    <h1>{{ count_all_tasks_today }}</h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-list-alt"></i>Count of all tasks for today</p>
+		  </div>
+		</div>
+
+
+
+	</div>
+
+
+	</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base/base_no_auth.html' %}
 {% load static %}
 {% block page_content %}
-<form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm">
+<form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm" enctype="multipart/form-data">
 							<fieldset>
   <section id="register">
   	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">

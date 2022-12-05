@@ -163,7 +163,7 @@ def dashboard(request):
         # 'is_owner': request.user,
     }
 
-    return render(request, 'analyses/dashboard.html', context)
+    return render(request, 'analyses/../../templates/accounts/dashboard.html', context)
 
 
 
