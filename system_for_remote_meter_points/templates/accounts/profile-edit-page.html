@@ -3,13 +3,13 @@
 <div class="row">
 	<div class="col-md-12">
 		<ol class="breadcrumb">
-		  <li><a href="">Начална страница</a></li>
-		  <li class="active">Настройки</li>
+		  <li><a href="">Main page</a></li>
+		  <li class="active">Settings</li>
 		</ol>
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-wrench"></i> Промени профил</div>
+				<div class="page-heading"> <i class="glyphicon glyphicon-wrench"></i> Change profile details</div>
 			</div> <!-- /panel-heading -->
 
 			<div class="panel-body">
@@ -18,7 +18,7 @@
 
 				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm" enctype="multipart/form-data">
 					<fieldset>
-						<legend>Промени потребителски данни</legend>
+						<legend>Change profile data</legend>
 
 						<div class="changeUsernameMessages"></div>
 
@@ -69,7 +69,7 @@
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
 {#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
-					      <button type="submit" class="btn btn-success" data-loading-text="Loading..." id="changeUsernameBtn"> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените </button>
+					      <button type="submit" class="btn btn-success" data-loading-text="Loading..." id="changeUsernameBtn"> <i class="glyphicon glyphicon-ok-sign"></i> Save changes </button>
                             {% csrf_token %}
 					    </div>
 					  </div>

@@ -1,17 +1,48 @@
+from django.core import exceptions
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.contrib.auth import models as auth_model
 
 
+def validate_only_letters(value):
+    for ch in value:
+        if not ch.isalpha():
+            raise exceptions.ValidationError('Only letters are allowed')
+
+
 class AppUser(auth_model.AbstractUser):
 
-    first_name = models.CharField(
-        max_length=30
+    MAX_FIRST_NAME_LEN = 30
+    MIN_FIRST_NAME = 4
+    MAX_LAST_NAME_LEN = 30
+    MIN_LAST_NAME = 4
+
+    DOSO = 'DOSO'
+    OSP = 'OSP'
+    AUDITOR = 'Auditor'
+    OTHER = 'Other'
+
+    DEPARTMENT = (
+        (DOSO, DOSO),
+        (OSP, OSP),
+        (AUDITOR, AUDITOR),
+        (OTHER, OTHER),
     )
+
+    first_name = models.CharField(
+        max_length=MAX_FIRST_NAME_LEN,
+        validators=(
+            MinLengthValidator(MIN_FIRST_NAME), validate_only_letters),
+        )
     last_name = models.CharField(
-        max_length=30
+        max_length=MAX_LAST_NAME_LEN,
+        validators=(
+            MinLengthValidator(MIN_LAST_NAME), validate_only_letters),
     )
     email = models.EmailField()
-    department = models.CharField(
-        max_length=30
+    department = models.TextField(
+        choices=DEPARTMENT,
+        null=False,
+        blank=False,
     )
     picture = models.ImageField(upload_to='user_photos/')

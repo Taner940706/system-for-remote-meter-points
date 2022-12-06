@@ -1,0 +1,20 @@
+.table{
+   display: block !important;
+   overflow-x: auto !important;
+   width: 100% !important;
+ }
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+}
+
+
+input[type=search] {
+    -webkit-appearance: none;
+    border-radius: 25px;
+}
+
+td.empty { border-top:none; }

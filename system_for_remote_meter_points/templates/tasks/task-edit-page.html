@@ -5,7 +5,7 @@
 
     <form class="form-horizontal" id="editNewTaskForm" action="{% url 'edit task' pk=task.pk %}" method="POST" enctype="multipart/form-data">
      {{ form }}
-             <button type="submit" name="submit" value="delete" class="delete btn btn-success">edit</button>
+             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>
             {% csrf_token %}
      </form>
 {% endblock %}

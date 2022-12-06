@@ -1,0 +1,59 @@
+body
+{
+  table-layout: fixed;
+
+}
+
+button.button1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.div-hide {
+    display: none;
+}
+
+.kv-file-zoom {
+    display: none;
+}
+
+div.kv-avatar div.file-input div.file-preview {
+    width: 200px;
+}
+
+.btn-custom {
+    color: #fff;
+  background-color: #343C7A;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color: #fff;
+}
+
+button.button1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.div-hide {
+    display: none;
+}
+
+.kv-file-zoom {
+    display: none;
+}
+
+div.kv-avatar div.file-input div.file-preview {
+    width: 200px;
+}
+
+.ben{
+    text-align: center;
+}
+
+#bn
+{
+
+    background-color:#5cb85c;
+}
