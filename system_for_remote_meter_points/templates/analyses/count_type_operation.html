@@ -7,13 +7,28 @@
 const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
+       plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 50;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: [{% for i in label %} '{{ i }}', {% endfor %}],
       datasets: [{
         label: 'Count tasks by operation',
+          padding: 1000000000,
         data: {{ data }},
-        borderWidth: 1
+        borderWidth: 1,
+          backgroundColor : [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+],
       }]
     },
     options: {
@@ -21,7 +36,13 @@ const ctx = document.getElementById('myChart');
         y: {
           beginAtZero: true
         }
-      }
+      },
+             responsive: true,
+  legend: {
+    labels: {
+      fontSize: 20,
+    }
+  },
     }
   });
 </script>

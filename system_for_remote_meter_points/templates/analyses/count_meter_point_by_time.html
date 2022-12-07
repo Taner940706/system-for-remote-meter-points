@@ -7,6 +7,13 @@
 const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
+      plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 50;
+      };
+    }
+  }],
     type: 'line', //This is a line chart
     data: {
     labels: [{% for i in label %} '{{ i }}', {% endfor %}], //x-axes data
@@ -15,8 +22,23 @@ const ctx = document.getElementById('myChart');
     data: {{ data }}, //y-axes data
     borderColor: 'black',
     fill: false,
+        backgroundColor : [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+],
     }]
     },
+  options: {
+             responsive: true,
+  legend: {
+    labels: {
+      fontSize: 20,
+    }
+  },
+  }
    });
 
 

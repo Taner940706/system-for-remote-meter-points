@@ -7,6 +7,13 @@
 const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
+      plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 50;
+      };
+    }
+  }],
     type: 'pie',
     data: {
       labels: [{% for i in label %} '{{ i }}', {% endfor %}],
@@ -29,7 +36,13 @@ const ctx = document.getElementById('myChart');
         y: {
           beginAtZero: true
         }
-      }
+      },
+             responsive: true,
+  legend: {
+    labels: {
+      fontSize: 20,
+    }
+  },
     }
   });
 

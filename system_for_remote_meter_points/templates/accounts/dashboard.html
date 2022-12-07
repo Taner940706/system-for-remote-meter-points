@@ -1,4 +1,5 @@
 {% extends 'base/base_auth.html' %}
+{% load static %}
 {% block page_content %}
 <div class="row">
 
@@ -6,7 +7,7 @@
 		<div class="alert alert-success" role="alert">
 			<div class="panel-heading" style="text-decoration:none;color:black;">
 
-					Successfull tasks
+					Successful tasks
 					<span class="badge pull pull-right" style="text-decoration:none;color:black;">{{ count_success_tasks }}</span>
 
 			</div> <!--/panel-hdeaing-->
@@ -36,7 +37,7 @@
 	<div class="col-md-4">
 		<div class="card">
 		  <div class="cardHeader">
-		    <h1>{{ username }}</h1>
+              <h1>{{ request.user.username }}</h1>
 		  </div>
 		  <div class="cardContainer">
 		    <p>{{ first_name }} {{ last_name }}</p>
@@ -78,10 +79,15 @@
 		  </div>
 		</div>
 
-
-
 	</div>
 
+<div class="col-lg-6 mb-4 mb-lg-0">
+    {% if request.user.picture %}
+    <img src="../../media/{{ request.user.picture }}" class="userImage" alt="{{ request.user.name }}"/>
+    {% else %}
+    <img src="{% static 'images/anonym_user.jpg' %}" class="userImage" alt="anonym"/>
+    {% endif %}
+  </div>
 
 	</div>
 

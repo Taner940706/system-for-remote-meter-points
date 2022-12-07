@@ -23,7 +23,7 @@
 							<th>Operation</th>
 							<th>Result</th>
                             <th>Updated</th>
-							<th style="margin: 0 auto;">Опции</th>
+							<th style="margin: 0 auto;">Option</th>
 
 						</tr>
 					</thead>
@@ -37,11 +37,11 @@
                     <td>Updated by: {{ task.username }}, Date: {{ task.created_date }}</td>
                     <td>
                         {% if task.username == is_owner or is_superuser%}
-                            <button type="button" class="btn btn-success"><a href = {% url 'details task' pk=task.id %}>Details</a></button>
-                        <button type="button" class="btn btn-primary"><a href = {% url 'edit task' pk=task.id %}>Edit</a></button>
+                            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i><a href = {% url 'details task' pk=task.id %}>Details</a></button>
+                        <button type="button" class="btn btn-success"><i class="fas fa-edit"></i><a href = {% url 'edit task' pk=task.id %}>Edit</a></button>
                             <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>Delete</a></button>
                         {% else %}
-                        <button type="button" class="btn btn-success"><a href = {% url 'details task' pk=task.id %}>Details</a></button>
+                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i><a href = {% url 'details task' pk=task.id %}>Details</a></button>
                         {% endif %}
                     </td>
                 </tr>

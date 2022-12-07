@@ -7,8 +7,8 @@ div.card {
 div.cardHeader {
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
-    font-size: 40px;
+    padding: 8px;
+    font-size: 50px;
 }
 
 div.cardContainer {
@@ -16,7 +16,7 @@ div.cardContainer {
 }
 
 div.card {
-  width: 100%;
+  width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
 }
@@ -26,9 +26,26 @@ div.cardHeader {
     background-color: #4CAF50;
     color: white;
     padding: 10px;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 div.cardContainer {
     padding: 10px;
+}
+
+.col-md-4{
+    margin-top: 10px;
+    width: 28%;
+}
+
+.userImage {
+    margin-top: 10px;
+    width: 1000px;
+    height: 750px;
+}
+
+.cardHeader h1 {
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 20px;
 }
