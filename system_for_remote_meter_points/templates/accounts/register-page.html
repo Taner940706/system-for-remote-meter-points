@@ -3,13 +3,20 @@
 {% block page_content %}
 <form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm" enctype="multipart/form-data">
 							<fieldset>
-  <section id="register">
-  	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
-    <div class="container">
-        <div class="row">
-    	    <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 
-                <h1>System for remote meter points</h1>
+  	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
+
+<h1>System for remote meter points</h1>
+    <section class="vh-50">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
                 <h2>Registration</h2>
 
@@ -50,16 +57,17 @@
                 {{ form.email }}
                 {{ form.password1 }}
                 {{ form.password2 }}
-
+<br>
                     <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Влез">
                 {% csrf_token %}
-                <div class="ben">
-                <a href="{% url 'login user' %}">You have a registration?</a>
-            </div>
+
                 <hr/>
+              <a class="link-primary" href="{% url 'login user' %}">You have a registration?</a>
     		</div> <!-- /.col-xs-12 -->
     	</div> <!-- /.row -->
     </div> <!-- /.container -->
+    </div>
+  </div>
 </section>
 </fieldset>
 </form>

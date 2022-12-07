@@ -1,24 +1,20 @@
 {% extends 'base/base_auth.html' %}
 {% block page_content %}
-<div class="row">
-	<div class="col-md-12">
-		<ol class="breadcrumb">
-		  <li><a href="">Main page</a></li>
-		  <li class="active">Settings</li>
-		</ol>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-wrench"></i> Change profile details</div>
-			</div> <!-- /panel-heading -->
-
-			<div class="panel-body">
-
 
 
 				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm" enctype="multipart/form-data">
 					<fieldset>
-						<legend>Change profile data</legend>
+                        <section class="vh-70">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+						<legend>Edit profile data</legend>
 
 						<div class="changeUsernameMessages"></div>
 
@@ -61,10 +57,16 @@
 {#					  </div>#}
 
                         {{ form.first_name }}
+                        <br>
                         {{ form.last_name }}
+                        <br>
                         {{ form.email }}
+                        <br>
                         {{ form.department }}
+                        <br>
                         {{ form.picture }}
+                        <br>
+
 
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
@@ -73,6 +75,12 @@
                             {% csrf_token %}
 					    </div>
 					  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </section>
 					</fieldset>
 				</form>
 
@@ -114,10 +122,6 @@
 {##}
 {#					</fieldset>#}
 {#				</form>#}
-
-			</div> <!-- /panel-body -->
-
-		</div> <!-- /panel -->
-	</div> <!-- /col-md-12 -->
-</div> <!-- /row-->
+{##}
+{#-- /row-->#}
 {% endblock %}

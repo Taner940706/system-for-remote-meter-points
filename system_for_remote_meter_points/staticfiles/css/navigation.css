@@ -1,0 +1,9 @@
+.centerImageTrans{
+       width: 150px;
+       margin-top: 28px;
+}
+#userProfile{
+       text-decoration: underline;
+       text-underline-offset: 8px;
+       color: #0d6efd;
+}

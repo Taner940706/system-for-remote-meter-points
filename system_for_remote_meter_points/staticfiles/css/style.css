@@ -1,7 +1,10 @@
 @import 'login.css';
 @import 'footer.css';
-@import 'profile.css';
+@import 'registration.css';
 @import 'custom.css';
 @import 'forms.css';
 @import 'tables.css';
 @import "dashboard.css";
+@import 'deleteProfile.css';
+@import 'editProfile.css';
+@import 'navigation.css';

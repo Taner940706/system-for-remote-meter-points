@@ -1,0 +1,13 @@
+#id_first_name, #id_last_name, #id_email, #id_picture  {
+    margin-bottom: 20px;
+}
+
+select {
+    margin-bottom: 20px;
+}
+legend {
+    color: #343C7A;
+    font-size: 30px;
+    text-align: center;
+     padding-bottom: 20px;
+}

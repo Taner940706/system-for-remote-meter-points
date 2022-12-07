@@ -1,17 +1,26 @@
 {% extends 'base/base_no_auth.html' %}
 {% load static %}
 {% block page_content %}
+
+
 <form class="form-horizontal" action="{% url 'login user' %}" method="post" id="loginForm">
 							<fieldset>
 
+<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
 
-				<section id="login">
-  	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
-    <div class="container">
-        <div class="row">
-    	    <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+<h1>System for remote meter points</h1>
+    <section class="vh-50">
 
-                <h1>System for remote meter points</h1>
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+
 
                 <h2>Login</h2>
 
@@ -24,19 +33,22 @@
 {#                        <input type="password"  id="password" name="password" class="form-control" placeholder="Парола">#}
 {#                    </div>#}
 
-                {{ form }}
+                {{ form.username }}
+              {{ form.password }}
                 <input type="hidden" name="next" value="{{ next }}">
-
+<br>
                     <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Submit">
                 {% csrf_token %}
-                <div class="ben">
-                <a href="{% url 'register user' %}">Registration</a>
-            </div>
+
                 <hr/>
+              <a class="link-primary" href="{% url 'register user' %}">You don't have a registration?</a>
     		</div> <!-- /.col-xs-12 -->
     	</div> <!-- /.row -->
     </div> <!-- /.container -->
-</section>
+    </div>
+  </div>
+    </section>
+{#</section>#}
 </fieldset>
 </form>
 {% endblock %}

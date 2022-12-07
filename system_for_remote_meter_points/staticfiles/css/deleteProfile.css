@@ -1,0 +1,9 @@
+label {
+    color: #343C7A;
+    margin-top: 10px;
+}
+.form-control {
+    color: grey;
+    align-content: flex-start;
+    margin-left: 3px;
+}

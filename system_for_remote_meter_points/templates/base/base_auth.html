@@ -9,6 +9,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -36,12 +37,10 @@
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
+                <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImageTrans" alt="лого">
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1">{{ request.user.username }}</span>
+                        <span class="d-none d-sm-inline mx-1" id="userProfile">{{ request.user.username }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a></li>
@@ -60,25 +59,25 @@
                     </li>
                     <li>
                         <a href="{% url 'list meter points' %}" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Meter points</span> </a>
+                            <i class="bi bi-list-ol"></i> <span class="ms-1 d-none d-sm-inline">Meter points</span> </a>
 
                     </li>
                     <li>
                         <a href="{% url 'list task' %}" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Tasks</span></a>
+                            <i class="bi bi-list-task"></i> <span class="ms-1 d-none d-sm-inline">Tasks</span></a>
                     </li>
                     <li>
                         <a href="{% url 'list meter device' %}" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Meter devices</span></a>
+                            <i class="bi bi-device-ssd"></i> <span class="ms-1 d-none d-sm-inline">Meter devices</span></a>
 
                     </li>
                     <li>
                         <a href="{% url 'list SIM' %}" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">SIM</span> </a>
+                            <i class="bi bi-credit-card-2-front"></i> <span class="ms-1 d-none d-sm-inline">SIM</span> </a>
                     </li>
                     <li>
                         <a href="{% url 'list modem' %}" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Modems</span> </a>
+                            <i class="bi bi-webcam-fill"></i> <span class="ms-1 d-none d-sm-inline">Modems</span> </a>
                     </li>
 
 {#		<li>        <li>#}
@@ -109,25 +108,25 @@
 
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Analyses</span> </a>
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Analyses</span> <i class="bi bi-toggle-on"></i> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="{% url 'count task operations' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Count tasks by operation</span></a>
+                                <a href="{% url 'count task operations' %}" class="nav-link px-0"> <i class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by operation</span></a>
                             </li>
                             <li>
-                                <a href="{% url 'count task results' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Count tasks by result</span></a>
+                                <a href="{% url 'count task results' %}" class="nav-link px-0"><i class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by result</span></a>
                             </li>
                             <li>
-                                <a href="{% url 'count meter device types' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Count meter devices by type </span></a>
+                                <a href="{% url 'count meter device types' %}" class="nav-link px-0"><i class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter devices by type </span></a>
                             </li>
                             <li>
-                                <a href="{% url 'count tasks by username' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Count tasks by username</span></a>
+                                <a href="{% url 'count tasks by username' %}" class="nav-link px-0"><i class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by username</span></a>
                             </li>
                                 <li>
-                                <a href="{% url 'count meter point by time' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Count meter points in time</span></a>
+                                <a href="{% url 'count meter point by time' %}" class="nav-link px-0"><i class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter points in time</span></a>
                             </li>
                                  <li>
-                                <a href="{% url 'count meter point by regional center' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Count meter points by regional center</span></a>
+                                <a href="{% url 'count meter point by regional center' %}" class="nav-link px-0"><i class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter points by regional center</span></a>
                             </li>
                         </ul>
                     </li>

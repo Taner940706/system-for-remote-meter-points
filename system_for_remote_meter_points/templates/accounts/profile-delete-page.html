@@ -5,49 +5,55 @@
 							<fieldset>
 
 
-				<section id="deleteUser">
-  	<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
-    <div class="container">
-        <div class="row">
-    	    <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+				<img src="{% static 'images/ерп-север-лого.jpg' %}" class="centerImage" alt="лого">
 
-                <h1>System for remote meter points</h1>
+<h1>System for remote meter points</h1>
+    <section class="vh-50">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
                 <h2>Delete profile</h2>
 
-{#                    <div class="form-group">#}
-{#                        <label for="username" class="sr-only">КИД</label>#}
-{#                        <input type="text" id="username" name="username" class="form-control" placeholder="КИД" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="email" class="sr-only">Email</label>#}
-{#                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="first_name" class="sr-only">Име</label>#}
-{#                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Име" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="last_name" class="sr-only">Фамилия</label>#}
-{#                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Фамилия" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="department" class="sr-only">Отдел</label>#}
-{#                        <input type="text" id="department" name="department" class="form-control" placeholder="Отдел" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{##}
-{#		<div class="form-group">#}
-{#                        <label for="picture" class="sr-only">Снимка</label>#}
-{#                        <input type="url" id="picture" name="picture" class="form-control" placeholder="Снимка" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
+                    <div class="form-group">
+                        <label for="username" class="sr-only">Username:</label>
+                        <input type="text" id="username" name="username" value = "{{ request.user.username }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="email" class="sr-only">Email:</label>
+                        <input type="text" id="email" name="email" value="{{ request.user.email }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="first_name" class="sr-only">First name:</label>
+                        <input type="text" id="first_name" name="first_name" value="{{ request.user.first_name }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="last_name" class="sr-only">Last name:</label>
+                        <input type="text" id="last_name" name="last_name" value = "{{ request.user.last_name }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="department" class="sr-only">Department:</label>
+                        <input type="text" id="department" name="department" value="{{ request.user.department }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
 
+		<div class="form-group">
+                        <label for="picture" class="sr-only">Picture:</label>
+                        <input type="url" id="picture" name="picture" value="{{ request.user.picture }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
 
-                    <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Delete">
-                {% csrf_token %}
                 <hr/>
+               <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Delete">
     		</div> <!-- /.col-xs-12 -->
     	</div> <!-- /.row -->
-    </div> <!-- /.container -->
+    </div>
+    </div>
+  </div><!-- /.container -->
 </section>
 </fieldset>
 </form>
