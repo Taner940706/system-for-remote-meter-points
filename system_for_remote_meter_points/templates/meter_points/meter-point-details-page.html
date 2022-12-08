@@ -1,23 +1,94 @@
+{#{% extends 'base/base_auth.html' %}#}
+{##}
+{#{% block page_content %}#}
+{#<div>#}
+{#     <p>ID: {{ meter_point_details.id }}</p>#}
+{#    <p>Meter number: {{ meter_point_details.meter_device.meter_device_number }}</p>#}
+{#    <p>Meter point name: {{ meter_point_details.mp_name }}</p>#}
+{#    <p>Constant: {{ meter_point_details.constant }}</p>#}
+{#    <p>Voltage: {{ meter_point_details.voltage }}</p>#}
+{#    <p>Regional center: {{ meter_point_details.regional_center }}</p>#}
+{#    <p>Username: {{ meter_point_details.user_id }}</p>#}
+{#    {% if meter_point_details.comment %}#}
+{#    <p>Comment: {{ meter_point_details.comment }}</p>#}
+{#    {% else %}#}
+{#    <p>Comment: No data</p>#}
+{#    {% endif %}#}
+{#    <p>Operation: {{ meter_point_details.operation }}</p>#}
+{#    <p>Result operation: {{ meter_point_details.result_operation }}</p>#}
+{#    <p>Modem number: {{ meter_point_details.modem.modem_number }}</p>#}
+{#    <p>Sim number: {{ meter_point_details.modem.sim.sim_number }}</p>#}
+{#    <p>IP address: {{ meter_point_details.modem.sim.ip_address }}</p>#}
+{#</div>#}
+{#{% endblock %}#}
+
 {% extends 'base/base_auth.html' %}
 
 {% block page_content %}
-<div>
-     <p>ID: {{ meter_point_details.id }}</p>
-    <p>Meter number: {{ meter_point_details.meter_device.meter_device_number }}</p>
-    <p>Meter point name: {{ meter_point_details.mp_name }}</p>
-    <p>Constant: {{ meter_point_details.constant }}</p>
-    <p>Voltage: {{ meter_point_details.voltage }}</p>
-    <p>Regional center: {{ meter_point_details.regional_center }}</p>
-    <p>Username: {{ meter_point_details.user_id }}</p>
-    {% if meter_point_details.comment %}
-    <p>Comment: {{ meter_point_details.comment }}</p>
-    {% else %}
-    <p>Comment: No data</p>
-    {% endif %}
-    <p>Operation: {{ meter_point_details.operation }}</p>
-    <p>Result operation: {{ meter_point_details.result_operation }}</p>
-    <p>Modem number: {{ meter_point_details.modem.modem_number }}</p>
-    <p>Sim number: {{ meter_point_details.modem.sim.sim_number }}</p>
-    <p>IP address: {{ meter_point_details.modem.sim.ip_address }}</p>
+{#<div class="card w-50">#}
+{#  <div class="card-body">#}
+{#    <h5 class="card-title">Details for meter point with ID: {{ meter_point_details.id }}</h5>#}
+{#      <p class="card-text">Meter number: {{ meter_point_details.meter_device.meter_device_number }}</p>#}
+{#    <p class="card-text">Meter point name: {{ meter_point_details.mp_name }}</p>#}
+{#    <p class="card-text">Constant: {{ meter_point_details.constant }}</p>#}
+{#    <p class="card-text">Voltage: {{ meter_point_details.voltage }}</p>#}
+{#    <p class="card-text">Regional center: {{ meter_point_details.regional_center }}</p>#}
+{#    <p class="card-text">Username: {{ meter_point_details.user_id }}</p>#}
+{#    {% if meter_point_details.comment %}#}
+{#    <p class="card-text">Comment: {{ meter_point_details.comment }}</p>#}
+{#    {% else %}#}
+{#    <p class="card-text">Comment: No data</p>#}
+{#    {% endif %}#}
+{#    <p class="card-text">Operation: {{ meter_point_details.operation }}</p>#}
+{#    <p class="card-text">Result operation: {{ meter_point_details.result_operation }}</p>#}
+{#    <p class="card-text">Modem number: {{ meter_point_details.modem.modem_number }}</p>#}
+{#    <p class="card-text">Sim number: {{ meter_point_details.modem.sim.sim_number }}</p>#}
+{#    <p class="card-text">IP address: {{ meter_point_details.modem.sim.ip_address }}</p>#}
+{#    <a href="#" class="btn btn-primary">Button</a>#}
+{#  </div>#}
+{#</div>#}
+
+    <div class="container">
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card card-margin">
+            <div class="card-header no-border">
+                <h5 class="card-title">Created by: {{ meter_point_details.user_id }}</h5>
+            </div>
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+                        <div class="widget-49-date-primary">
+                            <span class="widget-49-date-day">ID</span>
+                            <span class="widget-49-date-month">{{ meter_point_details.id }}</span>
+                        </div>
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">Meter point name: {{ meter_point_details.mp_name }}</span>
+                            <span class="widget-49-meeting-time">Date: {{ meter_point_details.created_date }}</span>
+                        </div>
+                    </div>
+                    <ol class="widget-49-meeting-points">
+                        <li class="widget-49-meeting-item"><span>Meter number: {{ meter_point_details.meter_device.meter_device_number }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Constant: {{ meter_point_details.constant }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Voltage: {{ meter_point_details.voltage }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Regional center: {{ meter_point_details.regional_center }}</span></li>
+                        {% if meter_point_details.comment %}
+                        <li class="widget-49-meeting-item"><span>Comment: {{ meter_point_details.comment }}</span></li>
+                        {% else %}
+                        <li class="widget-49-meeting-item"><span>Comment: No data</span></li>
+                        {% endif %}
+                        <li class="widget-49-meeting-item"><span>Operation: {{ meter_point_details.operation }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Modem number: {{ meter_point_details.modem.modem_number }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Sim number: {{ meter_point_details.modem.sim.sim_number }}</span></li>
+                        <li class="widget-49-meeting-item"><span>IP address: {{ meter_point_details.modem.sim.ip_address }}</span></li>
+                    </ol>
+                    <div class="widget-49-meeting-action">
+                        <a href="javascript:history.back()" class="btn btn-sm btn-flash-border-primary">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+    </div>
 {% endblock %}

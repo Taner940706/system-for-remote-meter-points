@@ -1,23 +1,66 @@
 {% extends 'base/base_auth.html' %}
 
 {% block page_content %}
-<div>
-     <p>ID: {{ task_details.id }}</p>
-    <p>Meter number: {{ task_details.meter_device }}</p>
-    <p>Meter point name: {{ task_details.mp_name }}</p>
-    <p>Constant: {{ task_details.constant }}</p>
-    <p>Voltage: {{ task_details.voltage }}</p>
-    <p>Regional center: {{ task_details.regional_center }}</p>
-    <p>Username: {{ task_details.username }}</p>
-    {% if task_details.comment %}
-    <p>Comment: {{ task_details.comment }}</p>
-    {% else %}
-    <p>Comment: No data</p>
-    {% endif %}
-    <p>Operation: {{ task_details.operation }}</p>
-    <p>Result operation: {{ task_details.result_operation }}</p>
-    <p>Modem number: {{ task_details.modem }}</p>
+{#<div>#}
+{#     <p>ID: {{ task_details.id }}</p>#}
+{#    <p>Meter number: {{ task_details.meter_device }}</p>#}
+{#    <p>Meter point name: {{ task_details.mp_name }}</p>#}
+{#    <p>Constant: {{ task_details.constant }}</p>#}
+{#    <p>Voltage: {{ task_details.voltage }}</p>#}
+{#    <p>Regional center: {{ task_details.regional_center }}</p>#}
+{#    <p>Username: {{ task_details.username }}</p>#}
+{#    {% if task_details.comment %}#}
+{#    <p>Comment: {{ task_details.comment }}</p>#}
+{#    {% else %}#}
+{#    <p>Comment: No data</p>#}
+{#    {% endif %}#}
+{#    <p>Operation: {{ task_details.operation }}</p>#}
+{#    <p>Result operation: {{ task_details.result_operation }}</p>#}
+{#    <p>Modem number: {{ task_details.modem }}</p>#}
+{#</div>#}
+
+    <div class="container">
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card card-margin">
+            <div class="card-header no-border">
+                <h5 class="card-title">Created by: {{ task_details.username }}</h5>
+            </div>
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+                        <div class="widget-49-date-primary">
+                            <span class="widget-49-date-day">ID</span>
+                            <span class="widget-49-date-month">{{ task_details.id }}</span>
+                        </div>
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">Meter point name: {{ task_details.mp_name }}</span>
+                            <span class="widget-49-meeting-time">Date: {{ task_details.created_date }}</span>
+                        </div>
+                    </div>
+                    <ol class="widget-49-meeting-points">
+                        <li class="widget-49-meeting-item"><span>Meter number: {{ task_details.meter_device }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Constant: {{ task_details.constant }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Voltage: {{ task_details.voltage }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Regional center: {{ task_details.regional_center }}</span></li>
+                        {% if task_details.comment %}
+                        <li class="widget-49-meeting-item"><span>Comment: {{ task_details.comment }}</span></li>
+                        {% else %}
+                        <li class="widget-49-meeting-item"><span>Comment: No data</span></li>
+                        {% endif %}
+                        <li class="widget-49-meeting-item"><span>Operation: {{ task_details.operation }}<</span></li>
+                        <li class="widget-49-meeting-item"><span>Result operation: {{ task_details.result_operation }}</span></li>
+                        <li class="widget-49-meeting-item"><span>Modem number: {{ task_details.modem }}</span></li>
+                    </ol>
+                    <div class="widget-49-meeting-action">
+                        <a href="javascript:history.back()" class="btn btn-sm btn-flash-border-primary">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+    </div>
 
 
 {% endblock %}

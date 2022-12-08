@@ -1,10 +1,71 @@
+{#{% extends 'base/base_auth.html' %}#}
+{##}
+{#{% block page_content %}#}
+{##}
+{#     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete modem' pk=modem_delete.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+{#{% endblock %}#}
+
 {% extends 'base/base_auth.html' %}
 
 {% block page_content %}
 
-     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete modem' pk=modem_delete.pk %}" method="POST" enctype="multipart/form-data">
-     {{ form }}
-             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>
-            {% csrf_token %}
-     </form>
+{#     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete meter device' pk=meter_device_delete.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+
+    <form class="form-horizontal" id="deleteNewModemForm" action="{% url 'delete modem' pk=modem_delete.pk %}" method="POST" enctype="multipart/form-data">
+							<fieldset>
+
+    <section class="vh-50">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+                <h2>Delete modem</h2>
+
+                    <div class="form-group">
+                        <label for="modem_id" class="sr-only">ID:</label>
+                        <input type="text" id="modem_id" name="modem_id" value = "{{ modem_delete.pk }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="modem_number" class="sr-only">Modem number:</label>
+                        <input type="text" id="modem_number" name="modem_number" value="{{ modem_delete.modem_number }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="sim_id" class="sr-only">SIM number:</label>
+                        <input type="text" id="sim_id" name="sim_id" value="{{ modem_delete.sim_id }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="created_date" class="sr-only">Created date:</label>
+                        <input type="text" id="created_date" name="created_date" value="{{ modem_delete.created_date }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+
+		<div class="form-group">
+                        <label for="username" class="sr-only">Username:</label>
+                        <input type="text" id="username" name="username" value="{{ modem_delete.user_id}}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+
+                <hr/>
+               <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Delete">
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div>
+    </div>
+  </div><!-- /.container -->
+</section>
+</fieldset>
+</form>
 {% endblock %}
+

@@ -1,10 +1,79 @@
+{#{% extends 'base/base_auth.html' %}#}
+{##}
+{#{% block page_content %}#}
+{##}
+{#     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_list_2.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+{#{% endblock %}#}
+
 {% extends 'base/base_auth.html' %}
 
 {% block page_content %}
 
-     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_list_2.pk %}" method="POST" enctype="multipart/form-data">
-     {{ form }}
-             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>
-            {% csrf_token %}
-     </form>
+{#     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete meter device' pk=meter_device_delete.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+
+    <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_list_2.pk %}" method="POST" enctype="multipart/form-data">
+							<fieldset>
+
+    <section class="vh-50">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+                <h2>Delete SIM</h2>
+
+                    <div class="form-group">
+                        <label for="sim_id" class="sr-only">ID:</label>
+                        <input type="text" id="sim_id" name="sim_id" value = "{{ sim_list_2.pk }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="sim_number" class="sr-only">SIM number:</label>
+                        <input type="text" id="sim_number" name="sim_number" value="{{ sim_list_2.sim_number }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="gsm_number" class="sr-only">GSM number:</label>
+                        <input type="text" id="gsm_number" name="gsm_number" value="{{ sim_list_2.gsm_number }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="ip_address" class="sr-only">IP address:</label>
+                        <input type="text" id="ip_address" name="ip_address" value = "{{ sim_list_2.ip_address }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+		<div class="form-group">
+                        <label for="operator" class="sr-only">Operator:</label>
+                        <input type="text" id="operator" name="operator" value="{{ sim_list_2.operator }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+
+		<div class="form-group">
+                        <label for="created_date" class="sr-only">Created date:</label>
+                        <input type="text" id="created_date" name="created_date" value="{{ sim_list_2.created_date}}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+              <div class="form-group">
+                        <label for="user_id" class="sr-only">Username:</label>
+                        <input type="text" id="user_id" name="user_id" value="{{ sim_list_2.user_id }}" class="form-control" disabled="disabled" readonly="readonly">
+                    </div>
+
+                <hr/>
+               <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Delete">
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div>
+    </div>
+  </div><!-- /.container -->
+</section>
+</fieldset>
+</form>
 {% endblock %}
+
