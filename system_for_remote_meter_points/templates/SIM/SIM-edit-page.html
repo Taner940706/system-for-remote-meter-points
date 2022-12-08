@@ -1,6 +1,6 @@
-{% extends 'base/base_auth.html' %}
-
-{% block page_content %}
+{#{% extends 'base/base_auth.html' %}#}
+{##}
+{#{% block page_content %}#}
 {#<div class="modal fade in" id="editNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">#}
 {#  <div class="modal-dialog">#}
 {#    <div class="modal-content">#}
@@ -29,10 +29,64 @@
 {##}
 {#</div>#}
 {#</div>#}
+{##}
+{#    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit SIM' pk=sim_list_1.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form_1 }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+{#{% endblock %}#}
 
-    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit SIM' pk=sim_list_1.pk %}" method="POST" enctype="multipart/form-data">
-     {{ form_1 }}
-             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>
-            {% csrf_token %}
-     </form>
+
+{% extends 'base/base_auth.html' %}
+{% block page_content %}
+
+
+				<form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit SIM' pk=sim_list_1.pk %}" method="POST" enctype="multipart/form-data">
+					<fieldset>
+                        <section class="vh-70">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+						<legend>Edit SIM data</legend>
+
+						<div class="changeUsernameMessages"></div>
+
+              {{ form }}
+
+
+{#                        {{ form.first_name }}#}
+{#                        <br>#}
+{#                        {{ form.last_name }}#}
+{#                        <br>#}
+{#                        {{ form.email }}#}
+{#                        <br>#}
+{#                        {{ form.department }}#}
+{#                        <br>#}
+{#                        {{ form.picture }}#}
+{#                        <br>#}
+
+
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
+					      <button type="submit" name="submit" value="edit" class="delete btn btn-success">Save changes</button>
+                        {% csrf_token %}
+					    </div>
+					  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </section>
+					</fieldset>
+				</form>
+
 {% endblock %}

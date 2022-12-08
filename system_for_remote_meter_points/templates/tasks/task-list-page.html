@@ -5,7 +5,7 @@
     {% include 'common/messages.html' %}
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i>Tasks list</div>
+                <div class="page-heading"> <h1><i class="bi bi-list"></i>Tasks list</h1></div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
 
@@ -33,15 +33,21 @@
                 <td>{{ task.mp_name }}</td>
                 <td>{{ task.meter_device }}</td>
                 <td>{{ task.operation}}</td>
-                <td>{{ task.result_operation }}</td>
+                {% if task.result_operation == 'No communication' %}
+                    <td><div class="no-comm">{{ task.result_operation }}</div></td>
+                {% elif task.result_operation == 'In progress...' %}
+                <td><div class="in-progress">{{ task.result_operation }}</div></td>
+                {% else %}
+                <td><div class="yes-comm">{{ task.result_operation }}</div></td>
+                {% endif %}
                     <td>Updated by: {{ task.username }}, Date: {{ task.created_date }}</td>
                     <td>
                         {% if task.username == is_owner or is_superuser%}
-                            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i><a href = {% url 'details task' pk=task.id %}>Details</a></button>
-                        <button type="button" class="btn btn-success"><i class="fas fa-edit"></i><a href = {% url 'edit task' pk=task.id %}>Edit</a></button>
-                            <button type="button" class="btn btn-warning"><a href = {% url 'delete task' pk=task.id %}>Delete</a></button>
+                            <button type="button" class="btn btn-warning" title="Details"><a href = {% url 'details task' pk=task.id %}><i class="bi bi-eye"></i></a></button>
+                        <button type="button" class="btn btn-primary" title="Edit"><a href = {% url 'edit task' pk=task.id %}><i class="bi bi-pencil"></i></a></button>
+                            <button type="button" class="btn btn-danger" title="Delete"><a href = {% url 'delete task' pk=task.id %}><i class="bi bi-trash"></i></a></button>
                         {% else %}
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i><a href = {% url 'details task' pk=task.id %}>Details</a></button>
+                        <button type="button" class="btn btn-danger" title="Details"><a href = {% url 'details task' pk=task.id %}><i class="bi bi-eye"></i><</a></button>
                         {% endif %}
                     </td>
                 </tr>

@@ -37,3 +37,69 @@ input[type=search] {
     -webkit-appearance: none;
     border-radius: 25px;
 }
+
+.btn .bi {
+    color: white;
+}
+
+.page-heading h1 ,i {
+    color: #025193;
+}
+
+.high {
+    border-radius: 25px;
+    width: 70%;
+    border-width: 1px;
+    border-color: black;
+    background-color: #dc3545;
+    text-align: center;
+    color: white;
+}
+.medium {
+    border-radius: 25px;
+    width: 70%;
+    border-width: 1px;
+    border-color: black;
+    background-color: #ffc107;
+    text-align: center;
+    color: white;
+}
+.low {
+    border-radius: 25px;
+    width: 70%;
+    border-width: 1px;
+    border-color: black;
+    background-color: #198754;
+    text-align: center;
+    color: white;
+}
+
+.no-comm {
+    border-radius: 25px;
+    width: 70%;
+    border-width: 1px;
+    border-color: black;
+    background-color: #dc3545;
+    text-align: center;
+    color: white;
+}
+.in-progress {
+    border-radius: 25px;
+    width: 70%;
+    border-width: 1px;
+    border-color: black;
+    background-color: #ffc107;
+    text-align: center;
+    color: white;
+}
+.yes-comm {
+    border-radius: 25px;
+    width: 70%;
+    border-width: 1px;
+    border-color: black;
+    background-color: #198754;
+    text-align: center;
+    color: white;
+}
+
+

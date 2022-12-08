@@ -5,7 +5,7 @@
      {% include 'common/messages.html' %}
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Modem list</div>
+                <div class="page-heading"> <h1><i class="bi bi-list"></i>Modem list</h1></div>
 			</div> <!-- /panel-heading -->
 			<div class="panel-body">
 
@@ -41,8 +41,8 @@
 
               <td>
                   {% if modem.user_id == is_owner or is_superuser%}
-                    <button type="button" class="btn btn-primary"><a href = {% url 'edit modem' pk=modem.id %}>Edit</a></button>
-                    <button type="button" class="btn btn-warning"><a href = {% url 'delete modem' pk=modem.id %}>Delete</a></button>
+                    <button type="button" class="btn btn-primary" title="Edit"><a href = {% url 'edit modem' pk=modem.id %}><i class="bi bi-pencil"></i></a></button>
+                    <button type="button" class="btn btn-danger" title="Delete"><a href = {% url 'delete modem' pk=modem.id %}><i class="bi bi-trash"></i></a></button>
                   {% endif %}
                 </td>
                 </tr>
@@ -54,7 +54,7 @@
 			</div> <!-- /panel-body -->
 		</div> <!-- /panel -->
     {% if is_perm %}
-		   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewModemModal">
+		   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createNewModemModal" title="Add"><i class="bi bi-plus-lg"></i>
   Add modem
 </button>
     {% endif %}

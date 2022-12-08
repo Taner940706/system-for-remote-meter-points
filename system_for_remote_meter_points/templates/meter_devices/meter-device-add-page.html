@@ -3,7 +3,7 @@
     <div class="modal-content">
         <form class="form-horizontal" id="createNewModemForm" action="{% url 'list meter device' %}" method="POST" enctype="multipart/form-data">
     <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Modem</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Add Modem Device</h1>
       </div>
 
         <div class="modal-body">
@@ -14,7 +14,7 @@
 
         </div>
         <div class="modal-footer">
-
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
          <button type="submit" class="btn btn-success" data-loading-text="Loading..."> Save changes</button>
             {% csrf_token %}
       </div>

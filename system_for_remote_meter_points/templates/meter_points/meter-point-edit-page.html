@@ -1,11 +1,77 @@
-{% extends 'base/base_auth.html' %}
+{#{% extends 'base/base_auth.html' %}#}
+{##}
+{#{% block page_content %}#}
+{##}
+{##}
+{#    <form class="form-horizontal" id="editNewMeterDeviceForm" action="{% url 'edit meter points' pk=meter_point_edit.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+{#{% endblock %}#}
+{##}
+{##}
+{#{% extends 'base/base_auth.html' %}#}
+{##}
+{#{% block page_content %}#}
+{##}
+{##}
+{#    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit meter device' pk=meter_device_edit.pk %}" method="POST" enctype="multipart/form-data">#}
+{#     {{ form }}#}
+{#             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>#}
+{#            {% csrf_token %}#}
+{#     </form>#}
+{#{% endblock %}#}
 
+{% extends 'base/base_auth.html' %}
 {% block page_content %}
 
 
-    <form class="form-horizontal" id="editNewMeterDeviceForm" action="{% url 'edit meter points' pk=meter_point_edit.pk %}" method="POST" enctype="multipart/form-data">
-     {{ form }}
-             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>
-            {% csrf_token %}
-     </form>
+				<form class="form-horizontal" id="editNewMeterPointForm" action="{% url 'edit meter points' pk=meter_point_edit.pk %}" method="POST" enctype="multipart/form-data">
+					<fieldset>
+                        <section class="vh-70">
+
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+						<legend>Edit meter point data</legend>
+
+						<div class="changeUsernameMessages"></div>
+
+              {{ form }}
+
+
+{#                        {{ form.first_name }}#}
+{#                        <br>#}
+{#                        {{ form.last_name }}#}
+{#                        <br>#}
+{#                        {{ form.email }}#}
+{#                        <br>#}
+{#                        {{ form.department }}#}
+{#                        <br>#}
+{#                        {{ form.picture }}#}
+{#                        <br>#}
+
+
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
+					      <button type="submit" name="submit" value="edit" class="delete btn btn-success">Save changes</button>
+                        {% csrf_token %}
+					    </div>
+					  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+                        </section>
+					</fieldset>
+				</form>
+
 {% endblock %}

@@ -43,20 +43,19 @@ def edit_SIM(request, pk):
 	}
 	sim_list_1 = SIM.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form_1 = EditSIMForm(instance=sim_list_1, initial=initial_logged_user)
+		form = EditSIMForm(instance=sim_list_1, initial=initial_logged_user)
 	else:
-		form_1 = EditSIMForm(request.POST, instance=sim_list_1, initial=initial_logged_user)
-		if form_1.is_valid():
-			sim_1 = form_1.save(commit=False)
+		form = EditSIMForm(request.POST, instance=sim_list_1, initial=initial_logged_user)
+		if form.is_valid():
+			sim_1 = form.save(commit=False)
 			sim_1.save()
 			messages.success(request, "SIM successfully updated!")
 		else:
 			messages.error(request, "SIM doesn't updated!")
 		return redirect('list SIM')
 
-
 	context = {
-		'form_1': form_1,
+		'form': form,
 		'sim_list_1': sim_list_1,
 	}
 	return render(request, 'SIM/SIM-edit-page.html', context)
