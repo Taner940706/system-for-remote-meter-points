@@ -1,3 +1,4 @@
+{% load add_class %}
 {#{% block page_content %}#}
 <div class="modal fade" id="createNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
@@ -13,8 +14,9 @@
         <div class="modal-body">
 
 
-            {{ form }}
-
+            {% for field in form %}
+                {{ field|form_class }}
+            {% endfor %}
 
         </div>
         <div class="modal-footer">

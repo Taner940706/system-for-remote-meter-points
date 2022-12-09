@@ -7,6 +7,7 @@ class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
         fields = '__all__'
+        field_classes = {'username': auth_forms.UsernameField, }
 
 
 class UserCreateForm(auth_forms.UserCreationForm):
@@ -14,6 +15,5 @@ class UserCreateForm(auth_forms.UserCreationForm):
         model = UserModel
         fields = ('username', 'email',)
         field_classes = {
-            'username': auth_forms.UsernameField
-        }
+            'username': auth_forms.UsernameField, }
 

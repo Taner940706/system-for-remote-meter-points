@@ -136,5 +136,6 @@ class MeterPoint(models.Model):
     user = models.ForeignKey(
         UserModel,
         to_field='username',
-        on_delete=models.PROTECT,
+        on_delete=models.SET_NULL,
+        null=True,
     )

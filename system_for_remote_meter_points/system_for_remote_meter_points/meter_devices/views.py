@@ -66,14 +66,14 @@ def edit_meter_device(request, pk):
 
 @permission_required('meter_devices.delete_meterdevice')
 def delete_meter_device(request, pk):
-	initial_logged_user = {
-		'user': request.user.username
-	}
+	# initial_logged_user = {
+	# 	'user': request.user.username
+	# }
 	meter_device_delete = MeterDevice.objects.filter(pk=pk).get()
 	if request.method == 'GET':
-		form = DeleteMeterDeviceForm(instance=meter_device_delete, initial=initial_logged_user)
+		form = DeleteMeterDeviceForm(instance=meter_device_delete)
 	else:
-		form = DeleteMeterDeviceForm(request.POST, instance=meter_device_delete, initial=initial_logged_user)
+		form = DeleteMeterDeviceForm(request.POST, instance=meter_device_delete)
 		if form.is_valid():
 			form.save()
 			messages.success(request, "Meter device successfully deleted!")

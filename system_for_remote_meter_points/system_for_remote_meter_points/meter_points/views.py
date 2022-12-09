@@ -83,29 +83,44 @@ def edit_meter_point(request, pk):
 
 @permission_required('meter_points.delete_meterpoint')
 def delete_meter_point(request, pk):
-	initial_logged_user = {
-		'user': request.user.username
-	}
+	# initial_logged_user = {
+	# 	'user': request.user.username
+	# }
 	meter_point_delete = MeterPoint.objects.filter(pk=pk).get()
+
 	if request.method == 'GET':
-		form = DeleteMeterPointForm(instance=meter_point_delete, initial=initial_logged_user)
+		# form = DeleteMeterPointForm(instance=meter_point_delete, initial=initial_logged_user)
+		form = DeleteMeterPointForm(instance=meter_point_delete)
+
 	else:
-		form = DeleteMeterPointForm(request.POST, instance=meter_point_delete, initial=initial_logged_user)
-		create_task = Task.objects.create(mp_name=form['mp_name'].value(), constant=form['constant'].value(),
-										  voltage=form['voltage'].value(),
-										  regional_center=form['regional_center'].value(),
-										  operation=form['operation'].value(),
-										  result_operation=form['result_operation'].value(),
-										  comment=form['comment'].value(),
-										  modem=form['modem'].value(), meter_device=form['meter_device'].value(),
-										  username=form['user'].value())
+		# form = DeleteMeterPointForm(request.POST, instance=meter_point_delete, initial=initial_logged_user)
+		form = DeleteMeterPointForm(request.POST, instance=meter_point_delete)
+		# create_task = Task.objects.create(mp_name=form['mp_name'].value(), constant=form['constant'].value(),
+		# 								  voltage=form['voltage'].value(),
+		# 								  regional_center=form['regional_center'].value(),
+		# 								  operation=form['operation'].value(),
+		# 								  result_operation=form['result_operation'].value(),
+		# 								  comment=form['comment'].value(),
+		# 								  modem=form['modem'].value(), meter_device=form['meter_device'].value(),
+		# 								  username=form['user'].value())
+
+		create_task = Task.objects.create(mp_name=meter_point_delete.mp_name, constant=meter_point_delete.constant,
+										  voltage=meter_point_delete.voltage,
+										  regional_center=meter_point_delete.regional_center,
+										  operation=meter_point_delete.operation,
+										  result_operation=meter_point_delete.result_operation,
+										  comment=meter_point_delete.comment,
+										  modem=meter_point_delete.modem_id ,meter_device=meter_point_delete.meter_device_id,
+										  username=meter_point_delete.user_id)
 		if form.is_valid():
-			form.save()
 			create_task.save()
+			form.save()
 			messages.success(request, "Meter point successfully deleted!")
+
 		else:
 			messages.error(request, "Meter point doesn't deleted!")
 		return redirect('list meter points')
+
 
 	context = {
 		'form': form,

@@ -18,10 +18,10 @@
 {#    <p>Result operation: {{ task_details.result_operation }}</p>#}
 {#    <p>Modem number: {{ task_details.modem }}</p>#}
 {#</div>#}
-
+<div class="col py-3">
     <div class="container">
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="card card-margin">
             <div class="card-header no-border">
                 <h5 class="card-title">Created by: {{ task_details.username }}</h5>
@@ -38,7 +38,7 @@
                             <span class="widget-49-meeting-time">Date: {{ task_details.created_date }}</span>
                         </div>
                     </div>
-                    <ol class="widget-49-meeting-points">
+                    <ul class="widget-49-meeting-points">
                         <li class="widget-49-meeting-item"><span>Meter number: {{ task_details.meter_device }}</span></li>
                         <li class="widget-49-meeting-item"><span>Constant: {{ task_details.constant }}</span></li>
                         <li class="widget-49-meeting-item"><span>Voltage: {{ task_details.voltage }}</span></li>
@@ -51,9 +51,9 @@
                         <li class="widget-49-meeting-item"><span>Operation: {{ task_details.operation }}<</span></li>
                         <li class="widget-49-meeting-item"><span>Result operation: {{ task_details.result_operation }}</span></li>
                         <li class="widget-49-meeting-item"><span>Modem number: {{ task_details.modem }}</span></li>
-                    </ol>
+                    </ul>
                     <div class="widget-49-meeting-action">
-                        <a href="javascript:history.back()" class="btn btn-sm btn-flash-border-primary">View All</a>
+                        <a href="javascript:history.back()" class="delete btn btn-danger">Go Back</a>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
     </div>
 </div>
     </div>
-
+</div>
 
 {% endblock %}
 

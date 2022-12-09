@@ -4,9 +4,9 @@ body
 
 }
 
-button.button1:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
+/*button.button1:hover {*/
+/*    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);*/
+/*}*/
 
 
 .div-hide {
@@ -27,12 +27,12 @@ div.kv-avatar div.file-input div.file-preview {
 }
 .btn-custom:hover,
 .btn-custom:focus {
-    color: #fff;
+    border-color: #343C7A;
 }
 
-button.button1:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
+/*button.button1:hover {*/
+/*    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);*/
+/*}*/
 
 
 

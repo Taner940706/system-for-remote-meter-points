@@ -1,10 +1,14 @@
 {% extends 'base/base_auth.html' %}
+{% load placeholders %}
+{% load add_class %}
+{% load static %}
 {% block page_content %}
 
-
+<div class="col py-3">
 				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm" enctype="multipart/form-data">
 					<fieldset>
-                        <section class="vh-70">
+                        <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
+                        <section class="vh-50">
 
   <div class="container py-5 h-100">
 
@@ -56,16 +60,22 @@
 {#					    </div>#}
 {#					  </div>#}
 
-                        {{ form.first_name }}
-                        <br>
-                        {{ form.last_name }}
-                        <br>
-                        {{ form.email }}
-                        <br>
-                        {{ form.department }}
-                        <br>
-                        {{ form.picture }}
-                        <br>
+{#                        {{ form.first_name }}#}
+{#                        <br>#}
+{#                        {{ form.last_name }}#}
+{#                        <br>#}
+{#                        {{ form.email }}#}
+{#                        <br>#}
+{#                        {{ form.department }}#}
+{#                        <br>#}
+{#                        {{ form.picture }}#}
+{#                        <br>#}
+
+              {{ form.first_name|form_class|placeholder:"First name: " }}
+                {{ form.last_name|form_class|placeholder:"Last name: " }}
+                {{ form.email|form_class|placeholder:"Email: " }}
+                {{ form.department|form_class|placeholder:"Department: " }}
+              {{ form.picture|form_class|placeholder:"Picture: " }}
 
 
 					  <div class="form-group">
@@ -83,6 +93,7 @@
                         </section>
 					</fieldset>
 				</form>
+</div>
 
 {#				<form action="" method="post" class="form-horizontal" id="changePasswordForm">#}
 {#					<fieldset>#}

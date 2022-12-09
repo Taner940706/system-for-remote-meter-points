@@ -1,4 +1,6 @@
 {% extends 'base/base_auth.html' %}
+{% load add_class %}
+{% load static %}
 
 {% block page_content %}
 
@@ -7,7 +9,8 @@
 {#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
 {#            {% csrf_token %}#}
 {#     </form>#}
-
+      <div class="col py-3">
+<img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
     <form class="form-horizontal" id="deleteNewMeterPointForm" action="{% url 'delete meter device' pk=meter_device_delete.pk %}" method="POST" enctype="multipart/form-data">
 							<fieldset>
 
@@ -24,34 +27,39 @@
 
                 <h2>Delete meter device</h2>
 
-                    <div class="form-group">
-                        <label for="meter_device_id" class="sr-only">ID:</label>
-                        <input type="text" id="meter_device_id" name="meter_device_id" value = "{{ meter_device_delete.pk }}" class="form-control" disabled="disabled" readonly="readonly">
-                    </div>
-		<div class="form-group">
-                        <label for="meter_device_number" class="sr-only">Meter device number:</label>
-                        <input type="text" id="meter_device_number" name="meter_device_number" value="{{ meter_device_delete.meter_device_number }}" class="form-control" disabled="disabled" readonly="readonly">
-                    </div>
-		<div class="form-group">
-                        <label for="meter_device_read_cycle" class="sr-only">Read cycle:</label>
-                        <input type="text" id="meter_device_read_cycle" name="meter_device_read_cycle" value="{{ meter_device_delete.meter_device_read_cycle }}" class="form-control" disabled="disabled" readonly="readonly">
-                    </div>
-		<div class="form-group">
-                        <label for="meter_device_type" class="sr-only">Meter device type:</label>
-                        <input type="text" id="meter_device_type" name="meter_device_type" value = "{{ meter_device_delete.meter_device_type }}" class="form-control" disabled="disabled" readonly="readonly">
-                    </div>
-		<div class="form-group">
-                        <label for="created_date" class="sr-only">Created date:</label>
-                        <input type="text" id="created_date" name="created_date" value="{{ meter_device_delete.created_date}}" class="form-control" disabled="disabled" readonly="readonly">
-                    </div>
+{#                    <div class="form-group">#}
+{#                        <label for="meter_device_id" class="sr-only">ID:</label>#}
+{#                        <input type="text" id="meter_device_id" name="meter_device_id" value = "{{ meter_device_delete.pk }}" class="form-control" disabled="disabled" readonly="readonly">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="meter_device_number" class="sr-only">Meter device number:</label>#}
+{#                        <input type="text" id="meter_device_number" name="meter_device_number" value="{{ meter_device_delete.meter_device_number }}" class="form-control" disabled="disabled" readonly="readonly">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="meter_device_read_cycle" class="sr-only">Read cycle:</label>#}
+{#                        <input type="text" id="meter_device_read_cycle" name="meter_device_read_cycle" value="{{ meter_device_delete.meter_device_read_cycle }}" class="form-control" disabled="disabled" readonly="readonly">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="meter_device_type" class="sr-only">Meter device type:</label>#}
+{#                        <input type="text" id="meter_device_type" name="meter_device_type" value = "{{ meter_device_delete.meter_device_type }}" class="form-control" disabled="disabled" readonly="readonly">#}
+{#                    </div>#}
+{#		<div class="form-group">#}
+{#                        <label for="created_date" class="sr-only">Created date:</label>#}
+{#                        <input type="text" id="created_date" name="created_date" value="{{ meter_device_delete.created_date}}" class="form-control" disabled="disabled" readonly="readonly">#}
+{#                    </div>#}
+{##}
+{#		<div class="form-group">#}
+{#                        <label for="username" class="sr-only">Username:</label>#}
+{#                        <input type="text" id="username" name="username" value="{{ meter_device_delete.user_id }}" class="form-control" disabled="disabled" readonly="readonly">#}
+{#                    </div>#}
 
-		<div class="form-group">
-                        <label for="username" class="sr-only">Username:</label>
-                        <input type="text" id="username" name="username" value="{{ meter_device_delete.user_id }}" class="form-control" disabled="disabled" readonly="readonly">
-                    </div>
+              {% for field in form %}
+                {{ field|form_class }}
+            {% endfor %}
 
                 <hr/>
                <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Delete">
+              {% csrf_token %}
     		</div> <!-- /.col-xs-12 -->
     	</div> <!-- /.row -->
     </div>
@@ -60,5 +68,6 @@
 </section>
 </fieldset>
 </form>
+      </div>
 {% endblock %}
 

@@ -1,4 +1,6 @@
 {% extends 'base/base_no_auth.html' %}
+{% load add_class %}
+{% load placeholders %}
 {% load static %}
 {% block page_content %}
 <form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm" enctype="multipart/form-data">
@@ -53,10 +55,10 @@
 {#                        <input type="url" id="picture" name="picture" class="form-control" placeholder="Снимка">#}
 {#                    </div>#}
 
-                {{ form.username }}
-                {{ form.email }}
-                {{ form.password1 }}
-                {{ form.password2 }}
+                {{ form.username|form_class|placeholder:"Username: " }}
+                {{ form.email|form_class|placeholder:"Email: " }}
+                {{ form.password1|form_class|placeholder:"Password: " }}
+                {{ form.password2|form_class|placeholder:"Repeat Password: " }}
 <br>
                     <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Влез">
                 {% csrf_token %}

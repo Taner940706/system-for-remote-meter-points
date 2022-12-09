@@ -102,4 +102,11 @@ input[type=search] {
     color: white;
 }
 
+.dataTables_length label{
+    color: black;
+}
+
+.dataTables_filter label {
+    color:black;
+}
 

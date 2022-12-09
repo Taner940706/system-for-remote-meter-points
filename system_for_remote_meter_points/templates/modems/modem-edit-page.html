@@ -12,9 +12,11 @@
 {##}
 
 {% extends 'base/base_auth.html' %}
+{% load add_class %}
+{% load static %}
 {% block page_content %}
-
-
+<div class="col py-3">
+<img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
 				<form class="form-horizontal" id="editNewMeterPointForm" action="{% url 'edit modem' pk=modem_edit.pk %}" method="POST" enctype="multipart/form-data">
 					<fieldset>
                         <section class="vh-70">
@@ -31,7 +33,10 @@
 
 						<div class="changeUsernameMessages"></div>
 
-              {{ form }}
+               {% for field in form %}
+                {{ field|form_class }}
+            {% endfor %}
+
 
 
 {#                        {{ form.first_name }}#}
@@ -61,5 +66,5 @@
                         </section>
 					</fieldset>
 				</form>
-
+</div>
 {% endblock %}
