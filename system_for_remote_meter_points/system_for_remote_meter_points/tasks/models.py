@@ -3,9 +3,6 @@ from django.core.validators import MinLengthValidator, MaxValueValidator, MinVal
 from django.db import models
 
 
-# Create your models here.
-
-
 def only_int(value):
     if not value.isdigit():
         raise ValidationError('Contains characters')
@@ -32,6 +29,7 @@ class Task(models.Model):
     WAIT_COMM = 'In progress...'
 
     OPERATION = (
+        ('', 'Operation'),
         (RESTORE_COMM, RESTORE_COMM),
         (ADD_NEW_METER_POINT, ADD_NEW_METER_POINT),
         (REPLACE_MEW_METER_DEVICE, REPLACE_MEW_METER_DEVICE),
@@ -42,6 +40,7 @@ class Task(models.Model):
     )
 
     RESULT_OPERATION = (
+        ('', 'Result'),
         (NO_COMM, NO_COMM),
         (YES_COMM, YES_COMM),
         (WAIT_COMM, WAIT_COMM),
@@ -62,12 +61,14 @@ class Task(models.Model):
     GABROVO = 'Gabrovo'
 
     VOLTAGE = (
+        ('', 'Voltage'),
         (LOW, LOW),
         (MEDIUM, MEDIUM),
         (HIGH, HIGH),
     )
 
     REGIONAL_CENTER = (
+        ('', 'Regional center'),
         (VARNA, VARNA),
         (DOBRICH, DOBRICH),
         (SHUMEN, SHUMEN),
@@ -118,14 +119,14 @@ class Task(models.Model):
         max_length=FIXED_MODEM_NUMBER_LENGTH,
         validators=(only_int, MinLengthValidator(FIXED_MODEM_NUMBER_LENGTH),),
         blank=False,
-        null=False,)
+        null=False, )
 
     meter_device = models.CharField(
         max_length=FIXED_METER_DEVICE_NUMBER_LENGTH,
         validators=(MinLengthValidator(FIXED_METER_DEVICE_NUMBER_LENGTH),
                     only_int,),
         blank=False,
-        null=False,)
+        null=False, )
 
     created_date = models.DateField(
         # Automatically sets current date on `save` (update or create)
@@ -137,5 +138,3 @@ class Task(models.Model):
         blank=False,
         null=False,
     )
-
-

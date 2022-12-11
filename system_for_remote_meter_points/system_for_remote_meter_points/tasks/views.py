@@ -9,12 +9,10 @@ from django.contrib import messages
 def list_task(request):
     task_list = Task.objects.all()
     is_superuser = request.user.is_superuser
-    # is_perms = request.user.has_perms('tasks.delete_task', 'tasks.change_task')
     context = {
         'task_list': task_list,
         'is_owner': request.user.username,
         'is_superuser': is_superuser,
-        # 'is_perms': is_perms,
 
     }
     return render(request, 'tasks/task-list-page.html', context)

@@ -1,65 +1,67 @@
 {% extends 'base/base_auth.html' %}
 {% block page_content %}
-{#<div class="row">#}
-	<div class="col py-3">
-     {% include 'common/messages.html' %}
-		<div class="panel panel-default">
-			<div class="panel-heading">
-                <div class="page-heading"> <h1><i class="bi bi-list"></i>Modem list</h1></div>
-			</div> <!-- /panel-heading -->
-			<div class="panel-body">
+    <div class="col py-3">
+        {% include 'common/messages.html' %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="page-heading"><h1><i class="bi bi-list"></i>Modem list</h1></div>
+            </div>
+            <div class="panel-body">
 
-				<div class="remove-messages"></div>
-            <div class="div-action pull pull-right" style="padding-bottom:20px;">
-				</div>
-				<br>
+                <div class="remove-messages"></div>
+                <div class="div-action pull pull-right" style="padding-bottom:20px;">
+                </div>
+                <br>
 
-<table class="table" id="manageModemTable">
-					<thead>
-						<tr>
-                            <th>ID</th>
-							<th>Мodem number</th>
-							<th>SIM</th>
-							<th>GSM number</th>
-							<th>IP address</th>
-							<th>Operator</th>
-                            <th>Updated</th>
-                            <th>Option</th>
+                <table class="table" id="manageModemTable">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Мodem number</th>
+                        <th>SIM</th>
+                        <th>GSM number</th>
+                        <th>IP address</th>
+                        <th>Operator</th>
+                        <th>Updated</th>
+                        <th>Option</th>
 
-						</tr>
-					</thead>
+                    </tr>
+                    </thead>
                     {% for modem in modem_list %}
-                <tr>
-                <td>{{ modem.id }}</td>
-                <td>{{ modem.modem_number }}</td>
-                <td>{{ modem.sim.sim_number}}</td>
-                <td>{{ modem.sim.gsm_number }}</td>
-                <td>{{ modem.sim.ip_address }}</td>
-                <td>{{ modem.sim.operator }}</td>
-                    <td>Updated by: {{ modem.user_id }}, Date: {{ modem.created_date }}</td>
+                        <tr>
+                            <td>{{ modem.id }}</td>
+                            <td>{{ modem.modem_number }}</td>
+                            <td>{{ modem.sim.sim_number }}</td>
+                            <td>{{ modem.sim.gsm_number }}</td>
+                            <td>{{ modem.sim.ip_address }}</td>
+                            <td>{{ modem.sim.operator }}</td>
+                            <td>Updated by: {{ modem.user_id }}, Date: {{ modem.created_date }}</td>
 
 
-              <td>
-                  {% if modem.user_id == is_owner or is_superuser%}
-                    <button type="button" class="btn btn-primary" title="Edit"><a href = {% url 'edit modem' pk=modem.id %}><i class="bi bi-pencil"></i></a></button>
-                    <button type="button" class="btn btn-danger" title="Delete"><a href = {% url 'delete modem' pk=modem.id %}><i class="bi bi-trash"></i></a></button>
-                  {% endif %}
-                </td>
-                </tr>
-    {% endfor %}
-				</table>
-				<!-- /table -->
+                            <td>
+                                {% if modem.user_id == is_owner or is_superuser %}
+                                    <button type="button" class="btn btn-primary" title="Edit"><a
+                                            href= {% url 'edit modem' pk=modem.id %}><i class="bi bi-pencil"></i></a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" title="Delete"><a
+                                            href= {% url 'delete modem' pk=modem.id %}><i class="bi bi-trash"></i></a>
+                                    </button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-
-			</div> <!-- /panel-body -->
-		</div> <!-- /panel -->
-    {% if is_perm %}
-		   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createNewModemModal" title="Add"><i class="bi bi-plus-lg"></i>
-  Add modem
-</button>
-    {% endif %}
-	</div> <!-- /col-md-12 -->
-{% include 'modems/modem-add-page.html' %}
+            </div>
+        </div>
+        {% if is_perm %}
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createNewModemModal"
+                    title="Add"><i class="bi bi-plus-lg"></i>
+                Add modem
+            </button>
+        {% endif %}
+    </div>
+    {% include 'modems/modem-add-page.html' %}
 {% endblock %}
 
 

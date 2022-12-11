@@ -3,49 +3,49 @@
 
     <canvas id="myChart" style="width:50%;max-width:1000px"></canvas>
 
-<script>
-const ctx = document.getElementById('myChart');
+    <script>
+        const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-      plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 50;
-      };
-    }
-  }],
-    type: 'pie',
-    data: {
-      labels: [{% for i in label %} '{{ i }}', {% endfor %}],
-      datasets: [{
-        label: 'Count tasks by username',
-        data: {{ data }},
-          backgroundColor : [
-  "#b91d47",
-  "#00aba9",
-  "#2b5797",
-  "#e8c3b9",
-  "#1e7145"
-],
+        new Chart(ctx, {
+            plugins: [{
+                beforeInit: function (chart, options) {
+                    chart.legend.afterFit = function () {
+                        this.height = this.height + 50;
+                    };
+                }
+            }],
+            type: 'pie',
+            data: {
+                labels: [{% for i in label %} '{{ i }}', {% endfor %}],
+                datasets: [{
+                    label: 'Count tasks by username',
+                    data: {{ data }},
+                    backgroundColor: [
+                        "#b91d47",
+                        "#00aba9",
+                        "#2b5797",
+                        "#e8c3b9",
+                        "#1e7145"
+                    ],
 
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
-             responsive: true,
-  legend: {
-    labels: {
-      fontSize: 20,
-    }
-  },
-    }
-  });
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                legend: {
+                    labels: {
+                        fontSize: 20,
+                    }
+                },
+            }
+        });
 
-</script>
+    </script>
 
 {% endblock %}

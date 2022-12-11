@@ -1,118 +1,45 @@
-{#{% extends 'base/base_auth.html' %}#}
-{##}
-{#{% block page_content %}#}
-{##}
-{##}
-{#    <form class="form-horizontal" id="deleteNewTaskForm" action="{% url 'delete task' pk=task.pk %}" method="POST" enctype="multipart/form-data">#}
-{#     {{ form }}#}
-{#             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>#}
-{#            {% csrf_token %}#}
-{#     </form>#}
-{#{% endblock %}#}
-
-{#{% extends 'base/base_auth.html' %}#}
-{##}
-{#{% block page_content %}#}
-
-{#     <form class="form-horizontal" id="deleteNewMeterPointForm" action="{% url 'delete meter points' pk=meter_point_delete.pk %}" method="POST" enctype="multipart/form-data">#}
-{#     {{ form }}#}
-{#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
-{#            {% csrf_token %}#}
-{#     </form>#}
-
-    {% extends 'base/base_auth.html' %}
+{% extends 'base/base_auth.html' %}
 {% load placeholders %}
 {% load add_class %}
 {% load static %}
 
 {% block page_content %}
 
-{#     <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete meter device' pk=meter_device_delete.pk %}" method="POST" enctype="multipart/form-data">#}
-{#     {{ form }}#}
-{#             <button type="submit" name="submit" value="delete" class="delete btn btn-default">Delete</button>#}
-{#            {% csrf_token %}#}
-{#     </form>#}
-<div class="col py-3">
-<img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-    <form class="form-horizontal" id="deleteNewTaskForm" action="{% url 'delete task' pk=task.pk %}" method="POST" enctype="multipart/form-data">
-							<fieldset>
+    <div class="col py-3">
+        <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
+        <form class="form-horizontal" id="deleteNewTaskForm" action="{% url 'delete task' pk=task.pk %}" method="POST"
+              enctype="multipart/form-data">
+            <fieldset>
 
-    <section class="vh-50">
+                <section class="vh-50">
 
-  <div class="container py-5 h-100">
+                    <div class="container py-5 h-100">
 
-    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
 
-      <div class="col-12 col-md-8 col-lg-7 col-xl-5">
+                            <div class="col-12 col-md-8 col-lg-7 col-xl-5">
 
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
+                                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                    <div class="card-body p-5 text-center">
 
-                <h2>Delete meter point</h2>
+                                        <h2>Delete meter point</h2>
 
-{#                    <div class="form-group">#}
-{#                        <label for="ID" class="sr-only">ID:</label>#}
-{#                        <input type="text" id="ID" name="ID" value = "{{ task.pk }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="constant" class="sr-only">Constant:</label>#}
-{#                        <input type="text" id="constant" name="constant" value="{{ task.constant }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="voltage" class="sr-only">Voltage:</label>#}
-{#                        <input type="text" id="voltage" name="voltage" value="{{ task.voltage }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="regional_center" class="sr-only">Regional center</label>#}
-{#                        <input type="text" id="regional_center" name="regional_center" value = "{{ task.regional_center }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="user_id" class="sr-only">Username:</label>#}
-{#                        <input type="text" id="user_id" name="user_id" value="{{ task.username }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{##}
-{#		<div class="form-group">#}
-{#                        <label for="comment" class="sr-only">Comment:</label>#}
-{#                        <input type="text" id="comment" name="comment" value="{{ task.comment}}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#              <div class="form-group">#}
-{#                        <label for="operation" class="sr-only">Operation:</label>#}
-{#                        <input type="text" id="operation" name="operation" value="{{ task.operation }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#              <div class="form-group">#}
-{#                        <label for="result_operation" class="sr-only">Result operation:</label>#}
-{#                        <input type="text" id="result_operation" name="result_operation" value="{{ task.result_operation}}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#               <div class="form-group">#}
-{#                        <label for="modem_id" class="sr-only">Modem number:</label>#}
-{#                        <input type="text" id="modem_id" name="modem_id" value="{{ task.modem }}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#               <div class="form-group">#}
-{#                        <label for="meter_device_id" class="sr-only">Meter device number:</label>#}
-{#                        <input type="text" id="meter_device_id" name="meter_device_id" value="{{ task.meter_device}}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
-{#              <div class="form-group">#}
-{#                        <label for="created_date" class="sr-only">Created date:</label>#}
-{#                        <input type="text" id="created_date" name="created_date" value="{{ task.created_date}}" class="form-control" disabled="disabled" readonly="readonly">#}
-{#                    </div>#}
 
-              {% for field in form %}
-                {{ field|form_class|placeholder:field.label }}
-            {% endfor %}
+                                        {% for field in form %}
+                                            {{ field|form_class|placeholder:field.label }}
+                                        {% endfor %}
 
-                <hr/>
-               <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Delete">
-              {% csrf_token %}
-    		</div> <!-- /.col-xs-12 -->
-    	</div> <!-- /.row -->
+                                        <hr/>
+                                        <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block"
+                                               value="Delete">
+                                        {% csrf_token %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </fieldset>
+        </form>
     </div>
-    </div>
-  </div><!-- /.container -->
-</section>
-</fieldset>
-</form>
-</div>
 {% endblock %}
-
-
-{#{% endblock %}#}

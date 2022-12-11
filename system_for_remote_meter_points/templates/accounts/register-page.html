@@ -3,74 +3,44 @@
 {% load placeholders %}
 {% load static %}
 {% block page_content %}
-<form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm" enctype="multipart/form-data">
-							<fieldset>
+    <form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm"
+          enctype="multipart/form-data">
+        <fieldset>
 
-  	<img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
+            <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
 
-<h1 id="register_h1">System for remote meter points</h1>
-    <section class="vh-50">
+            <h1 id="register_h1">System for remote meter points</h1>
+            <section class="vh-50">
 
-  <div class="container py-5 h-55">
+                <div class="container py-5 h-55">
 
-    <div class="row d-flex justify-content-center align-items-center h-50">
+                    <div class="row d-flex justify-content-center align-items-center h-50">
 
-      <div class="col-12 col-md-8 col-lg-7 col-xl-5">
+                        <div class="col-12 col-md-8 col-lg-7 col-xl-5">
 
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
+                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                <div class="card-body p-5 text-center">
 
-                <h2>Registration</h2>
+                                    <h2>Registration</h2>
 
-{#                    <div class="form-group">#}
-{#                        <label for="username" class="sr-only">КИД</label>#}
-{#                        <input type="text" id="username" name="username" class="form-control" placeholder="КИД">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="email" class="sr-only">Email</label>#}
-{#                        <input type="text" id="email" name="email" class="form-control" placeholder="Email">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="first_name" class="sr-only">Име</label>#}
-{#                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Име">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="last_name" class="sr-only">Фамилия</label>#}
-{#                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Фамилия">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="department" class="sr-only">Отдел</label>#}
-{#                        <input type="text" id="department" name="department" class="form-control" placeholder="Отдел">#}
-{#                    </div>#}
-{#                    <div class="form-group">#}
-{#                        <label for="password" class="sr-only">Парола</label>#}
-{#                        <input type="password"  id="password" name="password" class="form-control" placeholder="Парола">#}
-{#                    </div>#}
-{#		<div class="form-group">#}
-{#                        <label for="repassword" class="sr-only">Повтори парола</label>#}
-{#                        <input type="password"  id="repassword" name="repassword" class="form-control" placeholder="Парола">#}
-{#                    </div>#}
-{#        <div class="form-group">#}
-{#                        <label for="picture" class="sr-only">Снимка</label>#}
-{#                        <input type="url" id="picture" name="picture" class="form-control" placeholder="Снимка">#}
-{#                    </div>#}
 
-                {{ form.username|form_class|placeholder:"Username: " }}
-                {{ form.email|form_class|placeholder:"Email: " }}
-                {{ form.password1|form_class|placeholder:"Password: " }}
-                {{ form.password2|form_class|placeholder:"Repeat Password: " }}
-<br>
-                    <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Enter">
-                {% csrf_token %}
+                                    {{ form.username|form_class|placeholder:"Username: " }}
+                                    {{ form.email|form_class|placeholder:"Email: " }}
+                                    {{ form.password1|form_class|placeholder:"Password: " }}
+                                    {{ form.password2|form_class|placeholder:"Repeat Password: " }}
+                                    <br>
+                                    <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block"
+                                           value="Enter">
+                                    {% csrf_token %}
 
-                <hr/>
-              <a class="link-primary" href="{% url 'login user' %}">You have a registration?</a>
-    		</div> <!-- /.col-xs-12 -->
-    	</div> <!-- /.row -->
-    </div> <!-- /.container -->
-    </div>
-  </div>
-</section>
-</fieldset>
-</form>
+                                    <hr/>
+                                    <a class="link-primary" href="{% url 'login user' %}">You have a registration?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </fieldset>
+    </form>
 {% endblock %}

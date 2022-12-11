@@ -16,4 +16,3 @@ class UserCreateForm(auth_forms.UserCreationForm):
         fields = ('username', 'email',)
         field_classes = {
             'username': auth_forms.UsernameField, }
-

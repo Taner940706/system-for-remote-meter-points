@@ -10,6 +10,7 @@ urlpatterns = (
     path('count_meter_device_types/', count_meter_device_types, name='count meter device types'),
     path('count_tasks_by_username/', count_tasks_by_username, name='count tasks by username'),
     path('count_meter_point_by_time/', count_meter_point_by_time, name='count meter point by time'),
-    path('count_meter_points_by_regional_center/', count_meter_points_by_regional_center, name='count meter point by regional center'),
+    path('count_meter_points_by_regional_center/', count_meter_points_by_regional_center,
+         name='count meter point by regional center'),
     path('dashboard/', dashboard, name='dashboard'),
 )

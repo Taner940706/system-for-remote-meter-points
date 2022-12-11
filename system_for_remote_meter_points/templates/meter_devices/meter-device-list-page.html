@@ -1,57 +1,60 @@
 {% extends 'base/base_auth.html' %}
 {% block page_content %}
-	<div class="col py-3">
-    {% include 'common/messages.html' %}
-		<div class="panel panel-default">
-			<div class="panel-heading">
-                <div class="page-heading"> <h1><i class="bi bi-list"></i>Meter device list</h1></div>
-			</div> <!-- /panel-heading -->
-			<div class="panel-body">
-				<div class="remove-messages"></div>
+    <div class="col py-3">
+        {% include 'common/messages.html' %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="page-heading"><h1><i class="bi bi-list"></i>Meter device list</h1></div>
+            </div>
+            <div class="panel-body">
+                <div class="remove-messages"></div>
 
-				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-				</div>
-				<br>
-<table class="table" id="manageMeterDeviceTable">
-					<thead>
-						<tr>
-                            <th>ID</th>
-							<th>Meter device number</th>
-							<th>Type</th>
-                            <th>Read cycle</th>
-                            <th>Updated</th>
-							<th style="margin: 0 auto;">Option</th>
-						</tr>
-					</thead>
-                         {% for meter_device in meter_device_list %}
-                <tr>
-                <td>{{ meter_device.id }}</td>
-                <td>{{ meter_device.meter_device_number}}</td>
-                <td>{{ meter_device.meter_device_type }}</td>
-                    <td>{{ meter_device.meter_device_read_cycle }}</td>
-                    <td>Updated by: {{ meter_device.user_id }}, Date: {{ meter_device.created_date }}</td>
+                <div class="div-action pull pull-right" style="padding-bottom:20px;">
+                </div>
+                <br>
+                <table class="table" id="manageMeterDeviceTable">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Meter device number</th>
+                        <th>Type</th>
+                        <th>Read cycle</th>
+                        <th>Updated</th>
+                        <th style="margin: 0 auto;">Option</th>
+                    </tr>
+                    </thead>
+                    {% for meter_device in meter_device_list %}
+                        <tr>
+                            <td>{{ meter_device.id }}</td>
+                            <td>{{ meter_device.meter_device_number }}</td>
+                            <td>{{ meter_device.meter_device_type }}</td>
+                            <td>{{ meter_device.meter_device_read_cycle }}</td>
+                            <td>Updated by: {{ meter_device.user_id }}, Date: {{ meter_device.created_date }}</td>
 
-                             <td>
-                                 {% if meter_device.user_id == is_owner or is_superuser %}
-                    <button type="button" class="btn btn-primary" title="Edit"><a href = {% url 'edit meter device' pk=meter_device.id %}><i class="bi bi-pencil"></i></a></button>
-                    <button type="button" class="btn btn-danger" title="Delete"><a href = {% url 'delete meter device' pk=meter_device.id %}><i class="bi bi-trash"></i></a></button>
-                                 {% endif %}
-                </td>
-                </tr>
-{% endfor %}
-				</table>
-				<!-- /table -->
+                            <td>
+                                {% if meter_device.user_id == is_owner or is_superuser %}
+                                    <button type="button" class="btn btn-primary" title="Edit"><a
+                                            href= {% url 'edit meter device' pk=meter_device.id %}><i
+                                            class="bi bi-pencil"></i></a></button>
+                                    <button type="button" class="btn btn-danger" title="Delete"><a
+                                            href= {% url 'delete meter device' pk=meter_device.id %}><i
+                                            class="bi bi-trash"></i></a></button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-
-			</div> <!-- /panel-body -->
-		</div> <!-- /panel -->
-    {% if is_perm %}
-				   <button type="button" class="btn btn-success" title="Add" data-bs-toggle="modal" data-bs-target="#createNewMeterDeviceModal"><i class="bi bi-plus-lg"></i>
-  Add meter device
-</button>
-    {% endif %}
-	</div> <!-- /col-md-12 -->
-{% include 'meter_devices/meter-device-add-page.html' %}
+            </div>
+        </div>
+        {% if is_perm %}
+            <button type="button" class="btn btn-success" title="Add" data-bs-toggle="modal"
+                    data-bs-target="#createNewMeterDeviceModal"><i class="bi bi-plus-lg"></i>
+                Add meter device
+            </button>
+        {% endif %}
+    </div>
+    {% include 'meter_devices/meter-device-add-page.html' %}
 {% endblock %}
 
 

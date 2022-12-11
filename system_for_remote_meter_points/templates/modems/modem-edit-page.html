@@ -1,71 +1,46 @@
-{#{% extends 'base/base_auth.html' %}#}
-{##}
-{#{% block page_content %}#}
-{##}
-{##}
-{#    <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit modem' pk=modem_edit.pk %}" method="POST" enctype="multipart/form-data">#}
-{#     {{ form }}#}
-{#             <button type="submit" name="submit" value="delete" class="delete btn btn-success">Edit</button>#}
-{#            {% csrf_token %}#}
-{#     </form>#}
-{#{% endblock %}#}
-{##}
-
 {% extends 'base/base_auth.html' %}
 {% load placeholders %}
 {% load add_class %}
 {% load static %}
 {% block page_content %}
-<div class="col py-3">
-<img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-				<form class="form-horizontal" id="editNewMeterPointForm" action="{% url 'edit modem' pk=modem_edit.pk %}" method="POST" enctype="multipart/form-data">
-					<fieldset>
-                        <section class="vh-70">
+    <div class="col py-3">
+        <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
+        <form class="form-horizontal" id="editNewMeterPointForm" action="{% url 'edit modem' pk=modem_edit.pk %}"
+              method="POST" enctype="multipart/form-data">
+            <fieldset>
+                <section class="vh-70">
 
-  <div class="container py-5 h-100">
+                    <div class="container py-5 h-100">
 
-    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
 
-      <div class="col-12 col-md-8 col-lg-7 col-xl-5">
+                            <div class="col-12 col-md-8 col-lg-7 col-xl-5">
 
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
-						<legend>Edit modem data</legend>
+                                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                    <div class="card-body p-5 text-center">
+                                        <legend>Edit modem data</legend>
 
-						<div class="changeUsernameMessages"></div>
+                                        <div class="changeUsernameMessages"></div>
 
-               {% for field in form %}
-                {{ field|form_class|placeholder:field.label }}
-            {% endfor %}
+                                        {% for field in form %}
+                                            {{ field|form_class|placeholder:field.label }}
+                                        {% endfor %}
 
-
-
-{#                        {{ form.first_name }}#}
-{#                        <br>#}
-{#                        {{ form.last_name }}#}
-{#                        <br>#}
-{#                        {{ form.email }}#}
-{#                        <br>#}
-{#                        {{ form.department }}#}
-{#                        <br>#}
-{#                        {{ form.picture }}#}
-{#                        <br>#}
-
-
-					  <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
-					      <button type="submit" name="submit" id="del" value="edit" class="delete btn btn-success">Save changes</button>
-                        {% csrf_token %}
-					    </div>
-					  </div>
-          </div>
-        </div>
-      </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" name="submit" id="del" value="edit"
+                                                        class="delete btn btn-success">Save changes
+                                                </button>
+                                                {% csrf_token %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </fieldset>
+        </form>
     </div>
-  </div>
-                        </section>
-					</fieldset>
-				</form>
-</div>
 {% endblock %}

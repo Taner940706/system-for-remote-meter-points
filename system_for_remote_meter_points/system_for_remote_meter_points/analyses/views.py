@@ -7,11 +7,8 @@ from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.tasks.models import Task
 
 
-
-# Create your views here.
 @login_required
 def count_task_operations(request):
-
     label = []
     data = []
 
@@ -32,7 +29,6 @@ def count_task_operations(request):
 
 @login_required
 def count_result_tasks(request):
-
     label = []
     data = []
 
@@ -54,7 +50,6 @@ def count_result_tasks(request):
 
 @login_required
 def count_meter_device_types(request):
-
     label = []
     data = []
 
@@ -76,7 +71,6 @@ def count_meter_device_types(request):
 
 @login_required
 def count_tasks_by_username(request):
-
     label = []
     data = []
 
@@ -98,7 +92,6 @@ def count_tasks_by_username(request):
 
 @login_required
 def count_meter_point_by_time(request):
-
     label = []
     data = []
 
@@ -120,7 +113,6 @@ def count_meter_point_by_time(request):
 
 @login_required
 def count_meter_points_by_regional_center(request):
-
     label = []
     data = []
 
@@ -142,13 +134,16 @@ def count_meter_points_by_regional_center(request):
 
 @login_required
 def dashboard(request):
-
-    count_success_tasks = Task.objects.filter(result_operation="Successful communication").filter(username=request.user.username).count()
-    count_failed_tasks = Task.objects.filter(result_operation="No communication").filter(username=request.user.username).count()
-    count_in_progress_tasks = Task.objects.filter(result_operation="In progress...").filter(username=request.user.username).count()
+    count_success_tasks = Task.objects.filter(result_operation="Successful communication").filter(
+        username=request.user.username).count()
+    count_failed_tasks = Task.objects.filter(result_operation="No communication").filter(
+        username=request.user.username).count()
+    count_in_progress_tasks = Task.objects.filter(result_operation="In progress...").filter(
+        username=request.user.username).count()
     count_all_meter_points = MeterPoint.objects.all().count()
     count_all_tasks = Task.objects.all().count()
-    count_all_tasks_today = Task.objects.filter(created_date=datetime.now().date()).filter(username=request.user.username).count()
+    count_all_tasks_today = Task.objects.filter(created_date=datetime.now().date()).filter(
+        username=request.user.username).count()
 
     context = {
         'count_success_tasks': count_success_tasks,
@@ -160,11 +155,6 @@ def dashboard(request):
         'username': request.user.username,
         'first_name': request.user.first_name,
         'last_name': request.user.last_name,
-        # 'is_owner': request.user,
     }
 
     return render(request, 'analyses/../../templates/accounts/dashboard.html', context)
-
-
-
-

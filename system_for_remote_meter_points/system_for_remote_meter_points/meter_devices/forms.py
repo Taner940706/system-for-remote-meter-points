@@ -31,6 +31,7 @@ class MeterDeviceBaseForm(forms.ModelForm):
 
         }
 
+
 class CreateMeterDeviceForm(MeterDeviceBaseForm):
     pass
 

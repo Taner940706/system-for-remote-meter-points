@@ -11,7 +11,6 @@ def validate_only_letters(value):
 
 
 class AppUser(auth_model.AbstractUser):
-
     MAX_FIRST_NAME_LEN = 30
     MIN_FIRST_NAME = 4
     MAX_LAST_NAME_LEN = 30
@@ -33,7 +32,7 @@ class AppUser(auth_model.AbstractUser):
         max_length=MAX_FIRST_NAME_LEN,
         validators=(
             MinLengthValidator(MIN_FIRST_NAME), validate_only_letters),
-        )
+    )
     last_name = models.CharField(
         max_length=MAX_LAST_NAME_LEN,
         validators=(

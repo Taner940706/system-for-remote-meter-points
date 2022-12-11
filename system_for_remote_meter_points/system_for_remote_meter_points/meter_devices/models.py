@@ -2,12 +2,8 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 
-# Create your models here.
 from django.db import models
 
-
-
-# Create your models here.
 UserModel = get_user_model()
 
 
@@ -17,7 +13,6 @@ def only_int(value):
 
 
 class MeterDevice(models.Model):
-
     FIXED_METER_DEVICE_NUMBER_LENGTH = 16
 
     ISKRA = 'ISKRA'
@@ -31,6 +26,7 @@ class MeterDevice(models.Model):
     READ_PER_24_HOURS = 'Read per 24 hours'
 
     METER_DEVICE_TYPE = (
+        ('', 'Meter device type'),
         (ISKRA, ISKRA),
         (GAMA, GAMA),
         (AMT, AMT),
@@ -38,6 +34,7 @@ class MeterDevice(models.Model):
     )
 
     READ_CYCLE = (
+        ('', 'Read cycle'),
         (READ_PER_15_MIN, READ_PER_15_MIN),
         (READ_PER_1_HOUR, READ_PER_1_HOUR),
         (READ_PER_8_HOURS, READ_PER_8_HOURS),
@@ -50,7 +47,7 @@ class MeterDevice(models.Model):
                     only_int,),
         unique=True,
         blank=False,
-        null=False,)
+        null=False, )
     meter_device_type = models.TextField(
         choices=METER_DEVICE_TYPE,
         null=False,
@@ -76,8 +73,3 @@ class MeterDevice(models.Model):
 
     def __str__(self):
         return self.meter_device_number
-
-
-
-
-

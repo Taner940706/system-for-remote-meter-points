@@ -1,11 +1,7 @@
-
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator, MaxValueValidator, MinValueValidator
 from django.db import models
 
-
-
-# Create your models here.
 UserModel = get_user_model()
 
 
@@ -29,6 +25,7 @@ class MeterPoint(models.Model):
     WAIT_COMM = 'In progress...'
 
     OPERATION = (
+        ('', 'Operation'),
         (RESTORE_COMM, RESTORE_COMM),
         (ADD_NEW_METER_POINT, ADD_NEW_METER_POINT),
         (REPLACE_MEW_METER_DEVICE, REPLACE_MEW_METER_DEVICE),
@@ -39,6 +36,7 @@ class MeterPoint(models.Model):
     )
 
     RESULT_OPERATION = (
+        ('', 'Result'),
         (NO_COMM, NO_COMM),
         (YES_COMM, YES_COMM),
         (WAIT_COMM, WAIT_COMM),
@@ -59,12 +57,14 @@ class MeterPoint(models.Model):
     GABROVO = 'Gabrovo'
 
     VOLTAGE = (
+        ('', 'Voltage'),
         (LOW, LOW),
         (MEDIUM, MEDIUM),
         (HIGH, HIGH),
     )
 
     REGIONAL_CENTER = (
+        ('', 'Regional center'),
         (VARNA, VARNA),
         (DOBRICH, DOBRICH),
         (SHUMEN, SHUMEN),
@@ -82,11 +82,11 @@ class MeterPoint(models.Model):
             MinLengthValidator(MIN_MP_LENGTH),),
         unique=True,
         blank=False,
-        null=False,)
+        null=False, )
     constant = models.PositiveIntegerField(
         validators=(MaxValueValidator(MAX_CONSTANT_VALUE), MinValueValidator(MIN_CONSTANT_VALUE),),
         blank=False,
-        null=False,)
+        null=False, )
     voltage = models.TextField(
         choices=VOLTAGE,
         null=False,
@@ -106,14 +106,13 @@ class MeterPoint(models.Model):
         choices=RESULT_OPERATION,
         null=False,
         blank=False,
-        )
+    )
     comment = models.TextField(
         blank=True,
         null=True,
     )
 
     created_date = models.DateField(
-        # Automatically sets current date on `save` (update or create)
         auto_now=True,
         null=False,
         blank=True,

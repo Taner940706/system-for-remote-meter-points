@@ -4,135 +4,50 @@
 {% load static %}
 {% block page_content %}
 
-<div class="col py-3">
-				<form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm" enctype="multipart/form-data">
-					<fieldset>
-                        <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-                        <section class="vh-50">
+    <div class="col py-3">
+        <form action="{% url 'edit user' pk=object.pk %}" method="post" class="form-horizontal" id="changeUsernameForm"
+              enctype="multipart/form-data">
+            <fieldset>
+                <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
+                <section class="vh-50">
 
-  <div class="container py-5 h-100">
+                    <div class="container py-5 h-100">
 
-    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
 
-      <div class="col-12 col-md-8 col-lg-7 col-xl-5">
+                            <div class="col-12 col-md-8 col-lg-7 col-xl-5">
 
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
-						<legend>Edit profile data</legend>
+                                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                    <div class="card-body p-5 text-center">
+                                        <legend>Edit profile data</legend>
 
-						<div class="changeUsernameMessages"></div>
-
-{#						<div class="form-group">#}
-{#					    <label for="username" class="col-sm-2 control-label">КИД</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="text" class="form-control" id="username" name="username" placeholder="КИД" value=""/>#}
-{#					    </div>#}
-{#					  </div>#}
-{##}
-{#					  <div class="form-group">#}
-{#					    <label for="first_name" class="col-sm-2 control-label">Име на служител</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Име на служител" value=""/>#}
-{#					    </div>#}
-{#					  </div>#}
-{#					<div class="form-group">#}
-{#					    <label for="last_name" class="col-sm-2 control-label">Фамилия на служител</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия на служител" value=""/>#}
-{#					    </div>#}
-{#					  </div>#}
-{#					<div class="form-group">#}
-{#					    <label for="email" class="col-sm-2 control-label">Email</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="text" class="form-control" id="email" name="email" placeholder="Email" value=""/>#}
-{#					    </div>#}
-{#					  </div>#}
-{#					<div class="form-group">#}
-{#					    <label for="department" class="col-sm-2 control-label">Отдел</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="text" class="form-control" id="department" name="email" placeholder="Отдел" value=""/>#}
-{#					    </div>#}
-{#					  </div>#}
-{#					<div class="form-group">#}
-{#					    <label for="picture" class="col-sm-2 control-label">Снимка</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="url" class="form-control" id="picture" name="email" placeholder="Снимка" value=""/>#}
-{#					    </div>#}
-{#					  </div>#}
-
-{#                        {{ form.first_name }}#}
-{#                        <br>#}
-{#                        {{ form.last_name }}#}
-{#                        <br>#}
-{#                        {{ form.email }}#}
-{#                        <br>#}
-{#                        {{ form.department }}#}
-{#                        <br>#}
-{#                        {{ form.picture }}#}
-{#                        <br>#}
-
-              {{ form.first_name|form_class|placeholder:"First name: " }}
-                {{ form.last_name|form_class|placeholder:"Last name: " }}
-                {{ form.email|form_class|placeholder:"Email: " }}
-                {{ form.department|form_class|placeholder:"Department: " }}
-              {{ form.picture|form_class|placeholder:"Picture: " }}
+                                        <div class="changeUsernameMessages"></div>
 
 
-					  <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-12">
-{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
-					      <button type="submit" class="btn btn-success" data-loading-text="Loading..." id="changeUsernameBtn"> <i class="glyphicon glyphicon-ok-sign"></i> Save changes </button>
-                            {% csrf_token %}
-					    </div>
-					  </div>
-          </div>
-        </div>
-      </div>
+                                        {{ form.first_name|form_class|placeholder:"First name: " }}
+                                        {{ form.last_name|form_class|placeholder:"Last name: " }}
+                                        {{ form.email|form_class|placeholder:"Email: " }}
+                                        {{ form.department|form_class|placeholder:"Department: " }}
+                                        {{ form.picture|form_class|placeholder:"Picture: " }}
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-12">
+                                                <button type="submit" class="btn btn-success"
+                                                        data-loading-text="Loading..." id="changeUsernameBtn"><i
+                                                        class="glyphicon glyphicon-ok-sign"></i> Save changes
+                                                </button>
+                                                {% csrf_token %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </fieldset>
+        </form>
     </div>
-  </div>
-                        </section>
-					</fieldset>
-				</form>
-</div>
 
-{#				<form action="" method="post" class="form-horizontal" id="changePasswordForm">#}
-{#					<fieldset>#}
-{#						<legend>Промени паролата</legend>#}
-{##}
-{#						<div class="changePasswordMessages"></div>#}
-{##}
-{#						<div class="form-group">#}
-{#					    <label for="password" class="col-sm-2 control-label">Текуща парола</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="password" class="form-control" id="password" name="password" placeholder="Текуща парола">#}
-{#					    </div>#}
-{#					  </div>#}
-{##}
-{#					  <div class="form-group">#}
-{#					    <label for="npassword" class="col-sm-2 control-label">Нова парола</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="password" class="form-control" id="npassword" name="npassword" placeholder="Нова парола">#}
-{#					    </div>#}
-{#					  </div>#}
-{##}
-{#					  <div class="form-group">#}
-{#					    <label for="cpassword" class="col-sm-2 control-label">Повтори новата парола</label>#}
-{#					    <div class="col-sm-10">#}
-{#					      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Повтори новата парола">#}
-{#					    </div>#}
-{#					  </div>#}
-{##}
-{#					  <div class="form-group">#}
-{#					    <div class="col-sm-offset-2 col-sm-10">#}
-{#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
-{#					      <button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-ok-sign"></i> Запамети промените </button>#}
-{##}
-{#					    </div>#}
-{#					  </div>#}
-{##}
-{##}
-{#					</fieldset>#}
-{#				</form>#}
-{##}
-{#-- /row-->#}
 {% endblock %}

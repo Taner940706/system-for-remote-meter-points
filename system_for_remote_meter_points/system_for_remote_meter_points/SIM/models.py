@@ -3,8 +3,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 
-
-# Create your models here.
 UserModel = get_user_model()
 
 
@@ -23,6 +21,7 @@ class SIM(models.Model):
     VIVACOM = 'Vivacom'
 
     OPERATOR = (
+        ('', 'Operator'),
         (AONE, AONE),
         (YETTEL, YETTEL),
         (VIVACOM, VIVACOM),
@@ -34,13 +33,13 @@ class SIM(models.Model):
             only_int,),
         unique=True,
         blank=False,
-        null=False,)
+        null=False, )
     gsm_number = models.CharField(
         max_length=FIXED_GSM_NUMBER_LENGTH,
         validators=(MinLengthValidator(FIXED_GSM_NUMBER_LENGTH),
                     only_int,),
         blank=False,
-        null=False,)
+        null=False, )
     ip_address = models.GenericIPAddressField(
         null=False,
         blank=False,
@@ -51,7 +50,6 @@ class SIM(models.Model):
         blank=False,
     )
     created_date = models.DateField(
-        # Automatically sets current date on `save` (update or create)
         auto_now=True,
         null=False,
         blank=True,
@@ -66,6 +64,3 @@ class SIM(models.Model):
 
     def __str__(self):
         return self.sim_number
-
-
-
