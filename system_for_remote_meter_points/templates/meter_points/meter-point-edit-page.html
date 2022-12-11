@@ -24,6 +24,7 @@
 {#{% endblock %}#}
 
 {% extends 'base/base_auth.html' %}
+{% load placeholders %}
 {% load add_class %}
 {% load static %}
 {% block page_content %}
@@ -37,7 +38,7 @@
 
     <div class="row d-flex justify-content-center align-items-center h-100">
 
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="col-12 col-md-8 col-lg-7 col-xl-5">
 
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
@@ -46,7 +47,7 @@
 						<div class="changeUsernameMessages"></div>
 
                {% for field in form %}
-                {{ field|form_class }}
+                {{ field|form_class|placeholder:field.label }}
             {% endfor %}
 
 
@@ -66,7 +67,7 @@
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
 {#					    	<input type="hidden" name="user_id" id="user_id" value="" />#}
-					      <button type="submit" name="submit" value="edit" class="delete btn btn-success">Save changes</button>
+					      <button type="submit" name="submit" id="del" value="edit" class="delete btn btn-success">Save changes</button>
                         {% csrf_token %}
 					    </div>
 					  </div>

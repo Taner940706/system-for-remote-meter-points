@@ -21,7 +21,9 @@
 <div class="col py-3">
     <div class="container">
 <div class="row">
+
     <div class="col-lg-6">
+    <h1> Details for {{ task_details.mp_name }}</h1>
         <div class="card card-margin">
             <div class="card-header no-border">
                 <h5 class="card-title">Created by: {{ task_details.username }}</h5>
@@ -48,7 +50,7 @@
                         {% else %}
                         <li class="widget-49-meeting-item"><span>Comment: No data</span></li>
                         {% endif %}
-                        <li class="widget-49-meeting-item"><span>Operation: {{ task_details.operation }}<</span></li>
+                        <li class="widget-49-meeting-item"><span>Operation: {{ task_details.operation }}</span></li>
                         <li class="widget-49-meeting-item"><span>Result operation: {{ task_details.result_operation }}</span></li>
                         <li class="widget-49-meeting-item"><span>Modem number: {{ task_details.modem }}</span></li>
                     </ul>

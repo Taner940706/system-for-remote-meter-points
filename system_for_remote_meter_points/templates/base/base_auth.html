@@ -42,7 +42,7 @@
                 <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImageTrans" alt="лого">
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-1" id="userProfile">{{ request.user.username }}</span>
+                        <span class="d-none d-sm-inline mx-4" id="userProfile">{{ request.user.username }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a></li>
@@ -107,7 +107,7 @@
 {##}
 {#                        </ul>#}
 {#                    </li>#}
-
+                    {% if request.user.is_superuser %}
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Analyses</span> <i class="bi bi-toggle-on"></i> </a>
@@ -132,7 +132,7 @@
                             </li>
                         </ul>
                     </li>
-
+                {% endif %}
                 </ul>
                 <hr>
 

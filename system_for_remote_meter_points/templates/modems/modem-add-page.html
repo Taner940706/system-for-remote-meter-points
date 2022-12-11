@@ -1,3 +1,4 @@
+{% load placeholders %}
 {% load add_class %}
 <div class="modal fade" id="createNewModemModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
   <div class="modal-dialog">
@@ -11,7 +12,7 @@
 
 
             {% for field in form %}
-                {{ field|form_class }}
+                {{ field|form_class|placeholder:field.label }}
             {% endfor %}
 
 

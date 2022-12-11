@@ -23,7 +23,7 @@ def list_modem(request):
 			modem.save()
 			messages.success(request, "Modem successfully created!")
 		else:
-			messages.error(request, "SIM doesn't created!")
+			messages.error(request, form.errors)
 		return redirect('list modem')
 
 	context = {
@@ -51,7 +51,7 @@ def edit_modem(request, pk):
 			modem.save()
 			messages.success(request, "Modem successfully updated!")
 		else:
-			messages.error(request, "Modem doesn't updated!")
+			messages.error(request, form.errors)
 		return redirect('list modem')
 
 	context = {
@@ -75,7 +75,7 @@ def delete_modem(request, pk):
 			form.save()
 			messages.success(request, "Modem successfully deleted!")
 		else:
-			messages.error(request, "SIM doesn't deleted!")
+			messages.error(request, form.errors)
 		return redirect('list modem')
 
 	context = {

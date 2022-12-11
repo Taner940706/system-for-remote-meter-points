@@ -76,15 +76,15 @@
 		  </div>
 
 		  <div class="cardContainer">
-		    <p> <i class="glyphicon glyphicon-list-alt"></i>Count of all tasks for today</p>
+		    <p> <i class="glyphicon glyphicon-list-alt"></i>Count of all tasks for today created by {{ request.user.username }}</p>
 		  </div>
 		</div>
 
 	</div>
 
-<div class="col-lg-6 mb-4 mb-lg-0">
+<div class="col-lg-7 mb-4 mb-lg-0">
     {% if request.user.picture %}
-    <img src="../../media/{{ request.user.picture }}" class="userImage" alt="{{ request.user.name }}"/>
+    <img src="../../media/{{ request.user.picture }}" class="userImage" alt="{{ request.username }}"/>
     {% else %}
     <img src="{% static 'images/anonym_user.jpg' %}" class="userImage" alt="anonym"/>
     {% endif %}

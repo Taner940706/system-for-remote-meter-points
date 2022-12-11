@@ -25,7 +25,7 @@ def list_meter_device(request):
 			modem.save()
 			messages.success(request, "Meter device successfully created!")
 		else:
-			messages.error(request, "Meter device doesn't created!")
+			messages.error(request, form.errors)
 		return redirect('list meter device')
 
 	context = {
@@ -54,7 +54,7 @@ def edit_meter_device(request, pk):
 			modem.save()
 			messages.success(request, "Meter device successfully updated!")
 		else:
-			messages.error(request, "Meter device doesn't updated!")
+			messages.error(request, form.errors)
 		return redirect('list meter device')
 
 	context = {
@@ -78,7 +78,7 @@ def delete_meter_device(request, pk):
 			form.save()
 			messages.success(request, "Meter device successfully deleted!")
 		else:
-			messages.error(request, "Meter device doesn't deleted!")
+			messages.error(request, form.errors)
 		return redirect('list meter device')
 
 	context = {

@@ -29,7 +29,7 @@ def edit_task(request, pk):
             form.save()
             messages.success(request, "Task successfully updated!")
         else:
-            messages.error(request, "Task doesn't updated!")
+            messages.error(request, form.errors)
         return redirect('list task')
 
     else:
@@ -56,7 +56,7 @@ def delete_task(request, pk):
             form.save()
             messages.success(request, "Task successfully deleted!")
         else:
-            messages.error(request, "Task doesn't deleted!")
+            messages.error(request, form.errors)
         return redirect('list task')
 
     context = {

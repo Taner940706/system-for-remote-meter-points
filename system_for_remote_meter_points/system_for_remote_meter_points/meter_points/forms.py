@@ -34,7 +34,9 @@ class MeterPointBaseForm(forms.ModelForm):
             ),
 
             'constant': forms.NumberInput(
-
+                attrs={
+                    'placeholder': 'Constant',
+                }
             ),
 
             'modem': forms.TextInput(
@@ -42,6 +44,11 @@ class MeterPointBaseForm(forms.ModelForm):
                     'placeholder': 'Modem number',
                 }
 
+            ),
+            'comment': forms.Textarea(
+                attrs={
+                    'placeholder': 'Comment',
+                }
             ),
             'user': forms.TextInput(
                 attrs={

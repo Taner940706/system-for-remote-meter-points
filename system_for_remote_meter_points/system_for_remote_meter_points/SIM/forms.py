@@ -30,7 +30,9 @@ class SIMBaseForm(forms.ModelForm):
 
             ),
             'ip_address': forms.TextInput(
-
+                attrs={
+                    'placeholder': 'IP address',
+                }
 
             ),
             'user': forms.TextInput(

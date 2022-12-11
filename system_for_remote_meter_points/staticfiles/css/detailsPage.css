@@ -317,3 +317,14 @@ body{
 .widget-49-meeting-points {
   list-style-type: none
 }
+.col-lg-6{
+  margin-left: 300px;
+  margin-top: 100px;
+}
+.col-lg-6 h1{
+  margin-bottom: 30px;
+  color: #343C7A;
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}

@@ -9,6 +9,7 @@
 {#     </form>#}
 
     {% extends 'base/base_auth.html' %}
+{% load placeholders %}
 {% load add_class %}
 {% load static %}
 
@@ -30,7 +31,7 @@
 
     <div class="row d-flex justify-content-center align-items-center h-100">
 
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="col-12 col-md-8 col-lg-7 col-xl-5">
 
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
@@ -84,7 +85,7 @@
 {#                    </div>#}
 
               {% for field in form %}
-                {{ field|form_class }}
+                {{ field|form_class|placeholder:field.label }}
             {% endfor %}
 
                 <hr/>

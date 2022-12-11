@@ -69,9 +69,13 @@ class MeterDevice(models.Model):
     user = models.ForeignKey(
         UserModel,
         to_field='username',
-        on_delete=models.SET_NULL,
+        default="Unknown",
+        on_delete=models.SET_DEFAULT,
         null=True,
     )
+
+    def __str__(self):
+        return self.meter_device_number
 
 
 

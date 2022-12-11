@@ -35,7 +35,7 @@ def list_meter_point(request):
 			create_task.save()
 			messages.success(request, "Meter point successfully created!")
 		else:
-			messages.error(request, "Meter point doesn't created!")
+			messages.error(request, form.errors)
 		return redirect('list meter points')
 	context = {
 		'meter_point_list': meter_point_list,
@@ -71,7 +71,7 @@ def edit_meter_point(request, pk):
 			create_task.save()
 			messages.success(request, "Meter point successfully updated!")
 		else:
-			messages.error(request, "Meter point doesn't updated!")
+			messages.error(request, form.errors)
 		return redirect('list meter points')
 
 	context = {
@@ -118,7 +118,7 @@ def delete_meter_point(request, pk):
 			messages.success(request, "Meter point successfully deleted!")
 
 		else:
-			messages.error(request, "Meter point doesn't deleted!")
+			messages.error(request, form.errors)
 		return redirect('list meter points')
 
 

@@ -1,0 +1,8 @@
+#id_mp_name, #id_constant, #id_user, #id_meter_device, #id_modem, #id_comment, #id_meter_device_number, #id_sim_number, #id_gsm_number, #id_ip_address, #id_modem_number, #id_sim{
+    margin-bottom: 20px;
+}
+.modal-body{
+    margin-outside: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}

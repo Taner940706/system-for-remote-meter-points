@@ -22,7 +22,7 @@ def list_SIM(request):
 			sim.save()
 			messages.success(request, "SIM successfully created!")
 		else:
-			messages.error(request, "SIM doesn't created!")
+			messages.error(request, form.errors)
 		return redirect('list SIM')
 
 	context = {
@@ -51,7 +51,7 @@ def edit_SIM(request, pk):
 			sim_1.save()
 			messages.success(request, "SIM successfully updated!")
 		else:
-			messages.error(request, "SIM doesn't updated!")
+			messages.error(request, form.errors)
 		return redirect('list SIM')
 
 	context = {
@@ -75,7 +75,7 @@ def delete_SIM(request, pk):
 			form.save()
 			messages.success(request, "SIM successfully deleted!")
 		else:
-			messages.error(request, "SIM doesn't deleted!")
+			messages.error(request, form.errors)
 		return redirect('list SIM')
 
 	context = {
