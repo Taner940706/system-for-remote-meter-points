@@ -8,7 +8,7 @@
 
         new Chart(ctx, {
             plugins: [{
-                beforeInit: function (chart, options) {
+                beforeInit: function (chart) {
                     chart.legend.afterFit = function () {
                         this.height = this.height + 50;
                     };

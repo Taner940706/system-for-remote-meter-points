@@ -1,3 +1,4 @@
+{% load list %}
 {% load placeholders %}
 {% load add_class %}
 <div class="modal fade" id="createNewMeterPointModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
@@ -13,8 +14,10 @@
                 <div class="modal-body">
 
                     {% for field in form %}
-                        {{ field|form_class|placeholder:field.label }}
+                        {{ field|form_class|lists:field.label|placeholder:field.label }}
                     {% endfor %}
+
+                {% include 'base/datalists.html' %}
 
                 </div>
                 <div class="modal-footer">

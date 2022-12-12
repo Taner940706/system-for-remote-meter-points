@@ -8,4 +8,5 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ("mp_name", "operation", "result_operation", "meter_device", "username", "created_date")
     list_filter = ("operation", "result_operation")
     search_fields = ("mp_name__contains",)
+    list_per_page = 10
     ordering = ('-created_date',)

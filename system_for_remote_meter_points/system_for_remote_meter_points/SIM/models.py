@@ -1,14 +1,19 @@
+from enum import Enum
+
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
+
+from system_for_remote_meter_points.core.model_mixins import ChoicesEnumMixin
+from system_for_remote_meter_points.core.validators import only_int
 
 UserModel = get_user_model()
 
 
-def only_int(value):
-    if not value.isdigit():
-        raise ValidationError('Contains characters')
+class Operator(ChoicesEnumMixin, Enum):
+    AONE = 'А1'
+    YETTEL = 'Yettel'
+    VIVACOM = 'Vivacom'
 
 
 class SIM(models.Model):
@@ -16,16 +21,16 @@ class SIM(models.Model):
     MIN_SIM_NUMBER_LENGTH = 14
     FIXED_GSM_NUMBER_LENGTH = 10
 
-    AONE = 'А1'
-    YETTEL = 'Yettel'
-    VIVACOM = 'Vivacom'
-
-    OPERATOR = (
-        ('', 'Operator'),
-        (AONE, AONE),
-        (YETTEL, YETTEL),
-        (VIVACOM, VIVACOM),
-    )
+    # AONE = 'А1'
+    # YETTEL = 'Yettel'
+    # VIVACOM = 'Vivacom'
+    #
+    # OPERATOR = (
+    #     ('', 'Operator'),
+    #     (AONE, AONE),
+    #     (YETTEL, YETTEL),
+    #     (VIVACOM, VIVACOM),
+    # )
     sim_number = models.CharField(
         max_length=MAX_SIM_NUMBER_LENGTH,
         validators=(
@@ -45,7 +50,7 @@ class SIM(models.Model):
         blank=False,
     )
     operator = models.TextField(
-        choices=OPERATOR,
+        choices=Operator.choices(),
         null=False,
         blank=False,
     )

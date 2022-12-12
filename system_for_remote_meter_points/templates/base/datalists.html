@@ -1,0 +1,15 @@
+<datalist id="SIM number:">
+                    {% for s in sim %}
+                        <option value="{{ s.sim_number }}">{{ s.sim_number }}</option>
+                    {% endfor %}
+                </datalist>
+<datalist id="Meter device number:">
+                    {% for m in meter_device %}
+                        <option value="{{ m.meter_device_number }}">{{ m.meter_device_number }}</option>
+                    {% endfor %}
+                </datalist>
+<datalist id="Modem number:">
+                    {% for m in modem %}
+                        <option value="{{ m.modem_number }}">{{ m.modem_number }}</option>
+                    {% endfor %}
+                </datalist>

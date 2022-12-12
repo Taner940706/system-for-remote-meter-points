@@ -12,7 +12,6 @@ def list_SIM(request):
     }
     is_perm = request.user.has_perm('SIM.add_sim')
     sim_list = SIM.objects.all()
-    is_superuser = request.user.is_superuser
     if request.method == 'GET':
         form = CreateSIMForm(initial=initial_logged_user)
     else:
@@ -30,7 +29,7 @@ def list_SIM(request):
         'form': form,
         'is_perm': is_perm,
         'is_owner': request.user.username,
-        'is_superuser': is_superuser,
+        'is_superuser': request.user.is_superuser,
 
     }
     return render(request, 'SIM/SIM-list-page.html', context)
@@ -41,11 +40,11 @@ def edit_SIM(request, pk):
     initial_logged_user = {
         'user': request.user.username
     }
-    sim_list_1 = SIM.objects.filter(pk=pk).get()
+    sim_edit = SIM.objects.filter(pk=pk).get()
     if request.method == 'GET':
-        form = EditSIMForm(instance=sim_list_1, initial=initial_logged_user)
+        form = EditSIMForm(instance=sim_edit, initial=initial_logged_user)
     else:
-        form = EditSIMForm(request.POST, instance=sim_list_1, initial=initial_logged_user)
+        form = EditSIMForm(request.POST, instance=sim_edit, initial=initial_logged_user)
         if form.is_valid():
             sim_1 = form.save(commit=False)
             sim_1.save()
@@ -56,7 +55,7 @@ def edit_SIM(request, pk):
 
     context = {
         'form': form,
-        'sim_list_1': sim_list_1,
+        'sim_edit': sim_edit,
     }
     return render(request, 'SIM/SIM-edit-page.html', context)
 
@@ -66,11 +65,11 @@ def delete_SIM(request, pk):
     initial_logged_user = {
         'user': request.user.username
     }
-    sim_list_2 = SIM.objects.filter(pk=pk).get()
+    sim_delete = SIM.objects.filter(pk=pk).get()
     if request.method == 'GET':
-        form = DeleteSIMForm(instance=sim_list_2, initial=initial_logged_user)
+        form = DeleteSIMForm(instance=sim_delete, initial=initial_logged_user)
     else:
-        form = DeleteSIMForm(request.POST, instance=sim_list_2, initial=initial_logged_user)
+        form = DeleteSIMForm(request.POST, instance=sim_delete, initial=initial_logged_user)
         if form.is_valid():
             form.save()
             messages.success(request, "SIM successfully deleted!")
@@ -80,6 +79,6 @@ def delete_SIM(request, pk):
 
     context = {
         'form': form,
-        'sim_list_2': sim_list_2,
+        'sim_delete': sim_delete,
     }
     return render(request, 'SIM/SIM-delete-page.html', context)

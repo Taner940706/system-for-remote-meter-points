@@ -7,7 +7,7 @@
 
     <div class="col py-3">
         <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-        <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_list_2.pk %}"
+        <form class="form-horizontal" id="deleteNewSIMForm" action="{% url 'delete SIM' pk=sim_delete.pk %}"
               method="POST" enctype="multipart/form-data">
             <fieldset>
 
@@ -30,7 +30,7 @@
                                         {% endfor %}
 
                                         <hr/>
-                                        <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block"
+                                        <input type="submit" id="btn-register" class="btn btn-danger btn-lg btn-block"
                                                value="Delete">
                                         {% csrf_token %}
                                     </div>

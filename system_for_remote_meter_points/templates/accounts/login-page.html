@@ -1,8 +1,9 @@
 {% extends 'base/base_no_auth.html' %}
+{% load placeholders %}
 {% load add_class %}
+
 {% load static %}
 {% block page_content %}
-    {% load placeholders %}
     {% include 'common/messages.html' %}
     <form class="form-horizontal" action="{% url 'login user' %}" method="post" id="loginForm">
         <fieldset>
@@ -45,4 +46,5 @@
             </section>
         </fieldset>
     </form>
+
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -12,8 +13,12 @@ UserModel = get_user_model()
 class SignInView(auth_views.LoginView):
     template_name = 'accounts/login-page.html'
 
+    def form_invalid(self, form):
+        messages.error(self.request, "Username and/or password is incorrect!")
+        return super().form_invalid(form)
 
-class SignUpView(SuccessMessageMixin,views.CreateView):
+
+class SignUpView(SuccessMessageMixin, views.CreateView):
     template_name = 'accounts/register-page.html'
     form_class = UserCreateForm
     success_url = reverse_lazy('login user')
@@ -58,3 +63,7 @@ class SignOutView(SuccessMessageMixin, auth_views.LogoutView):
 
 def handler_404(request, exception):
     return render(request, '404.html')
+
+
+def handler_500(request):
+    return render(request, '500.html')

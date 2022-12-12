@@ -1,5 +1,8 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
+
+from system_for_remote_meter_points.meter_devices.models import MeterDevice
+from system_for_remote_meter_points.modems.models import Modem
 from system_for_remote_meter_points.tasks.forms import EditTaskForm, DeleteTaskForm
 from system_for_remote_meter_points.tasks.models import Task
 from django.contrib import messages
@@ -8,11 +11,10 @@ from django.contrib import messages
 @login_required
 def list_task(request):
     task_list = Task.objects.all()
-    is_superuser = request.user.is_superuser
     context = {
         'task_list': task_list,
         'is_owner': request.user.username,
-        'is_superuser': is_superuser,
+        'is_superuser': request.user.is_superuser,
 
     }
     return render(request, 'tasks/task-list-page.html', context)
@@ -20,9 +22,11 @@ def list_task(request):
 
 @permission_required('tasks.change_task')
 def edit_task(request, pk):
-    task = Task.objects.filter(pk=pk).get()
+    modem = Modem.objects.all()
+    meter_device = MeterDevice.objects.all()
+    task_edit = Task.objects.filter(pk=pk).get()
     if request.method == "POST":
-        form = EditTaskForm(request.POST, instance=task)
+        form = EditTaskForm(request.POST, instance=task_edit)
         if form.is_valid():
             form.save()
             messages.success(request, "Task successfully updated!")
@@ -31,25 +35,27 @@ def edit_task(request, pk):
         return redirect('list task')
 
     else:
-        form = EditTaskForm(instance=task)
+        form = EditTaskForm(instance=task_edit)
     context = {
         'form': form,
-        'task': task,
+        'task_edit': task_edit,
+        'modem': modem,
+        'meter_device': meter_device,
     }
     return render(request, 'tasks/task-edit-page.html', context)
 
 
 @permission_required('tasks.delete_task')
 def delete_task(request, pk):
-    task = Task.objects \
+    task_delete = Task.objects \
         .filter(pk=pk) \
         .get()
 
     if request.method == 'GET':
-        form = DeleteTaskForm(instance=task)
+        form = DeleteTaskForm(instance=task_delete)
     else:
 
-        form = DeleteTaskForm(request.POST, instance=task)
+        form = DeleteTaskForm(request.POST, instance=task_delete)
         if form.is_valid():
             form.save()
             messages.success(request, "Task successfully deleted!")
@@ -59,7 +65,7 @@ def delete_task(request, pk):
 
     context = {
         'form': form,
-        'task': task,
+        'task_delete': task_delete,
     }
     return render(request, 'tasks/task-delete-page.html', context)
 

@@ -17,3 +17,4 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'system_for_remote_meter_points.accounts.views.handler_404'
+handler500 = 'system_for_remote_meter_points.accounts.views.handler_500'

@@ -1,14 +1,10 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 
+from system_for_remote_meter_points.core.validators import only_int
+
 UserModel = get_user_model()
-
-
-def only_int(value):
-    if not value.isdigit():
-        raise ValidationError('Contains characters')
 
 
 class Modem(models.Model):

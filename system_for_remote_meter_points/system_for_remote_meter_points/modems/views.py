@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
-
+from system_for_remote_meter_points.SIM.models import SIM
 from system_for_remote_meter_points.modems.forms import CreateModemForm, EditModemForm, DeleteModemForm
 from system_for_remote_meter_points.modems.models import Modem
 from django.contrib import messages
+
+sim = SIM.objects.all()
 
 
 @login_required
@@ -13,7 +15,6 @@ def list_modem(request):
     }
     is_perm = request.user.has_perm('modems.add_modem')
     modem_list = Modem.objects.all()
-    is_superuser = request.user.is_superuser
     if request.method == 'GET':
         form = CreateModemForm(initial=initial_logged_user)
     else:
@@ -31,7 +32,8 @@ def list_modem(request):
         'form': form,
         'is_perm': is_perm,
         'is_owner': request.user.username,
-        'is_superuser': is_superuser,
+        'is_superuser': request.user.is_superuser,
+        'sim': sim,
     }
     return render(request, 'modems/modem-list-page.html', context)
 
@@ -57,6 +59,7 @@ def edit_modem(request, pk):
     context = {
         'form': form,
         'modem_edit': modem_edit,
+        'sim': sim,
     }
     return render(request, 'modems/modem-edit-page.html', context)
 

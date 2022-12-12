@@ -1,4 +1,5 @@
 {% extends 'base/base_auth.html' %}
+{% load list %}
 {% load placeholders %}
 {% load add_class %}
 {% load static %}
@@ -6,7 +7,7 @@
 
     <div class="col py-3">
         <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-        <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit task' pk=task.pk %}" method="POST"
+        <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit task' pk=task_edit.pk %}" method="POST"
               enctype="multipart/form-data">
             <fieldset>
                 <section class="vh-70">
@@ -24,8 +25,10 @@
                                         <div class="changeUsernameMessages"></div>
 
                                         {% for field in form %}
-                                            {{ field|form_class|placeholder:field.label }}
+                                            {{ field|form_class|lists:field.label|placeholder:field.label }}
                                         {% endfor %}
+
+                                    {% include 'base/datalists.html' %}
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
                                                 <button type="button" name="button" id="del" value="Back"

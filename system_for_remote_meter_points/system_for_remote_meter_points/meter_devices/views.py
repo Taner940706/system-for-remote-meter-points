@@ -11,7 +11,6 @@ def list_meter_device(request):
     initial_logged_user = {
         'user': request.user.username
     }
-    is_superuser = request.user.is_superuser
     is_perm = request.user.has_perm('meter_devices.add_meterdevice')
     meter_device_list = MeterDevice.objects.all()
 
@@ -20,8 +19,8 @@ def list_meter_device(request):
     else:
         form = CreateMeterDeviceForm(request.POST, initial=initial_logged_user)
         if form.is_valid():
-            modem = form.save(commit=False)
-            modem.save()
+            meter_device = form.save(commit=False)
+            meter_device.save()
             messages.success(request, "Meter device successfully created!")
         else:
             messages.error(request, form.errors)
@@ -32,7 +31,7 @@ def list_meter_device(request):
         'form': form,
         'is_owner': request.user.username,
         'is_perm': is_perm,
-        'is_superuser': is_superuser,
+        'is_superuser': request.user.is_superuser,
 
     }
     return render(request, 'meter_devices/meter-device-list-page.html', context)
@@ -49,8 +48,8 @@ def edit_meter_device(request, pk):
     else:
         form = EditMeterDeviceForm(request.POST, instance=meter_device_edit, initial=initial_logged_user)
         if form.is_valid():
-            modem = form.save(commit=False)
-            modem.save()
+            meter_device = form.save(commit=False)
+            meter_device.save()
             messages.success(request, "Meter device successfully updated!")
         else:
             messages.error(request, form.errors)

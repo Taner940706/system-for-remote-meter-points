@@ -1,11 +1,17 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 
+from system_for_remote_meter_points.meter_devices.models import MeterDevice
 from system_for_remote_meter_points.meter_points.forms import CreateMeterPointForm, \
     EditMeterPointForm, DeleteMeterPointForm
 from system_for_remote_meter_points.meter_points.models import MeterPoint
+from system_for_remote_meter_points.modems.models import Modem
 from system_for_remote_meter_points.tasks.models import Task
 from django.contrib import messages
+
+
+meter_device = MeterDevice.objects.all()
+modem = Modem.objects.all()
 
 
 @login_required
@@ -14,7 +20,6 @@ def list_meter_point(request):
         'user': request.user.username
     }
     is_perm = request.user.has_perm('meter_points.add_meterpoint')
-    is_superuser = request.user.is_superuser
     meter_point_list = MeterPoint.objects.all()
     if request.method == 'GET':
         form = CreateMeterPointForm(initial=initial_logged_user)
@@ -42,7 +47,9 @@ def list_meter_point(request):
         'form': form,
         'is_owner': request.user.username,
         'is_perm': is_perm,
-        'is_superuser': is_superuser,
+        'is_superuser': request.user.is_superuser,
+        'meter_device': meter_device,
+        'modem': modem,
 
     }
     return render(request, 'meter_points/meter-point-list-page.html', context)
@@ -78,6 +85,8 @@ def edit_meter_point(request, pk):
     context = {
         'form': form,
         'meter_point_edit': meter_point_edit,
+        'meter_device': meter_device,
+        'modem': modem,
     }
     return render(request, 'meter_points/meter-point-edit-page.html', context)
 
