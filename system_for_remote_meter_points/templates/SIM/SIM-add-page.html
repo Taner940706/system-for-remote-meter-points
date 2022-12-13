@@ -2,32 +2,23 @@
 {% load add_class %}
 <div class="modal fade" id="createNewSIMModal" tabindex="-1" role="dialog" data-mdb-backdrop="static">
     <div class="modal-dialog">
-        {% if form.errors %}
-
-        {% endif %}
         <div class="modal-content">
             <form class="form-horizontal" id="createNewSIMForm" action="{% url 'list SIM' %}" method="POST"
                   enctype="multipart/form-data">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i>Add SIM card</h1>
                 </div>
-
                 <div class="modal-body">
-
-
                     {% for field in form %}
                         {{ field|form_class|placeholder:field.label }}
                     {% endfor %}
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-success" data-loading-text="Loading..."> Save changes</button>
                     {% csrf_token %}
                 </div>
-
             </form>
         </div>
-
     </div>
 </div>

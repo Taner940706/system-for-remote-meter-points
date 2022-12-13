@@ -9,8 +9,10 @@ from system_for_remote_meter_points.core.model_mixins import ChoicesEnumMixin
 from system_for_remote_meter_points.core.validators import only_int
 
 UserModel = get_user_model()
+ANONYMOUS_USER_ID = "anonymous_user"
 
 
+# meter device type choice
 class MeterDeviceType(ChoicesEnumMixin, Enum):
     ISKRA = 'ISKRA'
     GAMA = 'GAMA'
@@ -18,6 +20,7 @@ class MeterDeviceType(ChoicesEnumMixin, Enum):
     MICROSTAR = 'Microstar'
 
 
+# read cycle choice
 class ReadCycle(ChoicesEnumMixin, Enum):
     READ_PER_15_MIN = 'Read per 15 minute'
     READ_PER_1_HOUR = 'Read per 1 hour'
@@ -28,31 +31,10 @@ class ReadCycle(ChoicesEnumMixin, Enum):
 class MeterDevice(models.Model):
     FIXED_METER_DEVICE_NUMBER_LENGTH = 16
 
-    # ISKRA = 'ISKRA'
-    # GAMA = 'GAMA'
-    # AMT = 'AMT'
-    # MICROSTAR = 'Microstar'
-
     READ_PER_15_MIN = 'Read per 15 minute'
     READ_PER_1_HOUR = 'Read per 1 hour'
     READ_PER_8_HOURS = 'Read per 8 hours'
     READ_PER_24_HOURS = 'Read per 24 hours'
-
-    # METER_DEVICE_TYPE = (
-    #     ('', 'Meter device type'),
-    #     (ISKRA, ISKRA),
-    #     (GAMA, GAMA),
-    #     (AMT, AMT),
-    #     (MICROSTAR, MICROSTAR),
-    # )
-
-    # READ_CYCLE = (
-    #     ('', 'Read cycle'),
-    #     (READ_PER_15_MIN, READ_PER_15_MIN),
-    #     (READ_PER_1_HOUR, READ_PER_1_HOUR),
-    #     (READ_PER_8_HOURS, READ_PER_8_HOURS),
-    #     (READ_PER_24_HOURS, READ_PER_24_HOURS),
-    # )
 
     meter_device_number = models.CharField(
         max_length=FIXED_METER_DEVICE_NUMBER_LENGTH,
@@ -76,10 +58,11 @@ class MeterDevice(models.Model):
         null=False,
         blank=True,
     )
+    # foreign key for user by username if user is deleted add default anonymous user
     user = models.ForeignKey(
         UserModel,
         to_field='username',
-        default="Unknown",
+        default=ANONYMOUS_USER_ID,
         on_delete=models.SET_DEFAULT,
         null=True,
     )

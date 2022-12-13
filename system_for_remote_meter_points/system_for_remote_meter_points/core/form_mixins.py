@@ -1,3 +1,4 @@
+# mixin for disabled fields
 class DisabledFormMixin:
     disabled_fields = ()
     fields = {}

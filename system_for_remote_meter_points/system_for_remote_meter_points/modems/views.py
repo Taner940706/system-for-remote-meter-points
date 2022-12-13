@@ -5,14 +5,17 @@ from system_for_remote_meter_points.modems.forms import CreateModemForm, EditMod
 from system_for_remote_meter_points.modems.models import Modem
 from django.contrib import messages
 
+# variable for datalist
 sim = SIM.objects.all()
 
 
+# list and add SIM
 @login_required
 def list_modem(request):
     initial_logged_user = {
         'user': request.user.username
     }
+    # check if has permission for adding modem
     is_perm = request.user.has_perm('modems.add_modem')
     modem_list = Modem.objects.all()
     if request.method == 'GET':
@@ -38,6 +41,7 @@ def list_modem(request):
     return render(request, 'modems/modem-list-page.html', context)
 
 
+# edir modem
 @permission_required('modems.change_modem')
 def edit_modem(request, pk):
     initial_logged_user = {
@@ -64,6 +68,7 @@ def edit_modem(request, pk):
     return render(request, 'modems/modem-edit-page.html', context)
 
 
+# delete modem
 @permission_required('modems.delete_modem')
 def delete_modem(request, pk):
     initial_logged_user = {

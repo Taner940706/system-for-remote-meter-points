@@ -5,11 +5,13 @@ from system_for_remote_meter_points.SIM.models import SIM
 from django.contrib import messages
 
 
+# list and list SIM
 @login_required
 def list_SIM(request):
     initial_logged_user = {
         'user': request.user.username
     }
+    # check if has perm for adding
     is_perm = request.user.has_perm('SIM.add_sim')
     sim_list = SIM.objects.all()
     if request.method == 'GET':
@@ -35,6 +37,7 @@ def list_SIM(request):
     return render(request, 'SIM/SIM-list-page.html', context)
 
 
+# edit SIM
 @permission_required('SIM.change_sim')
 def edit_SIM(request, pk):
     initial_logged_user = {
@@ -60,6 +63,7 @@ def edit_SIM(request, pk):
     return render(request, 'SIM/SIM-edit-page.html', context)
 
 
+# delete SIM
 @permission_required('SIM.delete_sim')
 def delete_SIM(request, pk):
     initial_logged_user = {

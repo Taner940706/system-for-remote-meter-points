@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.db import models
-
 from system_for_remote_meter_points.core.validators import only_int
 
 UserModel = get_user_model()
+ANONYMOUS_USER_ID = "anonymous_user"
 
 
 class Modem(models.Model):
@@ -16,6 +16,7 @@ class Modem(models.Model):
         unique=True,
         blank=False,
         null=False, )
+    # one-to-one field for SIM by sim_number if modem have this sim show error 500
     sim = models.OneToOneField(
         'SIM.SIM',
         related_name='sim_key',
@@ -29,10 +30,11 @@ class Modem(models.Model):
         null=False,
         blank=True,
     )
+    # foreign key for user by username if user is deleted add default anonymous user
     user = models.ForeignKey(
         UserModel,
         to_field='username',
-        default="Unknown",
+        default=ANONYMOUS_USER_ID,
         on_delete=models.SET_DEFAULT,
         null=True,
     )

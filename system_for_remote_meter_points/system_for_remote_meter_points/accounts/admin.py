@@ -6,7 +6,7 @@ from system_for_remote_meter_points.accounts.forms import UserEditForm, UserCrea
 
 UserModel = get_user_model()
 
-
+# customize accounts for django admins
 @admin.register(UserModel)
 class UserAdmin(auth_admin.UserAdmin):
     form = UserEditForm

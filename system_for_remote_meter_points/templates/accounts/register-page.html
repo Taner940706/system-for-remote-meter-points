@@ -3,6 +3,7 @@
 {% load placeholders %}
 {% load static %}
 {% block page_content %}
+    <!-- include error and success messages -->
     {% include 'common/messages.html' %}
     <form class="form-horizontal" action="{% url 'register user' %}" method="post" id="registerForm"
           enctype="multipart/form-data">

@@ -9,16 +9,12 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Add Modem</h1>
                 </div>
-
                 <div class="modal-body">
-
-
                     {% for field in form %}
                         {{ field|form_class|lists:field.label|placeholder:field.label }}
                     {% endfor %}
-
+                <!-- include datalist for showing data from database -->
                 {% include 'base/datalists.html' %}
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

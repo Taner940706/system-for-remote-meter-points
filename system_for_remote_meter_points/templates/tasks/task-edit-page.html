@@ -4,34 +4,27 @@
 {% load add_class %}
 {% load static %}
 {% block page_content %}
-
     <div class="col py-3">
         <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
         <form class="form-horizontal" id="editNewSIMForm" action="{% url 'edit task' pk=task_edit.pk %}" method="POST"
               enctype="multipart/form-data">
             <fieldset>
                 <section class="vh-70">
-
                     <div class="container py-5 h-100">
-
                         <div class="row d-flex justify-content-center align-items-center h-100">
-
                             <div class="col-12 col-md-8 col-lg-7 col-xl-5">
-
                                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                                     <div class="card-body p-5 text-center">
                                         <legend>Edit Task data</legend>
-
                                         <div class="changeUsernameMessages"></div>
-
                                         {% for field in form %}
                                             {{ field|form_class|lists:field.label|placeholder:field.label }}
                                         {% endfor %}
-
+                                    <!-- include datalist for showing data from database -->
                                     {% include 'base/datalists.html' %}
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="button" name="button" id="del" value="Back"
+                                                <button type="submit" name="submit" id="del" value="Back"
                                                         class="delete btn btn-success">Save changes
                                                 </button>
                                                 {% csrf_token %}

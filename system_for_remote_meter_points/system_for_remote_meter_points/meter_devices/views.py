@@ -6,11 +6,13 @@ from system_for_remote_meter_points.meter_devices.models import MeterDevice
 from django.contrib import messages
 
 
+# list and add meter device
 @login_required
 def list_meter_device(request):
     initial_logged_user = {
         'user': request.user.username
     }
+    # check if user has permission for adding
     is_perm = request.user.has_perm('meter_devices.add_meterdevice')
     meter_device_list = MeterDevice.objects.all()
 
@@ -37,6 +39,7 @@ def list_meter_device(request):
     return render(request, 'meter_devices/meter-device-list-page.html', context)
 
 
+# edit meter device
 @permission_required('meter_devices.change_meterdevice')
 def edit_meter_device(request, pk):
     initial_logged_user = {
@@ -62,6 +65,7 @@ def edit_meter_device(request, pk):
     return render(request, 'meter_devices/meter-device-edit-page.html', context)
 
 
+# delete meter device
 @permission_required('meter_devices.delete_meterdevice')
 def delete_meter_device(request, pk):
     meter_device_delete = MeterDevice.objects.filter(pk=pk).get()

@@ -22,7 +22,6 @@
                         Tasks in progress
                         <span class="badge pull pull-right"
                               style="text-decoration:none;color:black;">{{ count_in_progress_tasks }}</span>
-
                     </div>
                 </div>
             </div>
@@ -87,6 +86,7 @@
             </div>
 
             <div class="col-lg-7 mb-4 mb-lg-0">
+            <!-- check user have uploaded picture, if not, upload default pic-->
                 {% if request.user.picture %}
                     <img src="../../media/{{ request.user.picture }}" class="userImage" alt="{{ request.username }}"/>
                 {% else %}

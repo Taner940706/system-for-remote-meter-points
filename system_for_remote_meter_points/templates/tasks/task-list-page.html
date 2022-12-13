@@ -7,9 +7,7 @@
                 <div class="page-heading"><h1><i class="bi bi-list"></i>Tasks list</h1></div>
             </div>
             <div class="panel-body">
-
                 <div class="remove-messages"></div>
-
                 <div class="div-action pull pull-right" style="padding-bottom:20px;">
                 </div>
                 <br>
@@ -23,7 +21,6 @@
                         <th>Result</th>
                         <th>Updated</th>
                         <th style="margin: 0 auto;">Option</th>
-
                     </tr>
                     </thead>
                     {% for task in task_list %}
@@ -47,6 +44,7 @@
                             {% endif %}
                             <td>Updated by: {{ task.username }}, Date: {{ task.created_date }}</td>
                             <td>
+                                <!-- check if user is owner of record or is superuser /if have permissions can see edit, details and delete buttons, if not - can see only details button/ -->/
                                 {% if task.username == is_owner or is_superuser %}
                                     <button type="button" class="btn btn-warning" title="Details"><a
                                             href= {% url 'details task' pk=task.id %}><i class="bi bi-eye"></i></a>

@@ -1,8 +1,7 @@
 {% extends 'base/base_auth.html' %}
-
 {% block page_content %}
-
     <div class="col py-3">
+    <!-- include error and succes message -->
         {% include 'common/messages.html' %}
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -23,7 +22,6 @@
                         <th>Operator</th>
                         <th>Updated</th>
                         <th>Option</th>
-
                     </tr>
                     </thead>
                     <tbody>
@@ -36,6 +34,7 @@
                             <td>{{ sim.operator }}</td>
                             <td>Updated by: {{ sim.user_id }}, Date: {{ sim.created_date }}</td>
                             <td>
+                                <!-- check if user is owner of record or is superuser /if have show edit and delete button/ -->
                                 {% if sim.user_id == is_owner or is_superuser %}
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                             data-bs-target="#editNewSIMModal" title="Edit"><a
@@ -48,24 +47,18 @@
                                 {% endif %}
                             </td>
                         </tr>
-
                     {% endfor %}
                     </tbody>
                 </table>
-
             </div>
         </div>
+    <!-- check if have permissions -->
         {% if is_perm %}
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createNewSIMModal"
                     title="Add"><i class="bi bi-plus-lg"></i>
                 Add SIM
             </button>
         {% endif %}
-
     </div>
-
-
     {% include 'SIM/SIM-add-page.html' %}
-
-
 {% endblock %}

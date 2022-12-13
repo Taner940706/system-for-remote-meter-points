@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*a=9200^maeg7q&)6j^!0hnmd9h%!j7pu!uj#k2mimogc1v9p%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #
 ALLOWED_HOSTS = [
     'localhost',
@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #Applications
     'system_for_remote_meter_points.meter_points',
     'system_for_remote_meter_points.meter_devices',
     'system_for_remote_meter_points.accounts',
@@ -140,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.AppUser'
 LOGIN_REDIRECT_URL = reverse_lazy('list meter points')
 
-
+# message tags for error and successful operations
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',

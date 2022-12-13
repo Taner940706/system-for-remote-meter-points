@@ -2,11 +2,11 @@ from enum import Enum
 
 from django.core.validators import MinLengthValidator, MaxValueValidator, MinValueValidator
 from django.db import models
-
 from system_for_remote_meter_points.core.model_mixins import ChoicesEnumMixin
 from system_for_remote_meter_points.core.validators import only_int
 
 
+# operation choice
 class Operation(ChoicesEnumMixin, Enum):
     RESTORE_COMM = 'Restore communication'
     ADD_NEW_METER_POINT = 'Add new meter points'
@@ -17,18 +17,21 @@ class Operation(ChoicesEnumMixin, Enum):
     OTHER = 'Other (in ,,Comment")'
 
 
+# result operation choice
 class ResultOperation(ChoicesEnumMixin, Enum):
     NO_COMM = 'No communication'
     YES_COMM = 'Successful communication'
     WAIT_COMM = 'In progress...'
 
 
+# voltage choice
 class Voltage(ChoicesEnumMixin, Enum):
     LOW = 'Low'
     MEDIUM = 'Medium'
     HIGH = 'High'
 
 
+# regional center choice
 class RegionalCenter(ChoicesEnumMixin, Enum):
     VARNA = 'Varna'
     DOBRICH = 'Dobrich'
@@ -48,70 +51,6 @@ class Task(models.Model):
     MIN_CONSTANT_VALUE = 1
     FIXED_METER_DEVICE_NUMBER_LENGTH = 16
     FIXED_MODEM_NUMBER_LENGTH = 6
-
-    # RESTORE_COMM = 'Restore communication'
-    # ADD_NEW_METER_POINT = 'Add new meter points'
-    # REPLACE_MEW_METER_DEVICE = 'Replace meter device'
-    # REPLACE_NEW_MODEM_OR_SIM = 'Replace modem and/or SIM card'
-    # DELETE_METER_POINT = 'Delete meter points'
-    # REPLACE_NEW_CONSTANT = 'Add new constant'
-    # OTHER = 'Other (in ,,Comment")'
-    #
-    # NO_COMM = 'No communication'
-    # YES_COMM = 'Successful communication'
-    # WAIT_COMM = 'In progress...'
-
-    # OPERATION = (
-    #     ('', 'Operation'),
-    #     (RESTORE_COMM, RESTORE_COMM),
-    #     (ADD_NEW_METER_POINT, ADD_NEW_METER_POINT),
-    #     (REPLACE_MEW_METER_DEVICE, REPLACE_MEW_METER_DEVICE),
-    #     (REPLACE_NEW_MODEM_OR_SIM, REPLACE_NEW_MODEM_OR_SIM),
-    #     (DELETE_METER_POINT, DELETE_METER_POINT),
-    #     (REPLACE_NEW_CONSTANT, REPLACE_NEW_CONSTANT),
-    #     (OTHER, OTHER),
-    # )
-    #
-    # RESULT_OPERATION = (
-    #     ('', 'Result'),
-    #     (NO_COMM, NO_COMM),
-    #     (YES_COMM, YES_COMM),
-    #     (WAIT_COMM, WAIT_COMM),
-    # )
-    #
-    # LOW = 'Low'
-    # MEDIUM = 'Medium'
-    # HIGH = 'High'
-
-    # VARNA = 'Varna'
-    # DOBRICH = 'Dobrich'
-    # SHUMEN = 'Shumen'
-    # TARGOVISHTE = 'Targovishte'
-    # TARNOVO = 'Veliko Tarnovo'
-    # RUSE = 'Ruse'
-    # RAZGRAD = 'Razgrad'
-    # SILISTRA = 'Silistra'
-    # GABROVO = 'Gabrovo'
-    #
-    # VOLTAGE = (
-    #     ('', 'Voltage'),
-    #     (LOW, LOW),
-    #     (MEDIUM, MEDIUM),
-    #     (HIGH, HIGH),
-    # )
-
-    # REGIONAL_CENTER = (
-    #     ('', 'Regional center'),
-    #     (VARNA, VARNA),
-    #     (DOBRICH, DOBRICH),
-    #     (SHUMEN, SHUMEN),
-    #     (TARGOVISHTE, TARGOVISHTE),
-    #     (TARNOVO, TARNOVO),
-    #     (RUSE, RUSE),
-    #     (RAZGRAD, RAZGRAD),
-    #     (SILISTRA, SILISTRA),
-    #     (GABROVO, GABROVO),
-    # )
 
     mp_name = models.CharField(
         max_length=MAX_MP_LENGTH,

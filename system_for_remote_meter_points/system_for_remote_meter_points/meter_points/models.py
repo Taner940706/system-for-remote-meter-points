@@ -7,8 +7,10 @@ from django.db import models
 from system_for_remote_meter_points.core.model_mixins import ChoicesEnumMixin
 
 UserModel = get_user_model()
+ANONYMOUS_USER_ID = "anonymous_user"
 
 
+# meter operation choice
 class Operation(ChoicesEnumMixin, Enum):
     RESTORE_COMM = 'Restore communication'
     ADD_NEW_METER_POINT = 'Add new meter points'
@@ -19,18 +21,21 @@ class Operation(ChoicesEnumMixin, Enum):
     OTHER = 'Other (in ,,Comment")'
 
 
+# meter result operation choice
 class ResultOperation(ChoicesEnumMixin, Enum):
     NO_COMM = 'No communication'
     YES_COMM = 'Successful communication'
     WAIT_COMM = 'In progress...'
 
 
+# meter voltage choice
 class Voltage(ChoicesEnumMixin, Enum):
     LOW = 'Low'
     MEDIUM = 'Medium'
     HIGH = 'High'
 
 
+# meter regional center choice
 class RegionalCenter(ChoicesEnumMixin, Enum):
     VARNA = 'Varna'
     DOBRICH = 'Dobrich'
@@ -49,70 +54,6 @@ class MeterPoint(models.Model):
     MAX_CONSTANT_VALUE = 80000
     MIN_CONSTANT_VALUE = 1
     FIXED_METER_DEVICE_NUMBER_LENGTH = 16
-
-    # RESTORE_COMM = 'Restore communication'
-    # ADD_NEW_METER_POINT = 'Add new meter points'
-    # REPLACE_MEW_METER_DEVICE = 'Replace meter device'
-    # REPLACE_NEW_MODEM_OR_SIM = 'Replace modem and/or SIM card'
-    # DELETE_METER_POINT = 'Delete meter points'
-    # REPLACE_NEW_CONSTANT = 'Add new constant'
-    # OTHER = 'Other (in ,,Comment")'
-
-    # NO_COMM = 'No communication'
-    # YES_COMM = 'Successful communication'
-    # WAIT_COMM = 'In progress...'
-
-    # OPERATION = (
-    #     ('', 'Operation'),
-    #     (RESTORE_COMM, RESTORE_COMM),
-    #     (ADD_NEW_METER_POINT, ADD_NEW_METER_POINT),
-    #     (REPLACE_MEW_METER_DEVICE, REPLACE_MEW_METER_DEVICE),
-    #     (REPLACE_NEW_MODEM_OR_SIM, REPLACE_NEW_MODEM_OR_SIM),
-    #     (DELETE_METER_POINT, DELETE_METER_POINT),
-    #     (REPLACE_NEW_CONSTANT, REPLACE_NEW_CONSTANT),
-    #     (OTHER, OTHER),
-    # )
-
-    # RESULT_OPERATION = (
-    #     ('', 'Result'),
-    #     (NO_COMM, NO_COMM),
-    #     (YES_COMM, YES_COMM),
-    #     (WAIT_COMM, WAIT_COMM),
-    # )
-
-    # LOW = 'Low'
-    # MEDIUM = 'Medium'
-    # HIGH = 'High'
-
-    # VARNA = 'Varna'
-    # DOBRICH = 'Dobrich'
-    # SHUMEN = 'Shumen'
-    # TARGOVISHTE = 'Targovishte'
-    # TARNOVO = 'Veliko Tarnovo'
-    # RUSE = 'Ruse'
-    # RAZGRAD = 'Razgrad'
-    # SILISTRA = 'Silistra'
-    # GABROVO = 'Gabrovo'
-    #
-    # VOLTAGE = (
-    #     ('', 'Voltage'),
-    #     (LOW, LOW),
-    #     (MEDIUM, MEDIUM),
-    #     (HIGH, HIGH),
-    # )
-    #
-    # REGIONAL_CENTER = (
-    #     ('', 'Regional center'),
-    #     (VARNA, VARNA),
-    #     (DOBRICH, DOBRICH),
-    #     (SHUMEN, SHUMEN),
-    #     (TARGOVISHTE, TARGOVISHTE),
-    #     (TARNOVO, TARNOVO),
-    #     (RUSE, RUSE),
-    #     (RAZGRAD, RAZGRAD),
-    #     (SILISTRA, SILISTRA),
-    #     (GABROVO, GABROVO),
-    # )
 
     mp_name = models.CharField(
         max_length=MAX_MP_LENGTH,
@@ -170,10 +111,11 @@ class MeterPoint(models.Model):
         blank=False,
         null=False,
     )
+    # foreign key for user by username if user is deleted add default anonymous user
     user = models.ForeignKey(
         UserModel,
         to_field='username',
-        default="Unknown",
+        default=ANONYMOUS_USER_ID,
         on_delete=models.SET_DEFAULT,
         null=True,
     )

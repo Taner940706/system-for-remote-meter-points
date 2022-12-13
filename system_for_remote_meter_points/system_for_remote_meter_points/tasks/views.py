@@ -22,20 +22,24 @@ def list_task(request):
 
 @permission_required('tasks.change_task')
 def edit_task(request, pk):
+    initial_logged_user = {
+        'user': request.user.username
+    }
     modem = Modem.objects.all()
     meter_device = MeterDevice.objects.all()
     task_edit = Task.objects.filter(pk=pk).get()
-    if request.method == "POST":
-        form = EditTaskForm(request.POST, instance=task_edit)
+    if request.method == 'GET':
+        form = EditTaskForm(instance=task_edit, initial=initial_logged_user)
+    else:
+        form = EditTaskForm(request.POST, instance=task_edit, initial=initial_logged_user)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)
+            task.save()
             messages.success(request, "Task successfully updated!")
         else:
             messages.error(request, form.errors)
         return redirect('list task')
 
-    else:
-        form = EditTaskForm(instance=task_edit)
     context = {
         'form': form,
         'task_edit': task_edit,

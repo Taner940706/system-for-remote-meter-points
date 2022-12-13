@@ -53,6 +53,7 @@ class DeleteModemForm(ModemBaseForm, DisabledFormMixin):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self._disable_fields()
 
     def save(self, commit=True):
         if commit:

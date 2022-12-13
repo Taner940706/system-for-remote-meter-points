@@ -7,6 +7,7 @@ from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.tasks.models import Task
 
 
+# diagram for count tasks by operation type
 @login_required
 def count_task_operations(request):
     label = []
@@ -27,6 +28,7 @@ def count_task_operations(request):
     return render(request, 'analyses/count_type_operation.html', context)
 
 
+# diagram for count tasks by result operation type
 @login_required
 def count_result_tasks(request):
     label = []
@@ -48,6 +50,7 @@ def count_result_tasks(request):
     return render(request, 'analyses/count_result_tasks.html', context)
 
 
+# diagram for count meter device by type
 @login_required
 def count_meter_device_types(request):
     label = []
@@ -69,6 +72,7 @@ def count_meter_device_types(request):
     return render(request, 'analyses/count_meter_device_types.html', context)
 
 
+# diagram for count tasks by username
 @login_required
 def count_tasks_by_username(request):
     label = []
@@ -90,6 +94,7 @@ def count_tasks_by_username(request):
     return render(request, 'analyses/count_tasks_by_username.html', context)
 
 
+# diagram for count meter points in time
 @login_required
 def count_meter_point_by_time(request):
     label = []
@@ -111,6 +116,7 @@ def count_meter_point_by_time(request):
     return render(request, 'analyses/count_meter_point_by_time.html', context)
 
 
+# diagram for count meter points by regional center
 @login_required
 def count_meter_points_by_regional_center(request):
     label = []
@@ -132,6 +138,7 @@ def count_meter_points_by_regional_center(request):
     return render(request, 'analyses/count_meter_points_by_regional_center.html', context)
 
 
+# dashboard cards and alert messages
 @login_required
 def dashboard(request):
     count_success_tasks = Task.objects.filter(result_operation="Successful communication").filter(

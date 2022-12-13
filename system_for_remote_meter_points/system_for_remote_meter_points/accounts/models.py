@@ -8,6 +8,7 @@ from system_for_remote_meter_points.core.model_mixins import ChoicesEnumMixin
 from system_for_remote_meter_points.core.validators import validate_only_letters
 
 
+# department choice
 class Department(ChoicesEnumMixin, Enum):
     DOSO = 'DOSO'
     OSP = 'OSP'
@@ -20,18 +21,6 @@ class AppUser(auth_model.AbstractUser):
     MIN_FIRST_NAME = 4
     MAX_LAST_NAME_LEN = 30
     MIN_LAST_NAME = 4
-
-    # DOSO = 'DOSO'
-    # OSP = 'OSP'
-    # AUDITOR = 'Auditor'
-    # OTHER = 'Other'
-
-    # DEPARTMENT = (
-    #     (DOSO, DOSO),
-    #     (OSP, OSP),
-    #     (AUDITOR, AUDITOR),
-    #     (OTHER, OTHER),
-    # )
 
     first_name = models.CharField(
         max_length=MAX_FIRST_NAME_LEN,

@@ -8,7 +8,6 @@
             </div>
             <div class="panel-body">
                 <div class="remove-messages"></div>
-
                 <div class="div-action pull pull-right" style="padding-bottom:20px;">
                 </div>
                 <br>
@@ -32,6 +31,7 @@
                             <td>Updated by: {{ meter_device.user_id }}, Date: {{ meter_device.created_date }}</td>
 
                             <td>
+                                <!-- check if user is owner of record or is superuser /if have permissions can see edit and delete buttons/ -->/
                                 {% if meter_device.user_id == is_owner or is_superuser %}
                                     <button type="button" class="btn btn-primary" title="Edit"><a
                                             href= {% url 'edit meter device' pk=meter_device.id %}><i
@@ -54,6 +54,7 @@
             </button>
         {% endif %}
     </div>
+    <!-- include add page for modal dialog -->
     {% include 'meter_devices/meter-device-add-page.html' %}
 {% endblock %}
 

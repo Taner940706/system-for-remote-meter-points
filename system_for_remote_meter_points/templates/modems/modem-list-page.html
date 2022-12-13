@@ -7,12 +7,10 @@
                 <div class="page-heading"><h1><i class="bi bi-list"></i>Modem list</h1></div>
             </div>
             <div class="panel-body">
-
                 <div class="remove-messages"></div>
                 <div class="div-action pull pull-right" style="padding-bottom:20px;">
                 </div>
                 <br>
-
                 <table class="table" id="manageModemTable">
                     <thead>
                     <tr>
@@ -24,7 +22,6 @@
                         <th>Operator</th>
                         <th>Updated</th>
                         <th>Option</th>
-
                     </tr>
                     </thead>
                     {% for modem in modem_list %}
@@ -39,6 +36,7 @@
 
 
                             <td>
+                                <!-- check if user is owner of record or is superuser /if have show edit and delete button/ -->
                                 {% if modem.user_id == is_owner or is_superuser %}
                                     <button type="button" class="btn btn-primary" title="Edit"><a
                                             href= {% url 'edit modem' pk=modem.id %}><i class="bi bi-pencil"></i></a>
@@ -51,9 +49,9 @@
                         </tr>
                     {% endfor %}
                 </table>
-
             </div>
         </div>
+    <!-- check if have permissions -->
         {% if is_perm %}
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createNewModemModal"
                     title="Add"><i class="bi bi-plus-lg"></i>
