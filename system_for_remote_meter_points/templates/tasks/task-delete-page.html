@@ -5,7 +5,8 @@
 {% block page_content %}
     <div class="col py-3">
         <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-        <form class="form-horizontal" id="deleteNewTaskForm" action="{% url 'delete task' pk=task_delete.pk %}" method="POST"
+        <form class="form-horizontal" id="deleteNewTaskForm" action="{% url 'delete task' pk=task_delete.pk %}"
+              method="POST"
               enctype="multipart/form-data">
             <fieldset>
                 <section class="vh-50">

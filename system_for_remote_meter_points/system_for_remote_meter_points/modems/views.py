@@ -34,14 +34,12 @@ def list_modem(request):
         'modem_list': modem_list,
         'form': form,
         'is_perm': is_perm,
-        'is_owner': request.user.username,
-        'is_superuser': request.user.is_superuser,
         'sim': sim,
     }
     return render(request, 'modems/modem-list-page.html', context)
 
 
-# edir modem
+# edit modem
 @permission_required('modems.change_modem')
 def edit_modem(request, pk):
     initial_logged_user = {

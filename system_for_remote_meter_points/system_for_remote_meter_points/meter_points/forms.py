@@ -8,8 +8,8 @@ class MeterPointBaseForm(forms.ModelForm):
     class Meta:
         model = MeterPoint
         fields = (
-        'mp_name', 'constant', 'voltage', 'regional_center', 'operation', 'result_operation', 'comment', 'user',
-        'meter_device', 'modem')
+            'mp_name', 'constant', 'voltage', 'regional_center', 'operation', 'result_operation', 'comment', 'user',
+            'meter_device', 'modem')
         labels = {
             'mp_name': 'Meter point name:',
             'meter_device': 'Meter device number:',

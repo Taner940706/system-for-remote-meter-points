@@ -46,9 +46,7 @@ def list_meter_point(request):
     context = {
         'meter_point_list': meter_point_list,
         'form': form,
-        'is_owner': request.user.username,
         'is_perm': is_perm,
-        'is_superuser': request.user.is_superuser,
         'meter_device': meter_device,
         'modem': modem,
 

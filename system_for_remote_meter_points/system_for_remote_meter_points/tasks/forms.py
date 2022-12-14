@@ -8,8 +8,9 @@ class TaskBaseForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = (
-        'mp_name', 'constant', 'voltage', 'regional_center', 'operation', 'result_operation', 'comment', 'meter_device',
-        'modem')
+            'mp_name', 'constant', 'voltage', 'regional_center', 'operation', 'result_operation', 'comment',
+            'meter_device',
+            'modem')
         labels = {
             'mp_name': 'Meter point name:',
             'meter_device': 'Meter device number:',

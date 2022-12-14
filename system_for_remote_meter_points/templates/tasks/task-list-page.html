@@ -44,7 +44,7 @@
                             {% endif %}
                             <td>Updated by: {{ task.username }}, Date: {{ task.created_date }}</td>
                             <td>
-                                <!-- check if user is owner of record or is superuser /if have permissions can see edit, details and delete buttons, if not - can see only details button/ -->/
+                                <!-- check if user is owner of record or is superuser /if have permissions can see edit, details and delete buttons, if not - can see only details button/ -->
                                 {% if task.username == is_owner or is_superuser %}
                                     <button type="button" class="btn btn-warning" title="Details"><a
                                             href= {% url 'details task' pk=task.id %}><i class="bi bi-eye"></i></a>
@@ -64,12 +64,9 @@
                         </tr>
                     {% endfor %}
                 </table>
-
             </div>
         </div>
-
     </div>
-
 {% endblock %}
 
 

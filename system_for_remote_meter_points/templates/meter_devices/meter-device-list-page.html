@@ -29,10 +29,9 @@
                             <td>{{ meter_device.meter_device_type }}</td>
                             <td>{{ meter_device.meter_device_read_cycle }}</td>
                             <td>Updated by: {{ meter_device.user_id }}, Date: {{ meter_device.created_date }}</td>
-
                             <td>
-                                <!-- check if user is owner of record or is superuser /if have permissions can see edit and delete buttons/ -->/
-                                {% if meter_device.user_id == is_owner or is_superuser %}
+                                <!-- check if user is owner of record or is superuser /if have permissions can see edit and delete buttons/ -->
+                                {% if is_perm %}
                                     <button type="button" class="btn btn-primary" title="Edit"><a
                                             href= {% url 'edit meter device' pk=meter_device.id %}><i
                                             class="bi bi-pencil"></i></a></button>
@@ -44,7 +43,6 @@
                         </tr>
                     {% endfor %}
                 </table>
-
             </div>
         </div>
         {% if is_perm %}

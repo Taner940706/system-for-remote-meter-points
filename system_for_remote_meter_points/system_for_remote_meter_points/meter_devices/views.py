@@ -31,9 +31,7 @@ def list_meter_device(request):
     context = {
         'meter_device_list': meter_device_list,
         'form': form,
-        'is_owner': request.user.username,
         'is_perm': is_perm,
-        'is_superuser': request.user.is_superuser,
 
     }
     return render(request, 'meter_devices/meter-device-list-page.html', context)

@@ -11,7 +11,6 @@
                 <div class="div-action pull pull-right" style="padding-bottom:20px;">
                 </div>
                 <br>
-
                 <table class="table" id="manageTITable">
                     <thead>
                     <tr>
@@ -49,8 +48,8 @@
                             <td>{{ meter_point.regional_center }}</td>
                             <td>Updated by: {{ meter_point.user_id }}, Date: {{ meter_point.created_date }}</td>
                             <td>
-                            <!-- check if user is owner of record or is superuser /if have permissions can see edit, details and delete buttons, if not - can see only details button/ -->/
-                                {% if is_owner == meter_point.user_id or is_superuser %}
+                                <!-- check if user is owner of record or is superuser /if have permissions can see edit, details and delete buttons, if not - can see only details button/ -->
+                                {% if is_perm %}
                                     <button type="button" class="btn btn-warning" title="Details"><a
                                             href= {% url 'details meter points' pk=meter_point.id %}><i
                                             class="bi bi-eye"></i></a></button>
@@ -68,9 +67,7 @@
                             </td>
                         </tr>
                     {% endfor %}
-
                 </table>
-
             </div>
         </div>
         {% if is_perm %}
@@ -81,6 +78,4 @@
         {% endif %}
     </div>
     {% include 'meter_points/meter-point-add-page.html' %}
-
-
 {% endblock %}

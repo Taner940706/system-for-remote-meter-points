@@ -9,23 +9,17 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Add Modem Device
                     </h1>
                 </div>
-
                 <div class="modal-body">
-
                     {% for field in form %}
                         {{ field|form_class|placeholder:field.label }}
                     {% endfor %}
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-success" data-loading-text="Loading..."> Save changes</button>
                     {% csrf_token %}
                 </div>
-
             </form>
         </div>
-
     </div>
 </div>

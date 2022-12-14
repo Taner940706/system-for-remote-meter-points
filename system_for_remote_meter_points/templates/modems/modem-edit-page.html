@@ -20,8 +20,8 @@
                                         {% for field in form %}
                                             {{ field|form_class|lists:field.label|placeholder:field.label }}
                                         {% endfor %}
-                                    <!-- include datalist for showing data from database -->
-                                    {% include 'base/datalists.html' %}
+                                        <!-- include datalist for showing data from database -->
+                                        {% include 'base/datalists.html' %}
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
                                                 <button type="submit" name="submit" id="del" value="edit"

@@ -7,34 +7,22 @@
     {% include 'common/messages.html' %}
     <form class="form-horizontal" action="{% url 'login user' %}" method="post" id="loginForm">
         <fieldset>
-
             <img src="{% static 'images/erp_sever_trans.png' %}" class="centerImage" alt="лого">
-
             <h1 id="login_h1">System for remote meter points</h1>
             <section class="vh-50">
-
                 <div class="container py-5 h-40">
-
                     <div class="row d-flex justify-content-center align-items-center h-30">
-
                         <div class="col-12 col-md-8 col-lg-7 col-xl-5">
-
                             <div class="card shadow-2-strong" style="border-radius: 1rem;">
                                 <div class="card-body p-5 text-center">
-
-
                                     <h2>Login</h2>
-
-
                                     {{ form.username|form_class|placeholder:"Username: " }}
                                     {{ form.password|form_class|placeholder:"Password: " }}
-
                                     <input type="hidden" name="next" value="{{ next }}">
                                     <br>
                                     <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block"
                                            value="Enter">
                                     {% csrf_token %}
-
                                     <hr/>
                                     <a class="link-primary" href="{% url 'register user' %}">You don't have a
                                         registration?</a>
@@ -46,5 +34,4 @@
             </section>
         </fieldset>
     </form>
-
 {% endblock %}

@@ -30,8 +30,6 @@ def list_SIM(request):
         'sim_list': sim_list,
         'form': form,
         'is_perm': is_perm,
-        'is_owner': request.user.username,
-        'is_superuser': request.user.is_superuser,
 
     }
     return render(request, 'SIM/SIM-list-page.html', context)
