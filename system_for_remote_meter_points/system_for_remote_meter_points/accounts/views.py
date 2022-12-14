@@ -24,10 +24,17 @@ class SignUpView(SuccessMessageMixin, views.CreateView):
     success_url = reverse_lazy('login user')
     success_message = "User is sign up successfully!"
 
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        login(request, self.object)
-        return response
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        login(self.request, self.object)
+        return result
+
+    def form_invalid(self, form):
+        if form['password1'].value() != form['password2'].value():
+            messages.error(self.request, "Passwords doesn't match")
+        else:
+            messages.error(self.request, "Username exist!!")
+        return super().form_invalid(form)
 
 
 class UserDetailsView(views.DetailView):
