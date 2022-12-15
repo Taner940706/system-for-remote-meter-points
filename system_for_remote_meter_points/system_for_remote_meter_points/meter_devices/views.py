@@ -6,6 +6,7 @@ from system_for_remote_meter_points.meter_devices.models import MeterDevice
 from django.contrib import messages
 
 
+
 # list and add meter device
 @login_required
 def list_meter_device(request):
@@ -32,7 +33,6 @@ def list_meter_device(request):
         'meter_device_list': meter_device_list,
         'form': form,
         'is_perm': is_perm,
-
     }
     return render(request, 'meter_devices/meter-device-list-page.html', context)
 

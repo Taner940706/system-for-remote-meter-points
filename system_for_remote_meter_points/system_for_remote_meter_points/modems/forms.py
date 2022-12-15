@@ -20,12 +20,6 @@ class ModemBaseForm(forms.ModelForm):
                 }
 
             ),
-            'meter_point': forms.TextInput(
-                attrs={
-                    'placeholder': 'Meter point number',
-                }
-
-            ),
             'sim': forms.TextInput(
                 attrs={
                     'placeholder': 'SIM number',
