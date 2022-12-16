@@ -37,7 +37,7 @@ The software is based on Django MTV structure + HTML + CSS + JavaScript + Bootst
   - Task list: /tasks
   - Edit task: /tasks/:id/edit
   - Delete task: /tasks/:id/delete
-  - Analyses: 
+  - Analyses: /analyses
  ## Screenshots
 ![analyses1](https://user-images.githubusercontent.com/59261346/207970981-b64c3ce2-80e1-4326-ab0c-2ce9d4e9b955.png)
 ![analyses2](https://user-images.githubusercontent.com/59261346/207970983-43c7135f-0447-4039-9387-70e61ab66d81.png)
