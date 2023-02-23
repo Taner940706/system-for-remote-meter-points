@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*a=9200^maeg7q&)6j^!0hnmd9h%!j7pu!uj#k2mimogc1v9p%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #
 ALLOWED_HOSTS = [
     '*'
@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third-part apps
+    'rest_framework',
+
     #Applications
     'system_for_remote_meter_points.meter_points',
     'system_for_remote_meter_points.meter_devices',
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
     'system_for_remote_meter_points.analyses',
     'system_for_remote_meter_points.tasks',
     'system_for_remote_meter_points.SIM',
+    'system_for_remote_meter_points.api',
 
 ]
 

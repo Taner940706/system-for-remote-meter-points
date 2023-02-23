@@ -12,6 +12,7 @@ urlpatterns = [
     path('modems/', include('system_for_remote_meter_points.modems.urls')),
     path('SIM/', include('system_for_remote_meter_points.SIM.urls')),
     path('tasks/', include('system_for_remote_meter_points.tasks.urls')),
+    path('api/', include('system_for_remote_meter_points.api.urls')),
 ]
 # Media folder
 if settings.DEBUG:
