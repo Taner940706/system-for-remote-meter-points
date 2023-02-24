@@ -3,10 +3,16 @@ from rest_framework import generics as rest_views
 
 from system_for_remote_meter_points.SIM.models import SIM
 from system_for_remote_meter_points.api.serializers import UserApiSerializer, UserCreateApiSerializer, SIMApiSerializer, \
-    SIMCreateApiSerializer, ModemApiSerializer, ModemCreateApiSerializer
+    SIMCreateApiSerializer, ModemApiSerializer, ModemCreateApiSerializer, MeterDeviceApiSerializer, \
+    MeterDeviceCreateApiSerializer, TaskApiSerializer, TaskCreateApiSerializer, MeterPointApiSerializer, \
+    MeterPointCreateApiSerializer
+from system_for_remote_meter_points.meter_devices.models import MeterDevice
+from system_for_remote_meter_points.meter_points.models import MeterPoint
 from system_for_remote_meter_points.modems.models import Modem
+from system_for_remote_meter_points.tasks.models import Task
 
 UserModel = get_user_model()
+
 
 
 class UserListApiView(rest_views.ListAPIView):
@@ -92,3 +98,86 @@ class ModemDeleteApiView(rest_views.RetrieveDestroyAPIView):
     serializer_class = ModemApiSerializer
     lookup_field = 'pk'
 
+
+class MeterDeviceListApiView(rest_views.ListAPIView):
+    queryset = MeterDevice.objects.all()
+    serializer_class = MeterDeviceApiSerializer
+
+
+class MeterDeviceCreateApiView(rest_views.ListCreateAPIView):
+    queryset = MeterDevice.objects.all()
+    serializer_class = MeterDeviceCreateApiSerializer
+
+    def get(self, *args, **kwargs):
+        return super().get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        return super().post(*args, **kwargs)
+
+
+class MeterDeviceUpdateApiView(rest_views.RetrieveUpdateAPIView):
+    queryset = MeterDevice.objects.all()
+    serializer_class = MeterDeviceApiSerializer
+    lookup_field = 'pk'
+
+
+class MeterDeviceDeleteApiView(rest_views.RetrieveDestroyAPIView):
+    queryset = MeterDevice.objects.all()
+    serializer_class = MeterDeviceApiSerializer
+    lookup_field = 'pk'
+
+
+class TaskListApiView(rest_views.ListAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskApiSerializer
+
+
+class TaskCreateApiView(rest_views.ListCreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskCreateApiSerializer
+
+    def get(self, *args, **kwargs):
+        return super().get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        return super().post(*args, **kwargs)
+
+
+class TaskUpdateApiView(rest_views.RetrieveUpdateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskApiSerializer
+    lookup_field = 'pk'
+
+
+class TaskDeleteApiView(rest_views.RetrieveDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskApiSerializer
+    lookup_field = 'pk'
+
+
+class MeterPointListApiView(rest_views.ListAPIView):
+    queryset = MeterPoint.objects.all()
+    serializer_class = MeterPointApiSerializer
+
+
+class MeterPointCreateApiView(rest_views.ListCreateAPIView):
+    queryset = MeterPoint.objects.all()
+    serializer_class = MeterPointCreateApiSerializer
+
+    def get(self, *args, **kwargs):
+        return super().get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        return super().post(*args, **kwargs)
+
+
+class MeterPointUpdateApiView(rest_views.RetrieveUpdateAPIView):
+    queryset = MeterPoint.objects.all()
+    serializer_class = MeterPointApiSerializer
+    lookup_field = 'pk'
+
+
+class MeterPointDeleteApiView(rest_views.RetrieveDestroyAPIView):
+    queryset = MeterPoint.objects.all()
+    serializer_class = MeterPointApiSerializer
+    lookup_field = 'pk'
