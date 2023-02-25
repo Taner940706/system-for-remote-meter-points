@@ -103,6 +103,7 @@ class TaskCreateApiSerializer(serializers.ModelSerializer):
         return Task.objects.create(**validated_data)
 
 
+
 class MeterPointApiSerializer(serializers.ModelSerializer):
     modem = ShortModemApiSerializer()
     meter_device = ShortMeterDeviceApiSerializer()

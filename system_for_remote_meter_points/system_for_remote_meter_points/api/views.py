@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.shortcuts import redirect
 from rest_framework import generics as rest_views
 
 from system_for_remote_meter_points.SIM.models import SIM
@@ -28,7 +29,8 @@ class UserCreateApiView(rest_views.ListCreateAPIView):
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        return super().post(*args, **kwargs)
+        response = super().post(*args, **kwargs)
+        return redirect('list users api')
 
 
 class UserUpdateApiView(rest_views.RetrieveUpdateAPIView):
@@ -56,7 +58,8 @@ class SIMCreateApiView(rest_views.ListCreateAPIView):
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        return super().post(*args, **kwargs)
+        response = super().post(*args, **kwargs)
+        return redirect('list sims api')
 
 
 class SIMUpdateApiView(rest_views.RetrieveUpdateAPIView):
@@ -84,7 +87,8 @@ class ModemCreateApiView(rest_views.ListCreateAPIView):
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        return super().post(*args, **kwargs)
+        response = super().post(*args, **kwargs)
+        return redirect('list modems api')
 
 
 class ModemUpdateApiView(rest_views.RetrieveUpdateAPIView):
@@ -112,7 +116,8 @@ class MeterDeviceCreateApiView(rest_views.ListCreateAPIView):
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        return super().post(*args, **kwargs)
+        response = super().post(*args, **kwargs)
+        return redirect('list meter devices api')
 
 
 class MeterDeviceUpdateApiView(rest_views.RetrieveUpdateAPIView):
@@ -140,7 +145,8 @@ class TaskCreateApiView(rest_views.ListCreateAPIView):
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        return super().post(*args, **kwargs)
+        response = super().post(*args, **kwargs)
+        return redirect('list tasks api')
 
 
 class TaskUpdateApiView(rest_views.RetrieveUpdateAPIView):
@@ -168,7 +174,8 @@ class MeterPointCreateApiView(rest_views.ListCreateAPIView):
         return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        return super().post(*args, **kwargs)
+        response = super().post(*args, **kwargs)
+        return redirect('list meter points api')
 
 
 class MeterPointUpdateApiView(rest_views.RetrieveUpdateAPIView):
